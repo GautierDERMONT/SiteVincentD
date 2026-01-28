@@ -67,6 +67,10 @@
     color: var(--primary-color);
 }
 
+.nav-menu a:focus {
+    outline: none;
+}
+
 .nav-contact-btn {
     background-color: var(--primary-color);
     color: white !important;

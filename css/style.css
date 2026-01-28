@@ -7,8 +7,6 @@
 @import url('components/home.css');
 @import url('components/services.css');
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +22,7 @@
     --gray-color: #6c757d;
     --success-color: #28a745;
     --danger-color: #dc3545;
+    
     
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Poppins', sans-serif;
@@ -47,12 +46,15 @@
 }
 
 body {
+    font-display: swap;
     font-family: var(--font-secondary);
     line-height: 1.6;
     color: var(--dark-color);
     background-color: #fff;
     overflow-x: hidden;
 }
+
+
 
 .container {
     width: 100%;
