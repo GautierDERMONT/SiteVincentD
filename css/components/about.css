@@ -1,0 +1,340 @@
+/* =============================================
+   PROFIL PRINCIPAL
+   ============================================= */
+
+.about-main {
+    padding: var(--spacing-xl) 0;
+}
+
+.about-profile {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.profile-image {
+    flex: 1;
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.profile-content {
+    flex: 1;
+}
+
+.profile-title {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.profile-contact {
+    margin-top: 2rem;
+    background-color: var(--light-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+}
+
+.profile-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.profile-contact i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+/* =============================================
+   TIMELINE
+   ============================================= */
+
+.career {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-color);
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 2rem;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid white;
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content h3 {
+    margin-bottom: 0.75rem;
+}
+
+.timeline-content ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.timeline-content ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.timeline-content ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* =============================================
+   CERTIFICATIONS
+   ============================================= */
+
+.certifications {
+    padding: var(--spacing-xl) 0;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.cert-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition-fast);
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.cert-card h3 {
+    margin-bottom: 1rem;
+}
+
+/* =============================================
+   PHILOSOPHIE
+   ============================================= */
+
+.philosophy {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-color);
+}
+
+.philosophy-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: var(--spacing-lg);
+}
+
+.philosophy-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.philosophy-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.philosophy-item h3 {
+    margin-bottom: 1rem;
+}
+
+/* =============================================
+   RESPONSIVE À PROPOS - AMÉLIORATIONS
+   ============================================= */
+
+@media (max-width: 992px) {
+    .about-profile {
+        flex-direction: column;
+        gap: 40px; /* Réduire l'espacement sur mobile */
+    }
+    
+    .profile-image,
+    .profile-content {
+        width: 100%;
+    }
+    
+    .profile-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-contact {
+        padding: 1.25rem;
+        margin-top: 1.5rem;
+    }
+    
+    .cert-grid,
+    .philosophy-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-main,
+    .career,
+    .certifications,
+    .philosophy {
+        padding: 30px 0;
+    }
+    
+    .cert-grid,
+    .philosophy-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Améliorations pour le texte de présentation */
+    .profile-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-content p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-contact p {
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+    
+    .profile-contact i {
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-main {
+        padding: 40px 0;
+    }
+    
+    .about-profile {
+        gap: 30px;
+    }
+    
+    .profile-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .profile-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .profile-content p {
+        font-size: 0.95rem;
+        text-align: justify; /* Pour une meilleure lecture sur mobile */
+        hyphens: auto; /* Césure automatique */
+    }
+    
+    .profile-contact {
+        padding: 1rem;
+        margin-top: 1.25rem;
+    }
+    
+    .profile-contact p {
+        font-size: 0.85rem;
+        align-items: flex-start; /* Alignement en haut pour les lignes multiples */
+        margin-bottom: 0.75rem;
+    }
+    
+    .profile-contact i {
+        margin-top: 2px; /* Aligner l'icône avec le texte */
+    }
+    
+    .timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-item:before {
+        left: -2rem;
+    }
+    
+    .timeline-content {
+        padding: 1.25rem;
+    }
+}
+
+/* Correction spécifique pour les très petits écrans */
+@media (max-width: 375px) {
+    .profile-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .profile-title {
+        font-size: 0.95rem;
+    }
+    
+    .profile-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .profile-contact {
+        padding: 0.875rem;
+    }
+    
+    .profile-contact p {
+        font-size: 0.8rem;
+    }
+}

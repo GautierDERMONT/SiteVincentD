@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Expert Supply Chain - Demande d'audit gratuit</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/fork-lift.png">
@@ -20,7 +20,8 @@
                 <li><a href="apropos.html">À propos</a></li>
                 <li><a href="expertise.html">Expertise</a></li>
                 <li><a href="blog.html">Actualités</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="nav-contact-btn">Contact</a></li>
+
             </ul>
             <div class="burger">
                 <span></span>
@@ -94,17 +95,17 @@
                     </div>
                     
                     <div class="social-contact">
-                        <h3>Suivez-moi sur les réseaux</h3>
-                        <div class="social-links">
-                            <a href="#" class="social-link">
+                
+                        <div class="social-links2">
+                            <a href="#" class="social-link2">
                                 <i class="fab fa-linkedin"></i>
                                 <span>LinkedIn</span>
                             </a>
-                            <a href="#" class="social-link">
+                            <a href="#" class="social-link2">
                                 <i class="fab fa-twitter"></i>
                                 <span>Twitter</span>
                             </a>
-                            <a href="#" class="social-link">
+                            <a href="#" class="social-link2">
                                 <i class="fab fa-youtube"></i>
                                 <span>YouTube</span>
                             </a>
@@ -177,31 +178,63 @@
                 </div>
             </div>
             
-            <!-- FAQ -->
-            <div class="faq-section">
-                <h2 class="section-title">Questions fréquentes</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3>Quel est le déroulement d'un premier rendez-vous ?</h3>
-                        <p>Le premier rendez-vous dure 45 minutes et est gratuit. Nous échangeons sur vos défis supply chain, vos objectifs et vos contraintes. À l'issue de cet échange, je vous propose une analyse préliminaire et, si pertinent, une proposition d'accompagnement détaillée.</p>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h3>Quelle est votre zone d'intervention ?</h3>
-                        <p>Je suis basé à Paris mais j'interviens dans toute la France. Les audits et diagnostics peuvent être réalisés en grande partie à distance. Pour les projets d'optimisation sur site, je me déplace chez mes clients. J'interviens également à l'international selon les projets.</p>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h3>Quels types d'entreprises accompagnez-vous ?</h3>
-                        <p>J'accompagne aussi bien les PME que les grands groupes, dans tous les secteurs d'activité : industrie, retail, e-commerce, pharmaceutique, agroalimentaire, etc. Chaque intervention est adaptée à la taille et aux spécificités de votre entreprise.</p>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h3>Quel est le délai moyen pour un projet d'optimisation ?</h3>
-                        <p>Les durées varient selon la nature et l'ampleur du projet. Un audit dure généralement 2 à 3 semaines. Un projet d'optimisation complet peut s'étaler sur 3 à 6 mois. Je privilégie une approche par étapes avec des résultats rapides et visibles.</p>
+            <!-- FAQ Section avec accordéon -->
+                <div class="faq-section">
+                    <h2 class="section-title">Questions fréquentes</h2>
+                    <div class="faq-accordion">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="faq-question-text">Quel est le déroulement d'un premier rendez-vous ?</span>
+                                <span class="faq-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Le premier rendez-vous dure 45 minutes et est gratuit. Nous échangeons sur vos défis supply chain, vos objectifs et vos contraintes. À l'issue de cet échange, je vous propose une analyse préliminaire et, si pertinent, une proposition d'accompagnement détaillée.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="faq-question-text">Quelle est votre zone d'intervention ?</span>
+                                <span class="faq-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Je suis basé à Paris mais j'interviens dans toute la France. Les audits et diagnostics peuvent être réalisés en grande partie à distance. Pour les projets d'optimisation sur site, je me déplace chez mes clients. J'interviens également à l'international selon les projets.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="faq-question-text">Quels types d'entreprises accompagnez-vous ?</span>
+                                <span class="faq-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>J'accompagne aussi bien les PME que les grands groupes, dans tous les secteurs d'activité : industrie, retail, e-commerce, pharmaceutique, agroalimentaire, etc. Chaque intervention est adaptée à la taille et aux spécificités de votre entreprise.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="faq-question-text">Quel est le délai moyen pour un projet d'optimisation ?</span>
+                                <span class="faq-icon">
+                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Les durées varient selon la nature et l'ampleur du projet. Un audit dure généralement 2 à 3 semaines. Un projet d'optimisation complet peut s'étaler sur 3 à 6 mois. Je privilégie une approche par étapes avec des résultats rapides et visibles.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             
             <!-- CTA Section -->
             <div class="contact-cta">
@@ -266,6 +299,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>

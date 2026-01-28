@@ -1,0 +1,240 @@
+/* =============================================
+   DOMAINES D'EXPERTISE
+   ============================================= */
+
+.expertise-domains {
+    padding: var(--spacing-xl) 0;
+}
+
+.domains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.domain-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    border-top: 4px solid var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+.domain-card:hover {
+    transform: translateY(-10px);
+}
+
+.domain-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.domain-card h3 {
+    margin-bottom: 1rem;
+}
+
+.domain-card ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.domain-card ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.domain-card ul li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* =============================================
+   ÉTUDES DE CAS
+   ============================================= */
+
+.case-studies {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-color);
+}
+
+.case-study {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+.case-study.reverse {
+    flex-direction: row-reverse;
+}
+
+.case-image {
+    flex: 1;
+}
+
+.case-image img {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.case-content {
+    flex: 1;
+}
+
+.case-sector {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.challenge, .solution, .results {
+    margin-bottom: 2rem;
+}
+
+.challenge h4, .solution h4, .results h4 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.case-content ul {
+    list-style: none;
+}
+
+.case-content ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.case-content ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.result-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 1.5rem;
+}
+
+.result-stat {
+    text-align: center;
+}
+
+.result-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.result-text {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+}
+
+/* =============================================
+   TÉMOIGNAGES DÉTAILLÉS
+   ============================================= */
+
+.detailed-testimonials {
+    padding: var(--spacing-xl) 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-full {
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.testimonial-quote {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial-quote i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-avatar {
+    font-size: 3rem;
+    color: var(--gray-color);
+}
+
+.author-info h4 {
+    margin-bottom: 0.25rem;
+}
+
+.author-company {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin-top: 0.25rem;
+}
+
+/* =============================================
+   RESPONSIVE EXPERTISE
+   ============================================= */
+
+@media (max-width: 992px) {
+    .case-study,
+    .case-study.reverse {
+        flex-direction: column;
+    }
+    
+    .domains-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .domains-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .expertise-domains,
+    .case-studies,
+    .detailed-testimonials {
+        padding: 60px 0;
+    }
+    
+    .case-study {
+        margin-bottom: 60px;
+    }
+}

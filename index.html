@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expert Supply Chain & Logistique | Accueil</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/fork-lift.png">
@@ -20,7 +20,7 @@
                 <li><a href="apropos.html">À propos</a></li>
                 <li><a href="expertise.html">Expertise</a></li>
                 <li><a href="blog.html">Actualités</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="nav-contact-btn">Contact</a></li>
             </ul>
             <div class="burger">
                 <span></span>
@@ -129,43 +129,51 @@
         </div>
     </section>
 
-    <!-- Témoignages -->
-    <section class="testimonials">
+        <!-- Section Clients -->
+    <section class="clients">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Ils m'ont fait confiance</h2>
-                <p class="section-subtitle">Retours d'entreprises accompagnées</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Grâce à son expertise, nous avons réduit nos coûts logistiques de 30% tout en améliorant notre service client."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <h4>Pierre Martin</h4>
-                            <p>Directeur Logistique, Groupe Industriel Français</p>
-                        </div>
-                    </div>
+            <h2 class="section-title">Ils m'ont fait confiance</h2>
+            <p class="section-subtitle">Les entreprises que j'ai accompagnées</p>
+
+            <div class="clients-grid">
+                <!-- Logo 1 -->
+                <div class="client-logo">
+                    <i class="fas fa-industry"></i>
+                   
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Un accompagnement sur mesure qui a transformé notre supply chain. Les résultats ont été immédiats."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <h4>Sophie Leroy</h4>
-                            <p>Responsable Supply Chain, Entreprise de Retail</p>
-                        </div>
-                    </div>
+                
+                <!-- Logo 2 -->
+                <div class="client-logo">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Retail International</span>
                 </div>
-            </div>
-            <div class="text-center">
-                <a href="expertise.html" class="btn btn-outline">Voir plus de réalisations</a>
+                
+                <!-- Logo 3 -->
+                <div class="client-logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Pharma Santé</span>
+                </div>
+                
+                <!-- Logo 4 -->
+                <div class="client-logo">
+                    <i class="fas fa-truck"></i>
+                    <span>Logistics Corp</span>
+                </div>
+                
+                <!-- Logo 5 -->
+                <div class="client-logo">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Tech Solutions</span>
+                </div>
+                
+                <!-- Logo 6 -->
+                <div class="client-logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>AgroFood Group</span>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
@@ -224,6 +232,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,106 @@
+/* =============================================
+   SERVICES DÉTAILLÉS
+   ============================================= */
+
+.detailed-services {
+    padding: var(--spacing-xl) 0;
+}
+
+.service-detail {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+.service-detail.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-detail-content {
+    flex: 1;
+}
+
+.service-detail-content h2 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.service-detail-content h2 i {
+    color: var(--primary-color);
+}
+
+.service-detail-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.service-detail-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.service-detail-content ul li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.service-detail-content ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.service-detail-image {
+    flex: 1;
+}
+
+.service-detail-image img {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-section {
+    text-align: center;
+    padding: 60px 0;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-md);
+    margin-top: 40px;
+}
+
+.cta-section h2 {
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* =============================================
+   RESPONSIVE SERVICES
+   ============================================= */
+
+@media (max-width: 992px) {
+    .service-detail,
+    .service-detail.reverse {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .detailed-services {
+        padding: 60px 0;
+    }
+    
+    .service-detail {
+        margin-bottom: 60px;
+    }
+}
