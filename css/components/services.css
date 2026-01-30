@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     gap: 60px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .service-detail.reverse {
@@ -102,5 +102,67 @@
     
     .service-detail {
         margin-bottom: 60px;
+    }
+}
+
+/* =============================================
+   SERVICES MOBILE - REORDERING
+   ============================================= */
+
+@media (max-width: 992px) {
+    /* Forcer toutes les sections en colonne */
+    .service-detail, 
+    .service-detail.reverse {
+        flex-direction: column;
+        display: flex;
+        gap: 0; /* Enlève l'espace entre les éléments flex */
+    }
+    
+    /* Pour TOUTES les sections sur mobile :
+       1. L'image vient en premier (order: 1)
+       2. Le contenu vient après (order: 2) */
+    .service-detail-image {
+        order: 1;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    
+    .service-detail-content {
+        order: 2;
+        width: 100%;
+    }
+    
+    /* Ajustements pour les images sur mobile */
+    .service-detail-image img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: var(--border-radius-md);
+    }
+}
+
+/* Pour une meilleure lisibilité sur très petits écrans */
+@media (max-width: 576px) {
+    .service-detail {
+        margin-bottom: 50px;
+        gap: 0; /* Enlève l'espace entre les éléments flex */
+    }
+    
+    .service-detail-image {
+        margin-bottom: 20px;
+    }
+    
+    .service-detail-image img {
+        max-height: 200px;
+    }
+    
+    .service-detail-content h2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .service-detail-content h2 i {
+        font-size: 1.5rem;
     }
 }
