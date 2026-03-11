@@ -8,22 +8,54 @@
 
 .about-profile {
     display: flex;
-    gap: 60px;
+    flex-direction: column; /* Image au-dessus, texte en dessous */
+    gap: 40px;
     align-items: center;
 }
 
 .profile-image {
-    flex: 1;
+    width: 35%; /* 40% sur desktop */
+    margin-bottom: 20px;
 }
 
 .profile-image img {
     width: 100%;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-lg);
+    display: block;
 }
 
 .profile-content {
-    flex: 1;
+    width: 100%;
+}
+
+/* =============================================
+   RESPONSIVE POUR MOBILE
+   ============================================= */
+
+@media (max-width: 992px) {
+    .profile-image {
+        width: 50%; /* Un peu plus grand sur tablette */
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 60%; /* Plus grand sur petit écran */
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-image {
+        width: 60%; /* Encore plus grand sur mobile */
+        max-width: 350px; /* Mais pas trop grand non plus */
+    }
+}
+
+@media (max-width: 375px) {
+    .profile-image {
+        width: 90%; /* Presque toute la largeur sur très petit écran */
+    }
 }
 
 .profile-title {
@@ -34,10 +66,15 @@
 }
 
 .profile-contact {
-    margin-top: 2rem;
+    margin-top: 3rem;
     background-color: var(--light-color);
     padding: 1.5rem;
     border-radius: var(--border-radius-sm);
+    width: fit-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* Garde le texte aligné à gauche à l'intérieur */
 }
 
 .profile-contact p {
@@ -51,6 +88,8 @@
     color: var(--primary-color);
     width: 20px;
 }
+
+
 
 /* =============================================
    TIMELINE
