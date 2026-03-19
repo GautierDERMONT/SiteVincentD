@@ -19,6 +19,8 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    overflow: hidden;
+
 }
 
 .hero-bg-slides {
@@ -241,6 +243,153 @@
     animation: zoomEffect 20s ease-in-out forwards;
 }
 
+
+
+.carousel-arrow:focus {
+    outline: none !important;
+
+}
+
+/* =============================================
+   CAROUSEL SERVICES - UNIQUEMENT SUR DESKTOP/TABLETTE
+   ============================================= */
+
+/* Version desktop/tablette - Carousel */
+@media (min-width: 769px) {
+    .services-carousel-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 0 -15px;
+        padding: 15px 0 30px; /* Augmenté le padding pour laisser de l'espace aux ombres */
+    }
+    
+    .services-carousel {
+        flex: 1;
+        overflow: hidden;
+        margin: 0 10px;
+        padding: 5px; /* Ajouté pour permettre aux ombres de dépasser */
+    }
+    
+    .services-carousel-track {
+        display: flex;
+        transition: transform 0.4s ease-in-out;
+        gap: 30px;
+    }
+    
+    .services-carousel-track .service-card {
+        flex: 0 0 calc(33.333% - 20px);
+        min-width: 0;
+        margin: 0;
+        height: auto;
+        min-height: 480px;
+        /* Assurer que l'ombre est bien visible */
+        box-shadow: var(--shadow-md);
+        background: white;
+        /* Éviter que l'ombre soit coupée */
+        overflow: visible;
+    }
+    
+    .carousel-arrow {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+        z-index: 10;
+        flex-shrink: 0;
+    }
+    
+    .carousel-arrow:hover {
+        background-color: var(--accent-color);
+        transform: scale(1.1);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .carousel-arrow:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    
+    .carousel-arrow:focus {
+        outline: 2px solid var(--accent-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Version tablette (2 cartes) */
+@media (min-width: 769px) and (max-width: 992px) {
+    .services-carousel-track .service-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+/* Version mobile - Affichage en grille */
+@media (max-width: 768px) {
+    .services-carousel-container {
+        display: block !important;
+        margin: 0;
+        padding: 15px 0; /* Ajouté pour garder l'espace des ombres */
+    }
+    
+    .services-carousel {
+        overflow: visible !important;
+        margin: 0;
+        padding: 5px; /* Ajouté pour les ombres */
+    }
+    
+    .services-carousel-track {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .services-carousel-track .service-card {
+        flex: none !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+        /* Assurer que l'ombre est bien visible sur mobile */
+        box-shadow: var(--shadow-md);
+        overflow: visible;
+    }
+    
+    .carousel-arrow {
+        display: none !important;
+    }
+}
+
+/* Uniformisation des hauteurs des cartes */
+.services-carousel-track .service-card {
+    display: flex;
+    flex-direction: column;
+    /* Ajouter une bordure visible mais subtile */
+    border-top: 4px solid var(--primary-color); /* Garder la bordure colorée en haut */
+    /* S'assurer que l'ombre n'est pas coupée */
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+.services-carousel-track .service-card p {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.services-carousel-track .service-link {
+    margin-top: auto;
+}
+
 /* =============================================
    SECTION SERVICES - CARTES AGRANDIES
    ============================================= */
@@ -259,6 +408,7 @@
 
 .services {
     padding: var(--spacing-xl) 0;
+    overflow: hidden; /* Éviter les débordements horizontaux */
 }
 
 .services-grid {
@@ -275,10 +425,15 @@
     box-shadow: var(--shadow-md);
     transition: var(--transition-fast);
     border-top: 4px solid var(--primary-color);
+    border-left: 1px solid rgba(0,0,0,0.05); /* Ajout de bordures latérales subtiles */
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     min-height: 450px;
     height: auto;
+    position: relative;
+    overflow: visible; /* Important pour que l'ombre soit visible */
 }
 
 .service-content {
@@ -287,15 +442,9 @@
     flex-direction: column;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
 .service-icon {
     font-size: 2.5rem;
     color: var(--primary-color);
-    
 }
 
 .service-card h3 {
@@ -382,6 +531,56 @@
 
 .expertise-list i {
     color: var(--success-color);
+}
+
+/* Credo simple avec icônes - VERSION CENTRÉE */
+.credo-simple {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.credo-label {
+    font-weight: 700;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.credo-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.credo-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.credo-item i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    width: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .credo-items {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .credo-items {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
 }
 
 /* =============================================

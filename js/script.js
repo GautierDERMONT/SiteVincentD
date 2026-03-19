@@ -3,18 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const burger = document.querySelector('.burger');
     const navMenu = document.querySelector('.nav-menu');
     
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    
-    // Fermer le menu en cliquant sur un lien
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (burger && navMenu) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-    });
+        
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
     
     // Animation au scroll
     const observerOptions = {
@@ -35,39 +37,34 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    
-    
-    
-// Animation des statistiques dans la section hero
-function animateStats() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    statNumbers.forEach(stat => {
-        // Récupérer le texte original pour préserver les symboles
-        const originalText = stat.textContent;
-        // Extraire la valeur numérique et le symbole
-        const match = originalText.match(/([+-]?)(\d+)([+%]?)/);
-        if (!match) return;
+    // Animation des statistiques dans la section hero
+    function animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
         
-        const symbol = match[1] || ''; // + ou - ou vide
-        const finalValue = parseInt(match[2]);
-        const suffix = match[3] || ''; // % ou + ou vide
-        
-        let startValue = 0;
-        const duration = 2000;
-        const increment = finalValue / (duration / 16);
-        
-        const timer = setInterval(() => {
-            startValue += increment;
-            if (startValue >= finalValue) {
-                stat.textContent = symbol + finalValue + suffix;
-                clearInterval(timer);
-            } else {
-                stat.textContent = symbol + Math.floor(startValue) + suffix;
-            }
-        }, 16);
-    });
-}
+        statNumbers.forEach(stat => {
+            const originalText = stat.textContent;
+            const match = originalText.match(/([+-]?)(\d+)([+%]?)/);
+            if (!match) return;
+            
+            const symbol = match[1] || '';
+            const finalValue = parseInt(match[2]);
+            const suffix = match[3] || '';
+            
+            let startValue = 0;
+            const duration = 2000;
+            const increment = finalValue / (duration / 16);
+            
+            const timer = setInterval(() => {
+                startValue += increment;
+                if (startValue >= finalValue) {
+                    stat.textContent = symbol + finalValue + suffix;
+                    clearInterval(timer);
+                } else {
+                    stat.textContent = symbol + Math.floor(startValue) + suffix;
+                }
+            }, 16);
+        });
+    }
     
     // Lancer l'animation des stats quand la section est visible
     const statsSection = document.querySelector('.hero-stats');
@@ -102,5 +99,3 @@ function animateStats() {
         });
     });
 });
-
-
