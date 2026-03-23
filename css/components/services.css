@@ -10,9 +10,63 @@
     display: flex;
     align-items: center;
     gap: 60px;
-    margin-bottom: 60px;
+    
 }
 
+/* À ajouter après les styles existants de .service-detail */
+
+/* Structure pour le fond pleine largeur */
+.service-detail {
+    position: relative;
+    padding: 50px 0;
+    transition: var(--transition-fast);
+}
+
+/* Créer un pseudo-élément pour le fond pleine largeur */
+.service-detail:nth-child(even)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    background-color: var(--light-color);
+    z-index: -1;
+}
+
+/* Assurer que le contenu reste dans le container */
+.service-detail {
+    position: relative;
+    z-index: 1;
+}
+
+.service-detail > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajustement pour le premier et dernier élément */
+.service-detail:first-child {
+    padding-top: 0;
+}
+
+.service-detail:last-child {
+    padding-bottom: 0;
+}
+
+/* Version responsive avec padding adapté */
+@media (max-width: 992px) {
+    .service-detail {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-detail {
+        padding: 30px 0;
+    }
+}
 .service-detail.reverse {
     flex-direction: row-reverse;
 }
@@ -41,22 +95,25 @@
 .service-detail-content ul {
     list-style: none;
     margin-bottom: 1.5rem;
+    
 }
 
 .service-detail-content ul li {
     margin-bottom: 0.75rem;
     padding-left: 1.5rem;
     position: relative;
+    list-style: none;
 }
 
 .service-detail-content ul li:before {
     content: "✓";
     position: absolute;
     left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--success-color);
     font-weight: bold;
 }
-
 .service-detail-image {
     flex: 1;
 }
@@ -77,6 +134,7 @@
 
 .cta-section h2 {
     margin-bottom: 1rem;
+    font-size: 2.2rem;
 }
 
 .cta-section p {
@@ -101,7 +159,7 @@
     }
     
     .service-detail {
-        margin-bottom: 60px;
+        margin-bottom: 20px;
     }
 }
 
@@ -144,7 +202,7 @@
 /* Pour une meilleure lisibilité sur très petits écrans */
 @media (max-width: 576px) {
     .service-detail {
-        margin-bottom: 50px;
+        margin-bottom: 0px;
         gap: 0; /* Enlève l'espace entre les éléments flex */
     }
     

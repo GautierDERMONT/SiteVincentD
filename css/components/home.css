@@ -691,7 +691,7 @@
 @media (max-width: 992px) {
     .hero {
         min-height: 600px;
-        padding: 120px 0 60px;
+        padding: 140px 0 60px;
     }
     
     .hero h1 {
@@ -752,7 +752,7 @@
 @media (max-width: 768px) {
     .hero {
         min-height: 550px;
-        padding: 100px 0 50px;
+        padding: 130px 0 50px;
     }
     
     .hero h1 {
@@ -885,7 +885,7 @@
     }
     
     .hero {
-        padding: 100px 0 40px;
+        padding: 120px 0 40px;
         min-height: 500px;
     }
     
@@ -1022,6 +1022,10 @@
 }
 
 @media (max-width: 380px) {
+
+    .hero {
+        padding: 110px 0 40px;  /* Ajout d'un padding spécifique pour très petits écrans */
+    }
     .stat {
         flex: 0 0 100%;
     }

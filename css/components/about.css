@@ -90,6 +90,172 @@
 }
 
 
+/* =============================================
+   INTERVENTIONS MANAGER DE TRANSITION
+   ============================================= */
+
+.manager-interventions {
+    margin: 2rem 0 1.5rem;
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary-color);
+}
+
+.manager-interventions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(0, 86, 179, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.interventions-title {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+    color: var(--dark-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.interventions-title i {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.interventions-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.interventions-list li {
+    display: flex;
+    align-items: center; /* Centre verticalement l'icône par rapport au texte */
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--dark-color);
+    transition: transform 0.2s ease, padding-left 0.2s ease;
+}
+
+.interventions-list li i {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    background: rgba(0, 86, 179, 0.1);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+
+/* Animation d'apparition au scroll */
+.manager-interventions {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUpInterventions 0.6s ease forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUpInterventions {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 768px) {
+    .manager-interventions {
+        margin: 1.5rem 0;
+        padding: 1.25rem 1.5rem;
+    }
+    
+    .interventions-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .interventions-title i {
+        font-size: 1.1rem;
+    }
+    
+    .interventions-list {
+        gap: 0.75rem;
+    }
+    
+    .interventions-list li {
+        font-size: 0.95rem;
+        gap: 10px;
+    }
+    
+    .interventions-list li i {
+        width: 20px;
+        height: 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .manager-interventions {
+        margin: 1.25rem 0;
+        padding: 1rem 1.25rem;
+    }
+    
+    .interventions-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .interventions-list {
+        gap: 0.625rem;
+    }
+    
+    .interventions-list li {
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+    
+    .interventions-list li i {
+        width: 18px;
+        height: 18px;
+        font-size: 0.8rem;
+    }
+    
+    
+}
+
+@media (max-width: 375px) {
+    .manager-interventions {
+        padding: 0.875rem 1rem;
+    }
+    
+    .interventions-list li {
+        font-size: 0.85rem;
+    }
+}
+
 
 /* =============================================
    TIMELINE
