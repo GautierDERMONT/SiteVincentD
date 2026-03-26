@@ -8,8 +8,9 @@
 
 .domains-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    align-items: stretch;
 }
 
 .domain-card {
@@ -19,31 +20,50 @@
     box-shadow: var(--shadow-md);
     border-top: 4px solid var(--primary-color);
     transition: var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .domain-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 .domain-icon {
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .domain-card h3 {
     margin-bottom: 1rem;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.domain-card p {
+    flex: 0;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 .domain-card ul {
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 0;
+    padding-left: 0;
+    text-align: left;
+    flex: 1;
 }
 
 .domain-card ul li {
     margin-bottom: 0.5rem;
     padding-left: 1.5rem;
     position: relative;
+    text-align: left;
 }
 
 .domain-card ul li:before {
@@ -210,15 +230,15 @@
     .case-study.reverse {
         flex-direction: column;
     }
-    
-    .domains-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
     .domains-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .domain-card h3 {
+        min-height: auto;
     }
     
     .result-stats {
