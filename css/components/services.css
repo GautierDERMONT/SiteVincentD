@@ -146,8 +146,6 @@
    RESPONSIVE SERVICES
    ============================================= */
 
-   
-
 @media (max-width: 992px) {
     .service-detail,
     .service-detail.reverse {
@@ -166,63 +164,95 @@
 }
 
 /* =============================================
-   SERVICES MOBILE - REORDERING
+   SERVICES MOBILE - REORGANISATION COMPLÈTE
    ============================================= */
 
 @media (max-width: 992px) {
-    /* Forcer toutes les sections en colonne */
+    /* 1. On aligne tout le conteneur à gauche */
     .service-detail, 
     .service-detail.reverse {
         flex-direction: column;
         display: flex;
-        gap: 0; /* Enlève l'espace entre les éléments flex */
+        align-items: flex-start; /* Aligne les blocs enfants à gauche */
+        gap: 0;
+        text-align: left;
     }
-    
-    /* Pour TOUTES les sections sur mobile :
-       1. L'image vient en premier (order: 1)
-       2. Le contenu vient après (order: 2) */
-    .service-detail-image {
-        order: 1;
-        width: 100%;
-        margin-bottom: 25px;
-    }
-    
+
+    /* 2. On "libère" les éléments pour les réorganiser */
     .service-detail-content {
+        display: contents; 
+    }
+
+    /* 3. LE TITRE : Icône au-dessus et aligné à gauche */
+    .service-detail-content h2 {
+        order: 1;
+        display: flex;
+        flex-direction: column; /* Icône au-dessus du texte */
+        align-items: flex-start; /* Icône à gauche */
+        justify-content: flex-start;
+        text-align: left;        /* Texte à gauche */
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-detail-content h2 i {
+        font-size: 2rem;
+        margin-bottom: 5px;
+        color: var(--primary-color);
+    }
+
+    /* 4. LE PARAGRAPHE : Juste sous le titre */
+    .service-detail-content p {
         order: 2;
         width: 100%;
+        margin-bottom: 20px;
+        text-align: left;
     }
-    
-    /* Ajustements pour les images sur mobile */
+
+    /* 5. L'IMAGE : Après le premier paragraphe */
+    .service-detail-image {
+        order: 3;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
     .service-detail-image img {
         width: 100%;
         max-height: 250px;
         object-fit: cover;
         border-radius: var(--border-radius-md);
     }
+
+    /* 6. LE RESTE : Listes et points clés */
+    .service-detail-content h3{
+        text-align: center;
+        order: 4;
+        width: 100%;
+    }
+
+    .service-detail-content ul,
+    .service-detail-content em {
+        order: 4;
+        width: 100%;
+        text-align: left;
+    }
+
+    .service-detail-content ul li {
+        text-align: left;
+        padding-left: 1.5rem;
+    }
+
+    
 }
 
-/* Pour une meilleure lisibilité sur très petits écrans */
+/* Ajustements pour les très petits écrans (iPhone, etc.) */
 @media (max-width: 576px) {
-    .service-detail {
-        margin-bottom: 0px;
-        gap: 0; /* Enlève l'espace entre les éléments flex */
-    }
-    
-    .service-detail-image {
-        margin-bottom: 20px;
+    .service-detail-content h2 {
+        font-size: 1.5rem; /* Réduit un peu la taille du titre */
     }
     
     .service-detail-image img {
         max-height: 200px;
-    }
-    
-    .service-detail-content h2 {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .service-detail-content h2 i {
-        font-size: 1.5rem;
     }
 }

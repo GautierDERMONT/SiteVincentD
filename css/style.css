@@ -213,24 +213,7 @@ a {
 
 
 
-.arrow-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 0.5rem;
-}
 
-.arrow-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.3rem;
-}
-
-.arrow-list li::before {
-    content: "→"!important;
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-}
 
 .cta {
   padding: var(--spacing-xl) 0;

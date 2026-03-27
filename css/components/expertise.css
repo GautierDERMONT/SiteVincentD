@@ -66,11 +66,21 @@
     text-align: left;
 }
 
+/* =============================================
+   MODIFICATION DES FLÈCHES (DOMAIN CARDS)
+   ============================================= */
+
 .domain-card ul li:before {
     content: "→";
     position: absolute;
     left: 0;
     color: var(--primary-color);
+    
+    /* Ajustements demandés */
+    top: -2px;          /* Remonte la flèche (ajuste à -1px ou -3px selon ton rendu) */
+    font-weight: 900;   /* Rend la flèche plus grasse */
+    font-size: 1.1rem;  /* Augmente légèrement la taille pour la visibilité */
+    line-height: 1.6;   /* Aligne sur la hauteur de ligne du texte */
 }
 
 /* =============================================
