@@ -40,6 +40,75 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Gestion du formulaire de contact avec validation de la case à cocher
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const checkbox = contactForm.querySelector('input[type="checkbox"]');
+        
+        // Désactiver le bouton d'envoi au chargement si la case n'est pas cochée
+        if (submitButton && checkbox) {
+            submitButton.disabled = !checkbox.checked;
+            submitButton.style.opacity = '0.6';
+            submitButton.style.cursor = 'not-allowed';
+            
+            // Écouter les changements de la case à cocher
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    submitButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                    submitButton.style.cursor = 'pointer';
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.style.opacity = '0.6';
+                    submitButton.style.cursor = 'not-allowed';
+                }
+            });
+        }
+        
+        // Validation du formulaire avant envoi
+        contactForm.addEventListener('submit', function(e) {
+            // Vérifier que la case à cocher est cochée (sécurité supplémentaire)
+            if (!checkbox.checked) {
+                e.preventDefault();
+                alert('Veuillez accepter la politique de confidentialité pour envoyer votre demande.');
+                return false;
+            }
+            
+            // Vérifier que tous les champs requis sont remplis
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            let allFilled = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFilled = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!allFilled) {
+                e.preventDefault();
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return false;
+            }
+            
+            // Si tout est OK, le formulaire sera envoyé normalement
+            // (le traitement via EmailJS ou autre se fera dans form.js)
+        });
+        
+        // Réinitialiser les bordures rouges lors de la saisie
+        const formInputs = contactForm.querySelectorAll('input, select, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '';
+                }
+            });
+        });
+    }
+    
     // Optionnel: Ouvrir le premier item par défaut
     // if (faqItems.length > 0) {
     //     faqItems[0].classList.add('active');

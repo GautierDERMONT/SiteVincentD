@@ -66,7 +66,8 @@
 
 .social-links2 {
     display: flex;
-    gap: 15px;
+    gap: 50px;
+   margin-top: 50px;
 }
 
 .social-link2 {
@@ -323,6 +324,99 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* =============================================
+   CUSTOM CHECKBOX DESIGN
+   ============================================= */
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Cache la checkbox native */
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+/* Création du carré personnalisé */
+.checkbox .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Effet au survol */
+.checkbox:hover .checkmark {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* État coché */
+.checkbox input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Icône check */
+.checkbox .checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Afficher l'icône quand coché */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Focus visible pour l'accessibilité */
+.checkbox input:focus-visible ~ .checkmark {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Texte du label */
+.checkbox .checkbox-text {
+    line-height: 1.5;
+    color: var(--gray-color);
+    cursor: pointer;
+}
+
+.checkbox .checkbox-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.checkbox .checkbox-text a:hover {
+    text-decoration: underline;
+    color: #004494;
+}
+
+/* =============================================
    RESPONSIVE CONTACT
    ============================================= */
 
@@ -393,6 +487,8 @@ input:focus, select:focus, textarea:focus {
     
     .social-links2 {
         flex-direction: column;
+        gap: 20px;
+        
     }
     
     .faq-question {
