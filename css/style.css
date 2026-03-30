@@ -455,7 +455,7 @@ a {
     transform: translate(-50%, -50%);
     width: 41px;
     height: 41px;
-    background: #0056b3;
+    background: #02458d;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -508,13 +508,13 @@ a {
 /* État normal sur mobile - toujours bleu */
 @media (max-width: 768px) {
     .scroll-spinner:hover .spinner-core {
-        background: #0056b3;
+        background: #02458d;
         transform: translate(-50%, -50%) scale(1);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     
     .scroll-spinner:hover .spinner-ring {
-        background: conic-gradient(from 0deg, #0056b3 var(--progress-deg, 0deg), #e0e0e0 var(--progress-deg, 0deg));
+        background: conic-gradient(from 0deg, #024c9a var(--progress-deg, 0deg), #e0e0e0 var(--progress-deg, 0deg));
     }
     
     .spinner-core:active {
