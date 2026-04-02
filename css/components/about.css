@@ -85,7 +85,7 @@
 }
 
 .profile-contact i {
-    color: var(--primary-color);
+    color: var(--dark-color);
     width: 20px;
 }
 
@@ -102,7 +102,7 @@
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid var(--accent-color);
 }
 
 .manager-interventions::before {
@@ -280,7 +280,7 @@
     top: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(180deg, var(--accent-color));
 }
 
 .timeline-item {
@@ -305,9 +305,11 @@
 .timeline-date {
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.70rem;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
+    position: relative;
+    top: -4px; /* monte vers le haut */
 }
 
 .timeline-content {

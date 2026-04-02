@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo_onglet.png">
+    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">
+
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-           <a href="index.html" class="logo"> <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto"></a> 
+           <a href="index.html" class="logo"> 
+                <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto" loading="eager" fetchpriority="high">
+            </a> 
             <ul class="nav-menu">
                 <li><a href="index.html" >Accueil</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -43,17 +47,17 @@
         <div class="container">
             <div class="about-profile" style="flex-direction: column;">
                 <div class="profile-image with-background">
-                    <img src="images/profil.webp" alt="Vincent DERMONT - Expert supply chain">
+                    <img src="images/profil.webp" alt="Vincent DERMONT - Expert supply chain" loading="lazy">
                 </div>
                 <div class="profile-content" style="width: 100%;">
                                 <h2>Vincent DERMONT</h2>
                                 <p class="profile-title">Expert Senior en Supply Chain & Logistique</p>
-                                <p>Durant mes années aux <strong>Arts et Métiers</strong>, un maître de chaire m'avait fasciné par sa vision suivante : « Demain, la production des produits manufacturés se fera dans les zones à <strong>bas-coûts</strong>, et les zones marchandes et de chalandise seront dans des zones à <strong>haut pouvoir d'achat</strong> et entre les deux, il faudra bâtir et piloter les <strong>flux de produits</strong>, les <strong>flux financiers</strong> et les <strong>flux d'information</strong> », et voilà, ma voie venait de s'ouvrir et je n'ai pas cessé de grandir avec et autour des métiers connexes qui la composent et qui n'ont cessé d'évoluer et de se spécialiser.</p>
-                                <p>Ainsi donc, cela fait maintenant un peu plus de <strong>25 ans</strong> que j'occupe des postes de <strong>Directeur&nbsp;des&nbsp;Opérations</strong>, <strong>Logistique-Transport&Douane</strong> et <strong>Supply&nbsp;Chain</strong> au sein de <strong>Codir</strong> avec des entrepôts/centres de distribution à gérer, qu'ils soient <strong>mono-sites/multi-sites</strong>, <strong>manuels/mécanisés</strong>, en national et jusqu'à un périmètre <strong>Monde</strong>. J'ai une grande dimension <strong>retail</strong>, <strong>export</strong>, <strong>omnicanalité</strong> et aussi <strong>e-commerce</strong>.</p>                                <p>Je travaille surtout dans le secteur des <strong>parfums&cosmétiques</strong>, de la <strong>mode</strong>, du <strong>luxe</strong>, des <strong>vins et spiritueux</strong> mais aussi de la <strong>santé</strong>, de la <strong>pharma</strong> et de l'<strong>industrie B2B</strong> ; j'ai donc un spectre assez large. J'ai un parcours au service de <strong>l'expérience client</strong>, avec une dimension <strong>opérationnelle</strong> très forte en surfant au quotidien entre <strong>vision stratégique</strong> et <strong>contraintes opérationnelles</strong> pour travailler sur des enjeux complexes et à fort impact.</p>
-                                <p>Mon rôle est avant tout de créer les conditions d'un environnement <strong>organique et collaboratif</strong> à chaque maillon de la chaîne <strong>E2E</strong> en mode <strong>4.0</strong>. de sorte à optimiser de façon concomitante les <strong>flux de produits</strong>/<strong>On-Time</strong>/de qualité, les <strong>flux IT</strong> et les <strong>flux financiers</strong> à des fins « <strong>human&customer centric</strong> », profitables, <strong>eco-responsables</strong> et <strong>durables</strong>.</p>
+                                <p class = "bloc">Durant mes années aux <span class="highlight-primary">Arts et Métiers</span>, un maître de chaire m'avait fasciné par sa vision suivante : « Demain, la production des produits manufacturés se fera dans les zones à <span class="highlight-primary">bas-coûts</span>, et les zones marchandes et de chalandise seront dans des zones à <span class="highlight-primary">haut pouvoir d'achat</span> et entre les deux, il faudra bâtir et piloter les <span class="highlight-primary">flux de produits</span>, les <span class="highlight-primary">flux financiers</span> et les <span class="highlight-primary">flux d'information</span> », et voilà, ma voie venait de s'ouvrir et je n'ai pas cessé de grandir avec et autour des métiers connexes qui la composent et qui n'ont cessé d'évoluer et de se spécialiser.</p>
+                                <p class = "bloc>Ainsi donc, cela fait maintenant un peu plus de <span class="highlight-primary">25 ans</span> que j'occupe des postes de <span class="highlight-primary">Directeur&nbsp;des&nbsp;Opérations</span>, <span class="highlight-primary">Logistique-Transport&Douane</span> et <span class="highlight-primary">Supply&nbsp;Chain</span> au sein de <span class="highlight-primary">Codir</span> avec des entrepôts/centres de distribution à gérer, qu'ils soient <span class="highlight-primary">mono-sites/multi-sites</span>, <span class="highlight-primary">manuels/mécanisés</span>, en national et jusqu'à un périmètre <span class="highlight-primary">Monde</span>. J'ai une grande dimension <span class="highlight-primary">retail</span>, <span class="highlight-primary">export</span>, <span class="highlight-primary">omnicanalité</span> et aussi <span class="highlight-primary">e-commerce</span>.</p>                                <p>Je travaille surtout dans le secteur des <span class="highlight-primary">parfums&cosmétiques</span>, de la <span class="highlight-primary">mode</span>, du <span class="highlight-primary">luxe</span>, des <span class="highlight-primary">vins et spiritueux</span> mais aussi de la <span class="highlight-primary">santé</span>, de la <span class="highlight-primary">pharma</span> et de l'<span class="highlight-primary">industrie B2B</span> ; j'ai donc un spectre assez large. J'ai un parcours au service de <span class="highlight-primary">l'expérience client</span>, avec une dimension <span class="highlight-primary">opérationnelle</span> très forte en surfant au quotidien entre <span class="highlight-primary">vision stratégique</span> et <span class="highlight-primary">contraintes opérationnelles</span> pour travailler sur des enjeux complexes et à fort impact.</p>
+                                <p class = "bloc">Mon rôle est avant tout de créer les conditions d'un environnement <span class="highlight-primary">organique et collaboratif</span> à chaque maillon de la chaîne <span class="highlight-primary">E2E</span> en mode <span class="highlight-primary">4.0</span>. de sorte à optimiser de façon concomitante les <span class="highlight-primary">flux de produits</span>/<span class="highlight-primary">On-Time</span>/de qualité, les <span class="highlight-primary">flux IT</span> et les <span class="highlight-primary">flux financiers</span> à des fins « <span class="highlight-primary">human&customer centric</span> », profitables, <span class="highlight-primary">eco-responsables</span> et <span class="highlight-primary">durables</span>.</p>
                                 
                                 <div class="manager-interventions">
-                                    <p class="interventions-title"><strong>En tant que Manager de transition, j’interviens sur les cas suivants :</strong></p>
+                                    <p class="interventions-title"><span class="highlight-primary">En tant que Manager de transition, j’interviens sur les cas suivants :</span></p>
                                     <ul class="interventions-list">
                                         <li><i class="fas fa-check-circle"></i> Relais en attendant un recrutement et/ou pour garantir l’opérationnel quotidien</li>
                                         <li><i class="fas fa-check-circle"></i> Projet de transformation dont celui de changement d’ERP</li>
@@ -230,7 +234,7 @@
                     <p>Audit&Diagnostic de la Supply Chain digitale 4.0</p>
 
                      <a href="https://www.supplychain-masters.fr" target="_blank">
-                            <img src="images/scm-logo.webp" alt="Certification Supply Chain" class="cert-img" width="120">
+                            <img src="images/scm-logo.webp" alt="Certification Supply Chain" class="cert-img" width="120" loading="lazy">
                         </a>    
                 </div>
                 
@@ -243,7 +247,7 @@
                     <p>Excellence in Supply-Chain</p>
 
                       <a href="https://www.linkedin.com/company/wtg-logistics/?originalSubdomain=lu" target="_blank">
-                            <img src="images/wtg-logo.webp" alt="Certification Supply Chain" class="cert-img" width="80">
+                            <img src="images/wtg-logo.webp" alt="Certification Supply Chain" class="cert-img" width="80" loading="lazy">
                         </a> 
 
                 </div>
@@ -255,7 +259,7 @@
                     <h3>AFNOR</h3>
                     <p>Green Belt Lean Six Sigmas  </p>
                   <a href="https://certification.afnor.org/?pk_kwd=afnor%20certification" target="_blank">
-                    <img src="images/afnor-logo.webp" alt="Certification Supply Chain" class="cert-img" width="130">
+                    <img src="images/afnor-logo.webp" alt="Certification Supply Chain" class="cert-img" width="130" loading="lazy">
                  </a> 
 
                 </div>
@@ -267,7 +271,7 @@
                     <h3>Le Cercle - Management de Transition</h3>
                     <p>Utiliser l’IA en mission</p>
                    <a href="https://lecercle.in" target="_blank">
-                    <img src="images/cercle-logo.webp" alt="Certification Supply Chain" class="cert-img" width="150">
+                    <img src="images/cercle-logo.webp" alt="Certification Supply Chain" class="cert-img" width="150" loading="lazy">
                  </a> 
 
                 </div>
@@ -279,7 +283,7 @@
                     <h3>The George Washington University School of Business</h3>
                     <p>Project Management </p>
                    <a href="https://business.gwu.edu/?utm_source=chatgpt.com" target="_blank">
-                    <img src="images/gwbusiness_logo.webp" alt="Certification Supply Chain" class="cert-img" width="70">
+                    <img src="images/gwbusiness_logo.webp" alt="Certification Supply Chain" class="cert-img" width="70" loading="lazy">
                  </a> 
                 </div>
             </div>
@@ -337,7 +341,7 @@
                     <h3><span>PLEIADES</span> Partners</h3>
                     <p>Expert indépendant en optimisation de la supply chain et des opérations logistiques, transport & douane</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
                     </div>

@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo_onglet.png">
+    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">
+
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-           <a href="index.html" class="logo"> <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto"></a> 
-            <ul class="nav-menu">
+                <a href="index.html" class="logo"> 
+                    <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto" loading="eager" fetchpriority="high">
+                </a>
+                <ul class="nav-menu">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
                 <li><a href="apropos.html">À propos</a></li>
@@ -63,13 +67,13 @@
                     </ul>
                 </div>
                 <div class="service-detail-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Analyse de données supply chain">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Analyse de données supply chain"  loading="lazy">
                 </div>
             </div>
 
             <div class="service-detail" id="achats">
                 <div class="service-detail-image">
-                    <img src="https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Achats et approvisionnements">
+                    <img src="https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Achats et approvisionnements" loading="lazy">
                 </div>
                 <div class="service-detail-content">
                     <h2><i class="fas fa-truck-loading"></i> Achats & Approvisionnements</h2>
@@ -118,13 +122,13 @@
                     </ul>
                 </div>
                 <div class="service-detail-image">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Optimisation entrepôt">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Optimisation entrepôt" loading="lazy">
                 </div>
             </div>
             
             <div class="service-detail" id="transport">
                 <div class="service-detail-image">
-                    <img src="https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Transport logistique">
+                    <img src="https://images.unsplash.com/photo-1562887189-e5d078343de4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Transport logistique" loading="lazy">
                 </div>
                 
                 <div class="service-detail-content">
@@ -171,7 +175,7 @@
                     </ul>
                 </div>
                  <div class="service-detail-image">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planification stratégique">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Planification stratégique" loading="lazy">
                 </div>
             </div>
             
@@ -192,7 +196,7 @@
                     <h3><span>PLEIADES</span> Partners</h3>
                     <p>Expert indépendant en optimisation de la supply chain et des opérations logistiques, transport & douane</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
                     </div>

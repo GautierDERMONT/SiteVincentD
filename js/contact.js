@@ -116,4 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //     const firstAnswer = faqItems[0].querySelector('.faq-answer');
     //     firstAnswer.style.maxHeight = firstAnswer.scrollHeight + "px";
     // }
+
+    
 });

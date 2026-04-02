@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo_onglet.png">
+    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-           <a href="index.html" class="logo"> <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto"></a> 
+           <a href="index.html" class="logo"> 
+                <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto" loading="eager" fetchpriority="high">
+            </a> 
             <ul class="nav-menu">
                 <li><a href="index.html" >Accueil</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -96,7 +99,7 @@
                     <div class="social-contact">
                 
                         <div class="social-links2">
-                            <a href="#" class="social-link2">
+                            <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank" class="social-link2">
                                 <i class="fab fa-linkedin"></i>
                                 <span>LinkedIn</span>
                             </a>
@@ -149,15 +152,17 @@
                         
                         <div class="form-group">
                             <label for="service">Service concerné *</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Sélectionnez un service</option>
-                                <option value="Audit & Diagnostic Supply Chain">Audit & Diagnostic Supply Chain</option>
-                                <option value="Optimisation d'Entrepôt">Optimisation d'Entrepôt</option>
-                                <option value="Transport & Distribution">Transport & Distribution</option>
-                                <option value="Planification Stratégique">Planification Stratégique</option>
-                                <option value="Formation & Coaching">Formation & Coaching</option>
-                                <option value="Autre demande<e">Autre demande</option>
-                            </select>
+                            <div class="select-wrapper">
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Sélectionnez un service</option>
+                                    <option value="Audit & Diagnostic Supply Chain">📊 Audit & Diagnostic Supply Chain</option>
+                                    <option value="Achats & Approvisionnements">🛒 Achats & Approvisionnements</option>
+                                    <option value="Optimisation d'Entrepôt">🏭 Optimisation d'Entrepôt</option>
+                                    <option value="Distribution, Transport & Douane">🚚 Distribution, Transport & Douane</option>
+                                    <option value="Projet(s) de progrès & de transformation">📈 Projet(s) de progrès & de transformation</option>
+                                    <option value="Autre demande">❓ Autre demande</option>
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -242,7 +247,7 @@
                 <h2>Prêt à optimiser votre supply chain ?</h2>
                 <p>Prenez rendez-vous pour un audit gratuit et découvrez comment améliorer vos performances logistiques.</p>
                 <div class="cta-buttons">
-                    <a href="tel:+33123456789" class="btn btn-primary">
+                    <a href="tel:+33643670663" class="btn btn-primary">
                         <i class="fas fa-phone"></i> Appelez-moi
                     </a>
                     <a href="mailto:contact@supplychainexpert.fr" class="btn btn-secondary">
@@ -261,7 +266,7 @@
                     <h3><span>PLEIADES</span> Partners</h3>
                     <p>Expert indépendant en optimisation de la supply chain et des opérations logistiques, transport & douane</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
                     </div>

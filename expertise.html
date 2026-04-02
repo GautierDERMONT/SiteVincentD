@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo_onglet.png">
+    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">
+
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-           <a href="index.html" class="logo"> <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto"></a> 
-            <ul class="nav-menu">
+                <a href="index.html" class="logo"> 
+                    <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto" loading="eager" fetchpriority="high">
+                </a>
+                <ul class="nav-menu">
                 <li><a href="index.html" >Accueil</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="apropos.html">À propos</a></li>
@@ -296,7 +300,7 @@
                     <p>Expert indépendant en optimisation de la supply chain et des opérations logistiques, transport & douane
 </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
                     </div>

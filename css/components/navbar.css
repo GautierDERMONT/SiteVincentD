@@ -178,7 +178,7 @@
     .nav-menu li:last-child {
         width: 100%;
         margin-top: 0.3rem;
-        padding-top: 0.5rem;
+        padding-top: 0.7rem;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
     
@@ -234,5 +234,25 @@
         padding: 0.6rem 1.25rem !important;
         font-size: 0.9rem !important;
         min-width: 130px;
+    }
+}
+
+/* CORRECTION TRAIT BLEU HAUT SUR MOBILE */
+@media (max-width: 992px) {
+
+    .navbar {
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-menu.active {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 0;
+        top: 97px;
+    }
+    
+    body {
+        padding-top: 0;
+        margin-top: 0;
     }
 }

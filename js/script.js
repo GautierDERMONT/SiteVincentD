@@ -4,7 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     
     if (burger && navMenu) {
+        // Positionne le menu exactement sous la navbar (évite le trait bleu)
+        function updateMenuPosition() {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                const navbarHeight = navbar.getBoundingClientRect().height;
+                document.documentElement.style.setProperty('--navbar-height', navbarHeight + 'px');
+            }
+        }
+        updateMenuPosition();
+        window.addEventListener('resize', updateMenuPosition);
+
         burger.addEventListener('click', function() {
+            updateMenuPosition(); // recalcule au moment du clic
             burger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
@@ -168,6 +180,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 150);
     });
 });
+
+
+// Lazy loading pour les images du carousel hero
+document.addEventListener('DOMContentLoaded', function() {
+    // Chargement différé des images hero
+    const lazyBgElements = document.querySelectorAll('[data-bg]');
+    
+    const bgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const bgUrl = element.getAttribute('data-bg');
+                if (bgUrl) {
+                    element.style.backgroundImage = `url('${bgUrl}')`;
+                    element.removeAttribute('data-bg');
+                }
+                bgObserver.unobserve(element);
+            }
+        });
+    }, { rootMargin: '200px' });
+    
+    lazyBgElements.forEach(el => bgObserver.observe(el));
+});
+
 
 // ===== SPINNER DE CHARGEMENT BLEU/ORANGE AVEC FLÈCHE =====
 (function initScrollSpinner() {

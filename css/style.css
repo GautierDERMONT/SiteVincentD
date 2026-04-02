@@ -89,6 +89,7 @@ p {
     margin-bottom: 1rem;
     font-size: 1.1rem;
     color: var(--gray-color);
+    
 }
 
 a {
@@ -116,6 +117,10 @@ a {
     border: 2px solid transparent;
     font-size: 1rem;
     white-space: nowrap;
+}
+
+.bloc{
+text-align: justify;
 }
 
 
@@ -170,7 +175,7 @@ a {
 .page-header {
     padding: 140px 0 60px;
     background: 
-        linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.9)), 
+        linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.8)), 
         url('../images/banner.webp');
     background-size: cover;
     background-position: center;
@@ -480,6 +485,44 @@ a {
     color: white;
     font-size: 18px;
     transition: all 0.3s ease;
+}
+
+
+/* Suppression complète du carré bleu / gris sur mobile */
+button,
+button:focus,
+button:active,
+button:visited,
+.btn,
+.btn:focus,
+.btn:active,
+.btn:visited,
+a,
+a:focus,
+a:active,
+a:visited,
+input,
+input:focus,
+input:active,
+textarea,
+textarea:focus,
+textarea:active,
+[role="button"],
+[role="button"]:focus,
+[role="button"]:active,
+*:focus,
+*:active {
+    outline: none !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+}
+
+.highlight-primary {
+    color: var(--primary-color);
+   
 }
 
 
