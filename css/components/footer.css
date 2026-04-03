@@ -88,7 +88,8 @@ footer {
 }
 
 .footer-bottom a:hover {
-    text-decoration: underline;
+    color: var(--accent-color);
+    transition: var(--transition-fast);
 }
 
 /* =============================================

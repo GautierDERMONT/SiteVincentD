@@ -102,6 +102,12 @@ a {
     color: var(--primary-color);
 }
 
+.highlight2 {
+    color: var(--accent-color)!important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
 .text-center {
     text-align: center;
 }
@@ -241,6 +247,8 @@ text-align: justify;
     opacity: 0.9;
     color: rgba(255, 255, 255, 0.9);
 }
+
+
 
 
 
@@ -527,6 +535,9 @@ textarea:active,
 
 
 
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .scroll-spinner {
@@ -567,9 +578,23 @@ textarea:active,
 }
 
 /* Ajout d'une classe utilitaire pour désactiver les animations sur mobile si nécessaire */
+/* Sur mobile, on garde les animations mais avec des transitions plus légères */
 @media (max-width: 768px) {
     .fade-up, .fade-left, .fade-right, .fade-zoom, .fade-bounce, .stagger-item {
-        opacity: 1;
-        transform: none;
+        /* On ne force plus l'opacité à 1 - on laisse l'animation fonctionner */
+        transition-duration: 0.5s; /* Transition légèrement plus rapide sur mobile */
+    }
+    
+    /* Optionnel : réduire l'amplitude du déplacement sur mobile pour plus de fluidité */
+    .fade-up {
+        transform: translateY(20px); /* au lieu de 40px */
+    }
+    
+    .fade-left {
+        transform: translateX(-15px); /* au lieu de -30px */
+    }
+    
+    .fade-right {
+        transform: translateX(15px); /* au lieu de 30px */
     }
 }
