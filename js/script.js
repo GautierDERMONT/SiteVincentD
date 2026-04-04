@@ -1,5 +1,22 @@
 // Menu burger responsive
 document.addEventListener('DOMContentLoaded', function() {
+    // ===== CORRECTION PADDING-TOP DYNAMIQUE POUR LA NAVBAR =====
+    function updateBodyPadding() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const navbarHeight = navbar.offsetHeight;
+            document.documentElement.style.setProperty('--navbar-height', navbarHeight + 'px');
+        }
+    }
+    
+    // Mise à jour initiale
+    updateBodyPadding();
+    
+    // Mise à jour au redimensionnement
+    window.addEventListener('resize', function() {
+        updateBodyPadding();
+    });
+    
     const burger = document.querySelector('.burger');
     const navMenu = document.querySelector('.nav-menu');
     
@@ -19,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateMenuPosition(); // recalcule au moment du clic
             burger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            // Mise à jour du padding après ouverture/fermeture du menu
+            setTimeout(updateBodyPadding, 50);
         });
         
         // Fermer le menu en cliquant sur un lien
@@ -26,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => {
                 burger.classList.remove('active');
                 navMenu.classList.remove('active');
+                setTimeout(updateBodyPadding, 50);
             });
         });
     }
@@ -181,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 // Lazy loading pour les images du carousel hero
 document.addEventListener('DOMContentLoaded', function() {
     // Chargement différé des images hero
@@ -204,6 +223,65 @@ document.addEventListener('DOMContentLoaded', function() {
     lazyBgElements.forEach(el => bgObserver.observe(el));
 });
 
+
+// ===== CORRECTION DU PROBLÈME DE POLICE QUI RÉTRÉCIT =====
+(function fixFontScaling() {
+    // Force la taille de base à 100% à chaque chargement
+    function resetFontScale() {
+        document.documentElement.style.fontSize = '';
+        document.body.style.fontSize = '';
+        
+        // Force le viewport à sa taille normale
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            const content = viewport.getAttribute('content');
+            // Temporairement, on force un reset
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+            setTimeout(() => {
+                viewport.setAttribute('content', content || 'width=device-width, initial-scale=1.0, user-scalable=yes');
+            }, 10);
+        }
+        
+        // Détecte et corrige les polices rétrécies
+        const testElement = document.createElement('div');
+        testElement.style.cssText = 'position:absolute; visibility:hidden; font-size:16px; width:auto;';
+        testElement.innerHTML = 'Test';
+        document.body.appendChild(testElement);
+        const computedSize = window.getComputedStyle(testElement).fontSize;
+        document.body.removeChild(testElement);
+        
+        // Si la taille calculée n'est pas 16px, on force un reflow
+        if (parseInt(computedSize) !== 16) {
+            document.body.style.webkitTextSizeAdjust = '100%';
+            document.body.style.textSizeAdjust = '100%';
+            // Force un reflow
+            document.body.style.display = 'none';
+            setTimeout(() => {
+                document.body.style.display = '';
+            }, 5);
+        }
+    }
+    
+    // Exécute au chargement
+    resetFontScale();
+    
+    // Exécute aussi au retour sur la page (bfcache)
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            resetFontScale();
+        }
+    });
+    
+    // Surveille les changements de taille de police anormaux
+    let lastWidth = window.innerWidth;
+    window.addEventListener('resize', function() {
+        // Si la largeur change, on vérifie la police
+        if (Math.abs(window.innerWidth - lastWidth) > 50) {
+            lastWidth = window.innerWidth;
+            setTimeout(resetFontScale, 50);
+        }
+    });
+})();
 
 // ===== SPINNER DE CHARGEMENT BLEU/ORANGE AVEC FLÈCHE =====
 (function initScrollSpinner() {
@@ -284,4 +362,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 })();
-
