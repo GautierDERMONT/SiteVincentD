@@ -8,6 +8,7 @@
 @import url('components/services.css');
 @import url('fonts.css');
 
+/* ===== RESET & VARIABLES ===== */
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +24,6 @@
     --gray-color: #6c757d;
     --success-color: #28a745;
     --danger-color: #dc3545;
-    
     
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Poppins', sans-serif;
@@ -54,12 +54,8 @@ body {
     color: var(--dark-color);
     background-color: #fff;
     overflow-x: hidden;
-
-    padding-top: 0 !important; /* Force le contenu à monter tout en haut */
-    
+    padding-top: 0 !important;
 }
-
-
 
 .container {
     width: 100%;
@@ -68,6 +64,7 @@ body {
     padding: 0 20px;
 }
 
+/* ===== TYPOGRAPHIE ===== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
     font-weight: 600;
@@ -75,26 +72,14 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--dark-color);
 }
 
-h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1rem;
-}
-
-h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-}
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 1.7rem; margin-bottom: 1rem; }
+h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
 
 p {
     margin-bottom: 1rem;
     font-size: 1.1rem;
     color: var(--gray-color);
-    
 }
 
 a {
@@ -103,20 +88,18 @@ a {
     transition: var(--transition-fast);
 }
 
-.highlight {
-    color: var(--primary-color);
-}
-
+/* ===== UTILITAIRES ===== */
+.highlight { color: var(--primary-color); }
 .highlight2 {
-    color: var(--accent-color)!important;
+    color: var(--accent-color) !important;
     font-size: 20px;
     font-weight: 700;
 }
+.highlight-primary { color: var(--primary-color); }
+.text-center { text-align: center; }
+.bloc { text-align: justify; }
 
-.text-center {
-    text-align: center;
-}
-
+/* ===== BOUTONS ===== */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -130,17 +113,10 @@ a {
     white-space: nowrap;
 }
 
-.bloc{
-text-align: justify;
-}
-
-
-
 .btn-primary {
     background-color: var(--accent-color);
     color: white;
 }
-
 .btn-primary:hover {
     background-color: #ff9a55;
     transform: translateY(-3px);
@@ -151,7 +127,6 @@ text-align: justify;
     background-color: transparent;
     border: 2px solid var(--primary-color);
 }
-
 .btn-secondary:hover {
     background-color: var(--primary-color);
     color: white;
@@ -163,7 +138,6 @@ text-align: justify;
     color: var(--primary-color);
     border: 2px solid var(--primary-color);
 }
-
 .btn-outline:hover {
     background-color: var(--primary-color);
     color: white;
@@ -173,34 +147,26 @@ text-align: justify;
     background-color: white;
     color: var(--primary-color);
 }
-
 .btn-light:hover {
     background-color: var(--light-color);
     transform: translateY(-3px);
 }
 
-.btn-full {
-    width: 100%;
-}
+.btn-full { width: 100%; }
 
-/* Dans style.css */
+/* ===== PAGE HEADER ===== */
 .page-header {
-    /* On augmente le padding-top : 80px (hauteur navbar) + 60px d'espace voulu */
-    padding: 200px 0 60px; 
-    background: 
-        linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.8)), 
-        url('../images/banner.webp');
+    padding: 200px 0 60px;
+    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.8)), url('../images/banner.webp');
     background-size: cover;
     background-position: center;
     color: white;
     text-align: center;
 }
-/* #005B96 à #003264 - bleu professionnel supply chain */
 
 .page-header h1 {
     color: white;
     margin-bottom: 1rem;
-    
 }
 
 .page-header p {
@@ -211,6 +177,7 @@ text-align: justify;
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* ===== SECTIONS ===== */
 .section-header {
     text-align: center;
     margin-bottom: var(--spacing-lg);
@@ -219,7 +186,7 @@ text-align: justify;
 .section-title {
     font-size: 2.5rem;
     color: var(--dark-color);
-    
+    text-align: center;
 }
 
 .section-subtitle {
@@ -227,19 +194,17 @@ text-align: justify;
     color: var(--gray-color);
     max-width: 700px;
     margin: 0 auto;
+    text-align: center;
+    margin-bottom: 3%;
 }
 
-
-
-
-
+/* ===== CTA ===== */
 .cta {
-  padding: var(--spacing-xl) 0;
-  background: linear-gradient(135deg, #003a8f 0%, #0056b3 100%);
-  color: white;
-  text-align: center;
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, #003a8f 0%, #0056b3 100%);
+    color: white;
+    text-align: center;
 }
-
 
 .cta-content h2 {
     font-size: 2.2rem;
@@ -255,59 +220,12 @@ text-align: justify;
     color: rgba(255, 255, 255, 0.9);
 }
 
-
-
-
-
-@media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    
-    .hero-cta,
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .hero-cta .btn,
-    .cta-buttons .btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 576px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    h1 { font-size: 1.75rem; }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.25rem; }
-    
-    .page-header {
-        padding: 40px 0 40px;
-    }
-    
-    .cta {
-        padding: 60px 0;
-    }
-    
-    .section-title {
-        font-size: 1.75rem;
-    }
-}
-
-/* ===== ANIMATIONS AU SCROLL MODERNES ===== */
-
-/* Classes de base pour les animations */
+/* ===== ANIMATIONS ===== */
 .fade-up {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .fade-up.animate-in {
     opacity: 1;
     transform: translateY(0);
@@ -318,7 +236,6 @@ text-align: justify;
     transform: translateX(-30px);
     transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .fade-left.animate-in {
     opacity: 1;
     transform: translateX(0);
@@ -329,7 +246,6 @@ text-align: justify;
     transform: translateX(30px);
     transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .fade-right.animate-in {
     opacity: 1;
     transform: translateX(0);
@@ -340,46 +256,40 @@ text-align: justify;
     transform: scale(0.92);
     transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .fade-zoom.animate-in {
     opacity: 1;
     transform: scale(1);
 }
 
-/* Animation avec délai en cascade pour les cartes */
 .stagger-item {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .stagger-item.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Animation plus rapide pour les petits éléments */
 .fade-fast {
     opacity: 0;
     transition: opacity 0.4s ease;
 }
-
 .fade-fast.animate-in {
     opacity: 1;
 }
 
-/* Animation avec rebond subtil */
 .fade-bounce {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.7s cubic-bezier(0.68, -0.3, 0.32, 1.3), transform 0.7s cubic-bezier(0.68, -0.3, 0.32, 1.3);
 }
-
 .fade-bounce.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* ===== FORMULAIRES & MESSAGES ===== */
 .error {
     color: var(--danger-color);
     font-size: 0.9rem;
@@ -400,7 +310,6 @@ text-align: justify;
     pointer-events: none;
     opacity: 0.7;
 }
-
 .loading::after {
     content: '';
     position: absolute;
@@ -419,8 +328,7 @@ text-align: justify;
     to { transform: rotate(360deg); }
 }
 
-
-
+/* ===== ACCESSIBILITÉ ===== */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -433,14 +341,7 @@ text-align: justify;
     border: 0;
 }
 
-/* ===== CORRECTION PAGE INDEX : IMAGE HERO DERRIERE NAVBAR ===== */
-
-/* Supprimer le padding-top du body uniquement pour la cohérence */
-body {
-    padding-top: 0 !important;
-}
-
-/* La navbar reste normale mais l'hero est derrière */
+/* ===== CORRECTIONS HERO ===== */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -448,7 +349,6 @@ body {
     padding-top: 0;
 }
 
-/* Le carrousel couvre toute la zone (sous la navbar) */
 .hero-bg-carousel {
     position: absolute;
     top: 0;
@@ -458,46 +358,13 @@ body {
     z-index: 0;
 }
 
-/* Le contenu est poussé vers le bas - ENCORE PLUS DESCENDU */
 .hero-content {
     position: relative;
     z-index: 2;
-    padding-top: 170px !important;  /* Augmenté de 140 à 200px */
+    padding-top: 170px !important;
 }
 
-/* Ajustement tablette */
-@media (max-width: 992px) {
-    .hero-content {
-        padding-top: 150px !important;  /* Augmenté de 120 à 170px */
-    }
-    .page-header {
-        padding-top: 150px; /* Ajustement pour tablette */
-    }
-}
-
-/* Ajustement mobile */
-@media (max-width: 768px) {
-    .hero-content {
-        padding-top: 160px !important;
-    }
-
-    
-}
-
-@media (max-width: 480px) {
-    .hero-content {
-        padding-top: 120px;  /* Augmenté de 100 à 130px */
-    }
-
-    .page-header {
-        padding-top: 180px; /* Ajustement pour mobile */
-        padding-bottom: 40px;
-    }
-}
-
-
-
-/* ===== SPINNER DE CHARGEMENT BLEU/ORANGE ===== */
+/* ===== SPINNER SCROLL ===== */
 .scroll-spinner {
     position: fixed;
     bottom: 25px;
@@ -510,13 +377,11 @@ body {
     visibility: hidden;
     transition: all 0.3s ease;
 }
-
 .scroll-spinner.show {
     opacity: 1;
     visibility: visible;
 }
 
-/* Anneau extérieur avec progression */
 .spinner-ring {
     position: absolute;
     top: 0;
@@ -526,11 +391,10 @@ body {
     border-radius: 50%;
     background: conic-gradient(from 0deg, #0056b3 0deg, #e0e0e0 0deg);
     mask: radial-gradient(transparent 60%, black 62%);
-    -webkit-mask: radial-gradient(transparent 60%, black 60=2%);
+    -webkit-mask: radial-gradient(transparent 60%, black 62%);
     transition: all 0.3s ease;
 }
 
-/* Cercle central */
 .spinner-core {
     position: absolute;
     top: 50%;
@@ -547,7 +411,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Effet au survol - tout devient orange */
 .scroll-spinner:hover .spinner-core {
     background: #ff7e30;
     transform: translate(-50%, -50%) scale(1.05);
@@ -558,38 +421,20 @@ body {
     background: conic-gradient(from 0deg, #ff7e30 var(--progress-deg, 0deg), #e0e0e0 var(--progress-deg, 0deg));
 }
 
-/* Icône flèche vers le haut */
 .spinner-icon {
     color: white;
     font-size: 18px;
     transition: all 0.3s ease;
 }
 
-
-/* Suppression complète du carré bleu / gris sur mobile */
-button,
-button:focus,
-button:active,
-button:visited,
-.btn,
-.btn:focus,
-.btn:active,
-.btn:visited,
-a,
-a:focus,
-a:active,
-a:visited,
-input,
-input:focus,
-input:active,
-textarea,
-textarea:focus,
-textarea:active,
-[role="button"],
-[role="button"]:focus,
-[role="button"]:active,
-*:focus,
-*:active {
+/* ===== SUPPRESSION DES OUTLINES ===== */
+button, button:focus, button:active, button:visited,
+.btn, .btn:focus, .btn:active, .btn:visited,
+a, a:focus, a:active, a:visited,
+input, input:focus, input:active,
+textarea, textarea:focus, textarea:active,
+[role="button"], [role="button"]:focus, [role="button"]:active,
+*:focus, *:active {
     outline: none !important;
     outline-color: transparent !important;
     outline-width: 0 !important;
@@ -598,87 +443,76 @@ textarea:active,
     -webkit-touch-callout: none !important;
 }
 
-.highlight-primary {
-    color: var(--primary-color);
-   
+/* ===== RESPONSIVE GLOBAL ===== */
+@media (max-width: 992px) {
+    :root { --navbar-height: 70px; }
+    .hero-content { padding-top: 150px !important; }
+    .page-header { padding-top: 150px; }
 }
 
-
-
-
-
-
-/* Responsive */
 @media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    .hero-content { padding-top: 160px !important; }
+    .hero-cta, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-cta .btn, .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
     .scroll-spinner {
         bottom: 12px;
         right: 12px;
         width: 38px;
         height: 38px;
     }
-    
     .spinner-core {
         width: 33px;
         height: 33px;
     }
-    
-    .spinner-icon {
-        font-size: 15px;
+    .spinner-icon { font-size: 15px; }
+    .fade-up, .fade-left, .fade-right, .fade-zoom, .fade-bounce, .stagger-item {
+        transition-duration: 0.5s;
     }
-
-    
+    .fade-up { transform: translateY(20px); }
+    .fade-left { transform: translateX(-15px); }
+    .fade-right { transform: translateX(15px); }
 }
 
-/* État normal sur mobile - toujours bleu */
+@media (max-width: 576px) {
+    .container { padding: 0 15px; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    .page-header { padding: 40px 0 40px; }
+    .cta { padding: 60px 0; }
+    .section-title { font-size: 1.75rem; }
+    .hero-content { padding-top: 120px; }
+    .page-header { padding-top: 180px; padding-bottom: 40px; }
+    .section-title {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    :root { --navbar-height: 65px; }
+    .hero-content { padding-top: 120px; }
+}
+
 @media (max-width: 768px) {
     .scroll-spinner:hover .spinner-core {
         background: #02458d;
         transform: translate(-50%, -50%) scale(1);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    
     .scroll-spinner:hover .spinner-ring {
         background: conic-gradient(from 0deg, #024c9a var(--progress-deg, 0deg), #e0e0e0 var(--progress-deg, 0deg));
     }
-    
     .spinner-core:active {
         background: #ff7e30 !important;
         transform: translate(-50%, -50%) scale(0.95) !important;
-    }
-}
-
-
-/* Ajustement pour mobile */
-@media (max-width: 992px) {
-    :root {
-        --navbar-height: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --navbar-height: 65px;
-    }
-}
-
-/* Ajout d'une classe utilitaire pour désactiver les animations sur mobile si nécessaire */
-/* Sur mobile, on garde les animations mais avec des transitions plus légères */
-@media (max-width: 768px) {
-    .fade-up, .fade-left, .fade-right, .fade-zoom, .fade-bounce, .stagger-item {
-        /* On ne force plus l'opacité à 1 - on laisse l'animation fonctionner */
-        transition-duration: 0.5s; /* Transition légèrement plus rapide sur mobile */
-    }
-    
-    /* Optionnel : réduire l'amplitude du déplacement sur mobile pour plus de fluidité */
-    .fade-up {
-        transform: translateY(20px); /* au lieu de 40px */
-    }
-    
-    .fade-left {
-        transform: translateX(-15px); /* au lieu de -30px */
-    }
-    
-    .fade-right {
-        transform: translateX(15px); /* au lieu de 30px */
     }
 }

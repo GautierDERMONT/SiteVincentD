@@ -75,12 +75,10 @@
     position: absolute;
     left: 0;
     color: var(--primary-color);
-    
-    /* Ajustements demandés */
-    top: -2px;          /* Remonte la flèche (ajuste à -1px ou -3px selon ton rendu) */
-    font-weight: 900;   /* Rend la flèche plus grasse */
-    font-size: 1.1rem;  /* Augmente légèrement la taille pour la visibilité */
-    line-height: 1.6;   /* Aligne sur la hauteur de ligne du texte */
+    top: -2px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* =============================================
@@ -175,6 +173,154 @@
 }
 
 /* =============================================
+   NOUVEAU STYLE ÉTUDES DE CAS (PROPRE)
+   ============================================= */
+
+.case-card {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-2px);
+}
+
+.case-card.reverse {
+    flex-direction: row-reverse;
+}
+
+.case-card .case-image {
+    flex: 1;
+    min-width: 280px;
+}
+
+.case-card .case-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.case-card .case-content {
+    flex: 1.5;
+    padding: 30px 35px 30px 0;
+}
+
+.case-card.reverse .case-content {
+    padding: 30px 0 30px 35px;
+}
+
+.case-badge {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #0056b3;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+}
+
+.case-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #1a2a3a;
+}
+
+.case-client {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.case-details {
+    display: flex;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.detail-block {
+    flex: 1;
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 16px;
+}
+
+.detail-block h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-block h4 i {
+    color: #0056b3;
+    font-size: 0.9rem;
+}
+
+.detail-block ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detail-block ul li {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+    color: #2c3e50;
+}
+
+.detail-block ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #ff7e30;
+    font-size: 0.75rem;
+}
+
+.results-stats {
+    display: flex;
+    background: linear-gradient(135deg, #0a2540 0%, #1a4a6f 100%);
+    border-radius: 16px;
+    padding: 15px 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.result {
+    text-align: center;
+    flex: 1;
+}
+
+.result-number {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffb347;
+    line-height: 1.2;
+}
+
+.result-label {
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* =============================================
    TÉMOIGNAGES DÉTAILLÉS
    ============================================= */
 
@@ -232,7 +378,7 @@
 }
 
 /* =============================================
-   RESPONSIVE EXPERTISE
+   RESPONSIVE - TABLETTE (max-width: 992px)
    ============================================= */
 
 @media (max-width: 992px) {
@@ -240,22 +386,159 @@
     .case-study.reverse {
         flex-direction: column;
     }
+    
+    .case-card,
+    .case-card.reverse {
+        flex-direction: column;
+    }
+    
+    .case-card .case-content,
+    .case-card.reverse .case-content {
+        padding: 25px;
+    }
+    
+    .case-card .case-image {
+        min-height: 250px;
+    }
+    
+    .case-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .results-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .result {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .result-label {
+        font-size: 0.8rem;
+    }
 }
 
+/* =============================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+   ============================================= */
+
 @media (max-width: 768px) {
+    /* Grille expertise : passage à 1 colonne */
     .domains-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .domain-card {
+        padding: 1.5rem;
     }
     
     .domain-card h3 {
         min-height: auto;
+        font-size: 1.3rem;
+        justify-content: flex-start;
+        text-align: left;
     }
     
-    .result-stats {
+    .domain-icon {
+        text-align: left;
+        font-size: 2rem;
+    }
+    
+    .domain-card p {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .domain-card ul li {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+    
+    .domain-card ul li:before {
+        top: -1px;
+        font-size: 1rem;
+    }
+    
+    /* Cartes études de cas : image APRÈS le titre et sous-titre */
+    .case-card {
         flex-direction: column;
+    }
+    
+    /* Contenu (titre, badge, client) d'abord */
+    .case-card .case-content {
+        order: 1;
+        padding: 25px 25px 0 25px;
+    }
+    
+    /* Image ensuite */
+    .case-card .case-image {
+        order: 2;
+        min-height: 220px;
+        padding: 0 25px 25px 25px;
+    }
+    
+    .case-card .case-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+    
+    .case-card.reverse {
+        flex-direction: column;
+    }
+    
+    .case-card.reverse .case-content {
+        order: 1;
+        padding: 25px 25px 0 25px;
+    }
+    
+    .case-card.reverse .case-image {
+        order: 2;
+        padding: 0 25px 25px 25px;
+    }
+    
+    .detail-block h4 {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .results-stats .result {
+        text-align: center;
+    }
+    
+    /* Témoignages */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
         gap: 20px;
     }
+    
+    .testimonial-full {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-quote {
+        padding-left: 1.5rem;
+    }
+    
+    .testimonial-quote i {
+        font-size: 1.2rem;
+    }
+    
+    .testimonial-quote p {
+        font-size: 0.95rem;
+    }
 }
+
+/* =============================================
+   RESPONSIVE - PETIT MOBILE (max-width: 576px)
+   ============================================= */
 
 @media (max-width: 576px) {
     .expertise-domains,
@@ -267,5 +550,78 @@
     .case-study {
         margin-bottom: 60px;
         gap: 30px;
+    }
+    
+    .domain-card {
+        padding: 1.25rem;
+    }
+    
+    .domain-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .domain-card ul li {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .case-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .detail-block {
+        padding: 12px;
+    }
+    
+    .detail-block ul li {
+        font-size: 0.8rem;
+    }
+    
+    .results-stats {
+        padding: 12px 15px;
+    }
+    
+    .result-number {
+        font-size: 1.2rem;
+    }
+    
+    .result-label {
+        font-size: 0.65rem;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - TRÈS PETIT MOBILE (max-width: 375px)
+   ============================================= */
+
+@media (max-width: 375px) {
+    .domain-card {
+        padding: 1rem;
+    }
+    
+    .domain-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .domain-card ul li {
+        font-size: 0.85rem;
+        padding-left: 1.2rem;
+    }
+    
+    .case-card .case-content {
+        padding: 20px 20px 0 20px;
+    }
+    
+    .case-card .case-image {
+        padding: 0 20px 20px 20px;
+    }
+    
+    .detail-block h4 {
+        font-size: 0.9rem;
+    }
+    
+    .detail-block ul li {
+        font-size: 0.75rem;
     }
 }
