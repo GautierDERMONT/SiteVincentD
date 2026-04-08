@@ -320,63 +320,78 @@
     letter-spacing: 0.3px;
 }
 
-/* =============================================
-   TÉMOIGNAGES DÉTAILLÉS
-   ============================================= */
+/* ===== PAGE EXPERTISE - TÉMOIGNAGES CLIENTS ===== */
+
+/* Conteneur principal des témoignages */
+.detailed-testimonials .testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Style commun pour chaque bloc de témoignage */
+.detailed-testimonials .testimonial-full {
+    flex: 0 1 calc(50% - 30px);
+    background: #fff;
+    border-radius: var(--border-radius-lg, 15px);
+    box-shadow: var(--shadow-md, 0 10px 30px rgba(0, 0, 0, 0.08));
+}
+
+/* Style de la citation */
+.detailed-testimonials .testimonial-quote {
+    padding: 30px;
+    position: relative;
+}
+
+/* Icône guillemet */
+.detailed-testimonials .testimonial-quote i.fa-quote-left {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+    opacity: 0.5;
+}
+
+/* Texte du témoignage */
+.detailed-testimonials .testimonial-quote p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--dark-color, #2c3e50);
+    font-style: italic;
+    margin: 0;
+    text-align: justify;
+}
+
+/* Marge en dessous du dernier témoignage SEULEMENT */
+.detailed-testimonials .testimonial-full:last-child {
+    margin-bottom: 40px;
+}
 
 .detailed-testimonials {
     padding: var(--spacing-xl) 0;
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .detailed-testimonials .testimonials-grid {
+        gap: 20px;
+    }
+    
+    .detailed-testimonials .testimonial-full {
+        flex: 0 1 100%;
+    }
+    
+    .detailed-testimonials .testimonial-quote {
+        padding: 25px;
+    }
+    
+    .detailed-testimonials .testimonial-full:last-child {
+        margin-bottom: 30px;
+    }
 }
-
-.testimonial-full {
-    background: white;
-    padding: 2.5rem;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-}
-
-.testimonial-quote {
-    position: relative;
-    padding-left: 2rem;
-    margin-bottom: 2rem;
-}
-
-.testimonial-quote i {
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    opacity: 0.3;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.author-avatar {
-    font-size: 3rem;
-    color: var(--gray-color);
-}
-
-.author-info h4 {
-    margin-bottom: 0.25rem;
-}
-
-.author-company {
-    font-size: 0.9rem;
-    color: var(--gray-color);
-    margin-top: 0.25rem;
-}
-
 /* =============================================
    RESPONSIVE - TABLETTE (max-width: 992px)
    ============================================= */

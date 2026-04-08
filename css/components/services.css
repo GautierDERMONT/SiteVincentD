@@ -1,133 +1,205 @@
 /* =============================================
-   SERVICES DÉTAILLÉS
+   SERVICES PREMIUM - STYLE MODERNE & ÉPURÉ
    ============================================= */
 
-.detailed-services {
-    padding: var(--spacing-xl) 0;
+.services-premium {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
-.service-detail {
+/* Cartes principales */
+.premium-card {
     display: flex;
-    align-items: center;
-    gap: 60px;
-    
-}
-
-/* À ajouter après les styles existants de .service-detail */
-
-/* Structure pour le fond pleine largeur */
-.service-detail {
+    flex-direction: column;
+    gap: 35px;
+    margin-bottom: 70px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 32px;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     position: relative;
-    padding: 50px 0;
-    transition: var(--transition-fast);
 }
 
-/* Créer un pseudo-élément pour le fond pleine largeur */
-.service-detail:nth-child(even)::before {
+.premium-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 100%;
-    background-color: var(--light-color);
-    z-index: -1;
+    inset: 0;
+    border-radius: 32px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 86, 179, 0.1), rgba(0, 168, 232, 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
-/* Assurer que le contenu reste dans le container */
-.service-detail {
-    position: relative;
-    z-index: 1;
+/* Ligne supérieure : icône/média + contenu principal + image */
+.premium-card__row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
-.service-detail > * {
-    position: relative;
-    z-index: 2;
+/* Pour les cartes normales : image à droite (par défaut) */
+.premium-card__row {
+    flex-direction: row;
 }
 
-/* Ajustement pour le premier et dernier élément */
-.service-detail:first-child {
-    padding-top: 0;
-}
-
-.service-detail:last-child {
-    padding-bottom: 0;
-}
-
-/* Version responsive avec padding adapté */
-@media (max-width: 992px) {
-    .service-detail {
-        padding: 40px 0;
-    }
-}
-
-@media (max-width: 576px) {
-    .service-detail {
-        padding: 30px 0;
-    }
-}
-.service-detail.reverse {
+/* Pour les cartes inversées : image à gauche */
+.premium-card--reverse .premium-card__row {
     flex-direction: row-reverse;
 }
 
-.service-detail-content {
-    flex: 1;
+/* Zone média (icône + numéro) - toujours à gauche */
+.premium-card__media {
+    flex-shrink: 0;
+    width: 100px;
+    text-align: center;
 }
 
-.service-detail-content h2 {
-    margin-bottom: 1.5rem;
+.premium-card__icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #0056b3 0%, #00a8e8 100%);
+    border-radius: 30px 20px 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    transition: all 0.3s ease;
+}
+
+.premium-card__icon i {
+    font-size: 32px;
+    color: white;
+}
+
+.premium-card__number {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0056b3;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}
+
+/* Contenu principal (titre + description) */
+.premium-card__content {
+    flex: 2;
+}
+
+.premium-card__content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0a2540;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.premium-card__desc {
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.premium-card__method {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0;
+}
+
+.accent-text {
+    color: red;
+    font-weight: 600;
+}
+
+/* Image */
+.premium-card__image {
+    flex: 1.2;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+}
+
+.premium-card__image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* ===== GRILLE : 2 BLOCS CÔTE À CÔTE EN DESSOUS ===== */
+.premium-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 0;
+}
+
+.premium-grid__col {
+    flex: 1;
+    min-width: calc(50% - 20px);
+    background: #f8fafc;
+    padding: 20px 24px;
+    border-radius: 20px;
+}
+
+.premium-grid__col h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.service-detail-content h2 i {
+.premium-grid__col h3 i {
     color: var(--primary-color);
+    font-size: 1.5rem;
 }
 
-.service-detail-content h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--dark-color);
-}
-
-.service-detail-content ul {
+/* Listes */
+.premium-list {
     list-style: none;
-    margin-bottom: 1.5rem;
-    
+    padding-left: 0;
+    margin: 0;
 }
 
-.service-detail-content ul li {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
+.premium-list li {
     position: relative;
-    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+    color: #4a5568;
+    line-height: 1.45;
 }
 
-.service-detail-content ul li:before {
-    content: "✓";
+.premium-list li::before {
+    content: "▶";
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--success-color);
-    font-weight: bold;
-}
-.service-detail-image {
-    flex: 1;
+    top: 2px;
+    color: #f39c12;
+    font-size: 0.60rem;
 }
 
-.service-detail-image img {
-    width: 100%;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-lg);
+/* Ajouter cette classe à la fin de ton CSS */
+.premium-list li .note {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-style: italic;
+    display: inline-block;
+    margin-top: 4px;
 }
 
 .cta-section {
     text-align: center;
     padding: 60px 0;
-    background-color: var(--light-color);
+    background-color: white;
     border-radius: var(--border-radius-md);
     margin-top: 40px;
 }
@@ -143,116 +215,122 @@
 }
 
 /* =============================================
-   RESPONSIVE SERVICES
+   RESPONSIVE
    ============================================= */
 
-@media (max-width: 992px) {
-    .service-detail,
-    .service-detail.reverse {
-        flex-direction: column;
+@media (max-width: 1100px) {
+    .premium-card {
+        padding: 30px;
+    }
+    
+    .premium-card__row {
+        gap: 25px;
     }
 }
 
-@media (max-width: 576px) {
-    .detailed-services {
+@media (max-width: 992px) {
+    .services-premium {
         padding: 60px 0;
     }
+
+    .premium-card {
+        margin-bottom: 50px;
+        padding: 25px;
+    }
     
-    .service-detail {
-        margin-bottom: 20px;
-    }
-}
-
-/* =============================================
-   SERVICES MOBILE - REORGANISATION COMPLÈTE
-   ============================================= */
-
-@media (max-width: 992px) {
-    /* 1. On aligne tout le conteneur à gauche */
-    .service-detail, 
-    .service-detail.reverse {
+    .premium-card__row,
+    .premium-card--reverse .premium-card__row {
         flex-direction: column;
+    }
+    
+    .premium-card__media {
         display: flex;
-        align-items: flex-start; /* Aligne les blocs enfants à gauche */
-        gap: 0;
-        text-align: left;
-    }
-
-    /* 2. On "libère" les éléments pour les réorganiser */
-    .service-detail-content {
-        display: contents; 
-    }
-
-    /* 3. LE TITRE : Icône au-dessus et aligné à gauche */
-    .service-detail-content h2 {
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 15px;
         order: 1;
-        display: flex;
-        flex-direction: column; /* Icône au-dessus du texte */
-        align-items: flex-start; /* Icône à gauche */
-        justify-content: flex-start;
-        text-align: left;        /* Texte à gauche */
-        gap: 10px;
-        width: 100%;
-        margin-bottom: 20px;
     }
-
-    .service-detail-content h2 i {
-        font-size: 2rem;
-        margin-bottom: 5px;
-        color: var(--primary-color);
+    
+    .premium-card__icon {
+        margin: 0;
+        width: 55px;
+        height: 55px;
     }
-
-    /* 4. LE PARAGRAPHE : Juste sous le titre */
-    .service-detail-content p {
+    
+    .premium-card__icon i {
+        font-size: 24px;
+    }
+    
+    .premium-card__number {
+        font-size: 20px;
+        font-weight: 700;
+        opacity: 0.4;
+    }
+    
+    .premium-card__content {
         order: 2;
+        flex: auto;
         width: 100%;
-        margin-bottom: 20px;
-        text-align: left;
     }
-
-    /* 5. L'IMAGE : Après le premier paragraphe */
-    .service-detail-image {
+    
+    .premium-card__image {
         order: 3;
         width: 100%;
-        margin-bottom: 30px;
     }
-
-    .service-detail-image img {
-        width: 100%;
-        max-height: 250px;
-        object-fit: cover;
-        border-radius: var(--border-radius-md);
-    }
-
-    /* 6. LE RESTE : Listes et points clés */
-    .service-detail-content h3{
-        text-align: center;
-        order: 4;
-        width: 100%;
-    }
-
-    .service-detail-content ul,
-    .service-detail-content em {
-        order: 4;
-        width: 100%;
-        text-align: left;
-    }
-
-    .service-detail-content ul li {
-        text-align: left;
-        padding-left: 1.5rem;
-    }
-
     
+    .premium-card__content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .premium-card__image img {
+        height: 200px;
+    }
 }
 
-/* Ajustements pour les très petits écrans (iPhone, etc.) */
-@media (max-width: 576px) {
-    .service-detail-content h2 {
-        font-size: 1.5rem; /* Réduit un peu la taille du titre */
+/* Sur tablette : les blocs restent côte à côte */
+@media (max-width: 768px) {
+    .premium-grid {
+        flex-direction: column;
     }
     
-    .service-detail-image img {
-        max-height: 200px;
+    .premium-grid__col {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-premium {
+        padding: 40px 0;
+    }
+
+    .premium-card {
+        padding: 20px;
+        margin-bottom: 35px;
+    }
+
+    .premium-card__content h2 {
+        font-size: 1.3rem;
+    }
+
+    .premium-card__desc {
+        font-size: 0.95rem;
+    }
+
+    .premium-grid__col {
+        padding: 15px 18px;
+    }
+
+    .premium-grid__col h3 {
+        font-size: 1.1rem;
+    }
+
+    .premium-list li {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .premium-card__image img {
+        height: 180px;
     }
 }
