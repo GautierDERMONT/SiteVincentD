@@ -88,7 +88,7 @@ footer {
 }
 
 .footer-bottom a:hover {
-    color: var(--accent-color);
+    color: #FFB347;
     transition: var(--transition-fast);
 }
 

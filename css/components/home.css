@@ -288,7 +288,7 @@
     }
     
     .carousel-arrow:hover {
-        background-color: var(--accent-color);
+        background-color: #FFB347;
         transform: scale(1.1);
         box-shadow: var(--shadow-lg);
     }
@@ -438,7 +438,7 @@
 
 .service-link:hover {
     gap: 12px;
-    color: var(--accent-color);
+    color: #FFB347;
 }
 
 /* ===== SECTION À PROPOS ===== */
