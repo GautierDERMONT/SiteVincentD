@@ -173,7 +173,7 @@
     border-radius: var(--border-radius-md);
     background: linear-gradient(
         135deg,
-        rgba(10, 37, 64, 0.8) 90%,
+        rgba(10, 37, 64, 0.8) 95%,
         rgba(26, 74, 111, 0.8) 100%
     );
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -192,7 +192,7 @@
     line-height: 1;
     margin-bottom: 5px;
     
-    -webkit-text-fill-color:#FFB347;
+    -webkit-text-fill-color: var(--light-accent-color);
 }
 
 .stat-text {
@@ -288,7 +288,7 @@
     }
     
     .carousel-arrow:hover {
-        background-color: #FFB347;
+        background-color: var(--light-accent-color);
         transform: scale(1.1);
         box-shadow: var(--shadow-lg);
     }
@@ -438,10 +438,13 @@
 
 .service-link:hover {
     gap: 12px;
-    color: #FFB347;
+    color: var(--light-accent-color);
 }
 
 /* ===== SECTION À PROPOS ===== */
+
+
+
 .about-summary {
     padding: var(--spacing-xl) 0;
     background-color: var(--light-color);

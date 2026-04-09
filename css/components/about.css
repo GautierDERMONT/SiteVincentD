@@ -161,7 +161,7 @@
     top: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, #FFB347);
+    background: linear-gradient(180deg, var(--light-accent-color));
 }
 
 .timeline-item {

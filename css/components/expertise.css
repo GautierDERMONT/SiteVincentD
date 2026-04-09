@@ -75,7 +75,7 @@
     position: absolute;
     left: 0;
     color: var(--accent-color);
-    top: -2px;
+    top: -4px;
     font-weight: 900;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -159,13 +159,7 @@
     text-align: center;
 }
 
-.result-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    line-height: 1;
-}
+
 
 .result-text {
     font-size: 0.9rem;
@@ -173,47 +167,75 @@
 }
 
 /* =============================================
-   NOUVEAU STYLE ÉTUDES DE CAS (PROPRE)
+   ÉTUDES DE CAS - STYLE PREMIUM (COMME SERVICES)
    ============================================= */
 
+.case-studies {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--light-color);
+}
+
+/* Cartes principales */
 .case-card {
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    gap: 35px;
     margin-bottom: 50px;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 32px;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    position: relative;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.case-card:hover {
-    transform: translateY(-2px);
+
+/* Ligne supérieure */
+.case-card__row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
-.case-card.reverse {
+.case-card--reverse .case-card__row {
     flex-direction: row-reverse;
 }
 
-.case-card .case-image {
-    flex: 1;
-    min-width: 280px;
+/* Zone média (icône + numéro) */
+.case-card__media {
+    flex-shrink: 0;
+    width: 100px;
+    text-align: center;
 }
 
-.case-card .case-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.case-card__icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #0056b3 0%, #00a8e8 100%);
+    border-radius: 30px 20px 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    transition: all 0.3s ease;
 }
 
-.case-card .case-content {
-    flex: 1.5;
-    padding: 30px 35px 30px 0;
+.case-card__icon i {
+    font-size: 32px;
+    color: white;
 }
 
-.case-card.reverse .case-content {
-    padding: 30px 0 30px 35px;
+.case-card__number {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0056b3;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}
+
+/* Contenu */
+.case-card__content {
+    flex: 2;
 }
 
 .case-badge {
@@ -226,77 +248,100 @@
     letter-spacing: 0.5px;
     padding: 4px 12px;
     border-radius: 30px;
-    margin-bottom: 15px;
+    
 }
 
-.case-card h3 {
+.case-card__content h3 {
     font-size: 1.5rem;
     margin-bottom: 8px;
     color: #1a2a3a;
 }
 
 .case-client {
-    margin-bottom: 20px;
+    margin-bottom: 0;
     font-size: 0.9rem;
 }
 
-.case-details {
+/* Image */
+.case-card__image {
+    flex: 1.2;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+}
+
+.case-card__image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Grille 2 colonnes */
+.case-grid {
     display: flex;
-    gap: 25px;
-    margin: 20px 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.detail-block {
+.case-grid__col {
     flex: 1;
+    min-width: calc(50% - 20px);
     background: #f8fafc;
-    padding: 18px;
-    border-radius: 16px;
+    padding: 20px 24px;
+    border-radius: 20px;
 }
 
-.detail-block h4 {
-    font-size: 1rem;
-    font-weight: 700;
+.case-grid__col h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 15px;
 }
 
-.detail-block h4 i {
-    color: #0056b3;
-    font-size: 0.9rem;
+.case-grid__col h3 i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
 }
 
-.detail-block ul {
+/* Listes */
+.case-list {
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
-.detail-block ul li {
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-    padding-left: 18px;
+.case-list li {
     position: relative;
-    line-height: 1.4;
-    color: #2c3e50;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #4a5568;
+    line-height: 1.45;
 }
 
-.detail-block ul li::before {
-    content: "▹";
+.case-list li::before {
+    content: "▶";
     position: absolute;
     left: 0;
-    color: #ff7e30;
-    font-size: 0.75rem;
+    top: 3px;
+    color: #f39c12;
+    font-size: 0.6rem;
 }
 
+/* Résultats stats */
 .results-stats {
     display: flex;
     background: linear-gradient(135deg, #0a2540 0%, #1a4a6f 100%);
-    border-radius: 16px;
-    padding: 15px 20px;
-    margin-top: 20px;
+    border-radius: 20px;
+    padding: 18px 24px;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .result {
@@ -306,9 +351,9 @@
 
 .result-number {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    color: #ffb347;
+    color: var(--light-accent-color);
     line-height: 1.2;
 }
 
@@ -319,7 +364,6 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
-
 /* ===== PAGE EXPERTISE - TÉMOIGNAGES CLIENTS ===== */
 
 /* Conteneur principal des témoignages */
@@ -374,8 +418,133 @@
     padding: var(--spacing-xl) 0;
 }
 
-/* RESPONSIVE */
+/* =============================================
+   RESPONSIVE ÉTUDES DE CAS
+   ============================================= */
+
+@media (max-width: 1100px) {
+    .case-card {
+        padding: 30px;
+    }
+    
+    .case-card__row {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .case-studies {
+        padding: 60px 0;
+    }
+
+    .case-card {
+        margin-bottom: 50px;
+        padding: 25px;
+    }
+    
+    .case-card__row,
+    .case-card--reverse .case-card__row {
+        flex-direction: column;
+    }
+    
+    .case-card__media {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 15px;
+        order: 1;
+    }
+    
+    .case-card__icon {
+        margin: 0;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .case-card__icon i {
+        font-size: 24px;
+    }
+    
+    .case-card__number {
+        font-size: 20px;
+        font-weight: 700;
+        opacity: 0.4;
+    }
+    
+    .case-card__content {
+        order: 2;
+        flex: auto;
+        width: 100%;
+    }
+    
+    .case-card__image {
+        order: 3;
+        width: 100%;
+    }
+    
+    .case-card__content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .case-card__image img {
+        height: 200px;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Ajustement des cartes d'expertise pour mobile */
+    .domains-grid {
+        grid-template-columns: 1fr; /* Passe de 2 colonnes à 1 colonne sur mobile */
+        gap: 20px;
+    }
+
+    .domain-card {
+        padding: 1.5rem;
+    }
+
+    .domain-card h3 {
+        min-height: auto; /* Supprime la hauteur minimale fixe sur mobile */
+        font-size: 1.3rem;
+    }
+
+    .domain-card ul li {
+        font-size: 0.9rem;
+    }
+    
+
+    .domain-card ul li:before {
+        top: -4px;
+    }
+
+    /* Ajustement des études de cas */
+    .case-grid {
+        flex-direction: column;
+    }
+    
+    .case-grid__col {
+        min-width: 100%;
+        padding: 15px 18px;
+    }
+    
+    .results-stats {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+    
+    .result {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .result-label {
+        font-size: 0.75rem;
+    }
+
+    /* Ajustement des témoignages */
     .detailed-testimonials .testimonials-grid {
         gap: 20px;
     }
@@ -391,252 +560,125 @@
     .detailed-testimonials .testimonial-full:last-child {
         margin-bottom: 30px;
     }
-}
-/* =============================================
-   RESPONSIVE - TABLETTE (max-width: 992px)
-   ============================================= */
 
-@media (max-width: 992px) {
-    .case-study,
-    .case-study.reverse {
-        flex-direction: column;
-    }
-    
-    .case-card,
-    .case-card.reverse {
-        flex-direction: column;
-    }
-    
-    .case-card .case-content,
-    .case-card.reverse .case-content {
-        padding: 25px;
-    }
-    
-    .case-card .case-image {
-        min-height: 250px;
-    }
-    
-    .case-details {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .results-stats {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .result {
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .result-label {
-        font-size: 0.8rem;
-    }
-}
-
-/* =============================================
-   RESPONSIVE - MOBILE (max-width: 768px)
-   ============================================= */
-
-@media (max-width: 768px) {
-    /* Grille expertise : passage à 1 colonne */
-    .domains-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .domain-card {
-        padding: 1.5rem;
-    }
-    
-    .domain-card h3 {
-        min-height: auto;
-        font-size: 1.3rem;
-        justify-content: flex-start;
-        text-align: left;
-    }
-    
-    .domain-icon {
-        text-align: left;
-        font-size: 2rem;
-    }
-    
-    .domain-card p {
-        font-size: 1rem;
-        text-align: left;
-    }
-    
-    .domain-card ul li {
-        font-size: 0.95rem;
-        text-align: left;
-    }
-    
-    .domain-card ul li:before {
-        top: -1px;
-        font-size: 1rem;
-    }
-    
-    /* Cartes études de cas : image APRÈS le titre et sous-titre */
-    .case-card {
-        flex-direction: column;
-    }
-    
-    /* Contenu (titre, badge, client) d'abord */
-    .case-card .case-content {
-        order: 1;
-        padding: 25px 25px 0 25px;
-    }
-    
-    /* Image ensuite */
-    .case-card .case-image {
-        order: 2;
-        min-height: 220px;
-        padding: 0 25px 25px 25px;
-    }
-    
-    .case-card .case-image img {
+    /* Ajustement des badges */
+    .case-card__badge {
         width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 16px;
+        margin-top: 4px;
     }
-    
-    .case-card.reverse {
-        flex-direction: column;
-    }
-    
-    .case-card.reverse .case-content {
-        order: 1;
-        padding: 25px 25px 0 25px;
-    }
-    
-    .case-card.reverse .case-image {
-        order: 2;
-        padding: 0 25px 25px 25px;
-    }
-    
-    .detail-block h4 {
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .results-stats .result {
-        text-align: center;
-    }
-    
-    /* Témoignages */
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .testimonial-full {
-        padding: 1.5rem;
-    }
-    
-    .testimonial-quote {
-        padding-left: 1.5rem;
-    }
-    
-    .testimonial-quote i {
-        font-size: 1.2rem;
-    }
-    
-    .testimonial-quote p {
-        font-size: 0.95rem;
+
+    .case-badge {
+        display: inline-block;
     }
 }
-
-/* =============================================
-   RESPONSIVE - PETIT MOBILE (max-width: 576px)
-   ============================================= */
 
 @media (max-width: 576px) {
-    .expertise-domains,
-    .case-studies,
-    .detailed-testimonials {
-        padding: 60px 0;
+    .case-studies {
+        padding: 40px 0;
     }
-    
-    .case-study {
-        margin-bottom: 60px;
-        gap: 30px;
+
+    .case-card {
+        padding: 20px;
+        margin-bottom: 35px;
+        gap: 25px;
     }
-    
-    .domain-card {
-        padding: 1.25rem;
-    }
-    
-    .domain-card h3 {
+
+    .case-card__content h3 {
         font-size: 1.2rem;
-        margin-bottom: 0.75rem;
     }
-    
-    .domain-card ul li {
-        font-size: 0.9rem;
-        margin-bottom: 0.4rem;
+
+    .case-card__desc {
+        font-size: 0.95rem;
     }
-    
-    .case-card h3 {
-        font-size: 1.3rem;
+
+    .case-grid__col {
+        padding: 15px 18px;
     }
-    
-    .detail-block {
-        padding: 12px;
+
+    .case-grid__col h3 {
+        font-size: 1rem;
+        margin-bottom: 15px;
     }
-    
-    .detail-block ul li {
-        font-size: 0.8rem;
+
+   
+
+    .case-list li {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .case-card__image img {
+        height: 180px;
     }
     
     .results-stats {
-        padding: 12px 15px;
+        padding: 14px 16px;
     }
     
     .result-number {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
-    
-    .result-label {
-        font-size: 0.65rem;
+
+    .domain-card ul li:before {
+        top: -4px;
+    }
+
+    /* Ajustement des titres de section */
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
     }
 }
 
-/* =============================================
-   RESPONSIVE - TRÈS PETIT MOBILE (max-width: 375px)
-   ============================================= */
-
 @media (max-width: 375px) {
-    .domain-card {
-        padding: 1rem;
+    .case-card {
+        padding: 15px;
     }
     
-    .domain-card h3 {
+    .case-card__content h3 {
         font-size: 1.1rem;
     }
     
-    .domain-card ul li {
+    .case-grid__col {
+        padding: 12px 14px;
+    }
+    
+    .case-list li {
+        font-size: 0.8rem;
+        padding-left: 16px;
+    }
+    
+    .case-list li::before {
+        font-size: 0.55rem;
+    }
+
+    .domain-card ul li:before {
+        top: -6px;
+    }
+
+    .domain-card {
+        padding: 1rem;
+    }
+
+    .domain-icon {
+        font-size: 2rem;
+    }
+
+    .domain-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .domain-card p {
         font-size: 0.85rem;
+    }
+
+    .domain-card ul li {
+        font-size: 0.8rem;
         padding-left: 1.2rem;
-    }
-    
-    .case-card .case-content {
-        padding: 20px 20px 0 20px;
-    }
-    
-    .case-card .case-image {
-        padding: 0 20px 20px 20px;
-    }
-    
-    .detail-block h4 {
-        font-size: 0.9rem;
-    }
-    
-    .detail-block ul li {
-        font-size: 0.75rem;
     }
 }

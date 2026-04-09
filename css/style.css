@@ -19,6 +19,7 @@
     --primary-color: #0056b3;
     --secondary-color: #00a8e8;
     --accent-color: #ff7e30;
+    --light-accent-color:#FFB347; 
     --dark-color: #2c3e50;
     --light-color: #f8f9fa;
     --gray-color: #6c757d;
@@ -94,6 +95,7 @@ a {
     color: var(--accent-color) !important;
     font-size: 20px;
     font-weight: 700;
+    
 }
 .highlight-primary { color: var(--primary-color); }
 .text-center { text-align: center; }

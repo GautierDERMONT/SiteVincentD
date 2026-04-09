@@ -150,7 +150,7 @@
 .premium-grid__col h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1a202c;
+    color: (#1a202c);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -182,7 +182,7 @@
     content: "▶";
     position: absolute;
     left: 0;
-    top: 2px;
+    top: 3px;
     color: #f39c12;
     font-size: 0.60rem;
 }
@@ -213,6 +213,61 @@
     max-width: 600px;
     margin: 0 auto 2rem;
 }
+
+
+/* =============================================
+   SECTION STATISTIQUES - SERVICES PREMIUM
+   ============================================= */
+
+.services-premium-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 40px 0 30px;
+    flex-wrap: wrap;
+}
+
+.services-premium-stats .stat-item {
+    flex: 0 0 auto;
+    width: calc(30% - 15px);
+    min-width: 200px;
+    text-align: center;
+    padding: 20px 15px;
+    background: linear-gradient(135deg, #0a2540 0%, #1a4a6f 100%);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-premium-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0 30px;
+    flex-wrap: wrap;
+}
+
+
+
+.services-premium-stats .stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.services-premium-stats .stat-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+
 
 /* =============================================
    RESPONSIVE
@@ -297,6 +352,28 @@
     .premium-grid__col {
         min-width: 100%;
     }
+
+    .services-premium-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .services-premium-stats .stat-item {
+        flex: 0 0 auto;
+        width: calc(50% - 15px);
+        min-width: 160px;
+        padding: 15px;
+    }
+    
+    .services-premium-stats .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .services-premium-stats .stat-label {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -332,5 +409,21 @@
 
     .premium-card__image img {
         height: 180px;
+    }
+
+      .services-premium-stats {
+        margin: 30px 0 20px;
+    }
+    
+    .services-premium-stats .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-premium-stats .stat-item {
+        width: calc(100% - 40px);
+        max-width: 280px;
+        margin: 0 auto;
     }
 }
