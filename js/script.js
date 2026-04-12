@@ -86,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
         '.service-card',
         '.testimonial-card',
         '.hero-content',
-        '.about-content',
+        '.about-content > p',
+        '.about-content .credo-simple',
+        '.about-content .expertise-list',
         '.expertise-card',
         '.blog-card',
         '.contact-info',
@@ -122,6 +124,60 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(container);
         // Les enfants seront animés via le callback
     });
+    
+    // ===== EMPÊCHER L'ANIMATION SUR LE TITRE DE LA SECTION "À PROPOS" =====
+    const aboutSectionTitle = document.querySelector('.about-summary .section-title');
+    if (aboutSectionTitle) {
+        // Supprimer toutes les classes d'animation
+        aboutSectionTitle.classList.remove('fade-up', 'fade-left', 'fade-right', 'fade-zoom', 'fade-bounce', 'animate-in');
+        // Forcer l'opacité et la transformation
+        aboutSectionTitle.style.opacity = '1';
+        aboutSectionTitle.style.transform = 'none';
+        aboutSectionTitle.style.animation = 'none';
+        
+        // Créer un observateur pour surveiller et corriger si nécessaire
+        const titleObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class' || mutation.attributeName === 'style') {
+                    if (aboutSectionTitle.style.opacity === '0' || 
+                        aboutSectionTitle.classList.contains('animate-in') ||
+                        aboutSectionTitle.style.opacity === '') {
+                        aboutSectionTitle.style.opacity = '1';
+                        aboutSectionTitle.style.transform = 'none';
+                        aboutSectionTitle.classList.remove('animate-in', 'fade-up', 'fade-left', 'fade-right', 'fade-zoom', 'fade-bounce');
+                    }
+                }
+            });
+        });
+        titleObserver.observe(aboutSectionTitle, { attributes: true, attributeFilter: ['class', 'style'] });
+    }
+    
+    // ===== EMPÊCHER L'ANIMATION SUR LE BOUTON "EN SAVOIR PLUS" =====
+    const aboutButton = document.querySelector('.about-summary .btn-primary');
+    if (aboutButton) {
+        // Supprimer toutes les classes d'animation
+        aboutButton.classList.remove('fade-up', 'fade-left', 'fade-right', 'fade-zoom', 'fade-bounce', 'animate-in');
+        // Forcer l'opacité et la transformation
+        aboutButton.style.opacity = '1';
+        aboutButton.style.transform = 'none';
+        aboutButton.style.animation = 'none';
+        
+        // Créer un observateur pour surveiller et corriger si nécessaire
+        const buttonObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class' || mutation.attributeName === 'style') {
+                    if (aboutButton.style.opacity === '0' || 
+                        aboutButton.classList.contains('animate-in') ||
+                        aboutButton.style.opacity === '') {
+                        aboutButton.style.opacity = '1';
+                        aboutButton.style.transform = 'none';
+                        aboutButton.classList.remove('animate-in', 'fade-up', 'fade-left', 'fade-right', 'fade-zoom', 'fade-bounce');
+                    }
+                }
+            });
+        });
+        buttonObserver.observe(aboutButton, { attributes: true, attributeFilter: ['class', 'style'] });
+    }
     
     // Animation des statistiques dans la section hero
     function animateStats() {

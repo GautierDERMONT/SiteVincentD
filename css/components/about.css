@@ -15,11 +15,12 @@
 
 .profile-image {
     width: 35%;
+    max-width: 350px;  
     margin-bottom: 20px;
 }
 
 .profile-image img {
-    width: 100%;
+    width: 95%;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-lg);
     display: block;
@@ -162,12 +163,16 @@
     width: 2px;
     height: 100%;
     background: linear-gradient(180deg, var(--light-accent-color));
+    z-index: 0;
+    
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: var(--spacing-lg);
     animation: fadeInUp 0.5s ease forwards;
+    z-index: 1;  /* ← Met à 0 */
+
 }
 
 @keyframes fadeInUp {
@@ -178,7 +183,7 @@
 .timeline-item:before {
     content: '';
     position: absolute;
-    left: -2rem;
+    left: -1.95rem;
     transform: translateX(-50%);
     width: 14px;
     height: 14px;
@@ -186,7 +191,7 @@
     background-color: var(--primary-color);
     border: 3px solid white;
     box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
-    z-index: 1;
+    z-index: 2;
 }
 
 .timeline-date {
@@ -426,7 +431,7 @@
 }
 
 @media (max-width: 768px) {
-    .profile-image { width: 60%; }
+.profile-image { width: 50%; max-width: none;}
     .cert-card { flex: 0 0 100%; }
     .philosophy-content { grid-template-columns: 1fr; gap: 20px; }
     .philosophy-item h3 { min-height: auto; }
@@ -453,7 +458,7 @@
 }
 
 @media (max-width: 576px) {
-    .profile-image { width: 60%; max-width: 350px; }
+    .profile-image { width: 60% !important; max-width: 300px !important; }
     .about-main { padding: 40px 0; }
     .about-profile { gap: 30px; }
     .profile-content h2 { font-size: 1.6rem; }
@@ -478,7 +483,7 @@
 }
 
 @media (max-width: 375px) {
-    .profile-image { width: 90%; }
+    .profile-image { width: 80%; }
     .profile-content h2 { font-size: 1.5rem; }
     .profile-title { font-size: 0.95rem; }
     .profile-content p { font-size: 0.9rem; line-height: 1.5; }
@@ -491,4 +496,49 @@
     .btn-timeline { padding: 6px 16px; font-size: 0.8rem; min-width: 140px; }
     .manager-interventions { padding: 0.875rem 1rem; }
     .interventions-list li { font-size: 0.85rem; }
+}
+
+/* ===== PROFIL PRINCIPAL - VERSION CORRIGÉE ===== */
+
+@media (min-width: 993px) {
+    .about-profile {
+        display: block;  /* Pas de flex, on utilise float */
+        overflow: auto;
+    }
+    
+    .profile-image {
+        float: left;
+        width: 30%;
+        max-width: 300px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .profile-content {
+        width: 100%;
+        overflow: visible;
+    }
+    
+      .profile-content .bloc,
+    .profile-content p:not(.profile-title) {
+        text-align: justify;
+        text-justify: inter-word;  /* Espacement entre les mots plutôt que les lettres */
+    }
+}
+
+
+/* Version tablette et mobile - reset du float */
+@media (max-width: 992px) {
+   .profile-image {
+        float: none;
+        width: 50%;
+        max-width: 250px;
+        margin: 0 auto 30px auto;
+    }
+    
+    .about-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

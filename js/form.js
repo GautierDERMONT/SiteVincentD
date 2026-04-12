@@ -21,7 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 date: new Date().toLocaleString('fr-FR')
             };
             
-            // Valider le formulaire
+            // 1. Vérifier d'abord les champs vides (required)
+            if (!contactForm.checkValidity()) {
+                return;
+            }
+            
+            // 2. Validation personnalisée
             const errors = validateForm(formData);
             if (errors.length > 0) {
                 showModal(errors.join('<br>'), 'error');
@@ -37,21 +42,27 @@ document.addEventListener('DOMContentLoaded', function() {
             // Envoyer l'email via EmailJS
             emailjs.send('service_ycu98z2', 'template_tcjkkjk', formData)
                 .then(function() {
-                    // Afficher une modal de succès (PAS d'alert)
                     showModal('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.', 'success');
                     
                     // Réinitialiser le formulaire
                     contactForm.reset();
                     
-                    // Restaurer le bouton
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                })
-                .catch(function() {
-                    // Afficher une modal d'erreur (PAS d'alert)
-                    showModal('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou me contacter directement par email.', 'error');
+                    // Réactiver la case à cocher et désactiver le bouton
+                    const checkbox = contactForm.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        checkbox.checked = false;
+                        submitBtn.disabled = true;
+                        submitBtn.style.opacity = '0.6';
+                        submitBtn.style.cursor = 'not-allowed';
+                    } else {
+                        submitBtn.disabled = false;
+                    }
                     
-                    // Restaurer le bouton
+                    submitBtn.textContent = originalText;
+                })
+                .catch(function(error) {
+                    console.error('Erreur EmailJS:', error);
+                    showModal('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou me contacter directement par email.', 'error');
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 });
@@ -89,7 +100,7 @@ function showModal(message, type) {
                 <p>${message}</p>
             </div>
             <div class="modal-footer">
-                <button class="modal-btn ${type}" onclick="this.closest('.custom-modal').remove()">
+                <button class="modal-btn ${type}">
                     Fermer
                 </button>
             </div>
@@ -98,9 +109,6 @@ function showModal(message, type) {
     
     // Ajouter la modal au body
     document.body.appendChild(modal);
-    
-    // Empêcher le scroll du body
-    document.body.style.overflow = 'hidden';
     
     // Animation d'entrée
     setTimeout(() => {
@@ -112,8 +120,6 @@ function showModal(message, type) {
         setTimeout(() => {
             if (modal && modal.parentNode) {
                 modal.remove();
-                // Restaurer le scroll
-                document.body.style.overflow = '';
             }
         }, 3000);
     }
@@ -122,14 +128,12 @@ function showModal(message, type) {
     const overlay = modal.querySelector('.modal-overlay');
     overlay.addEventListener('click', () => {
         modal.remove();
-        document.body.style.overflow = '';
     });
     
     // Fermer avec le bouton
     const closeBtn = modal.querySelector('.modal-btn');
     closeBtn.addEventListener('click', () => {
         modal.remove();
-        document.body.style.overflow = '';
     });
 }
 
@@ -181,6 +185,7 @@ function addModalStyles() {
                 transform: scale(0.7);
                 transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
                 overflow: hidden;
+                margin: 0;
             }
             
             .custom-modal.show .modal-container {
@@ -310,7 +315,7 @@ function addModalStyles() {
     document.head.insertAdjacentHTML('beforeend', styles);
 }
 
-// Fonction de validation du formulaire
+// Fonction de validation personnalisée
 function validateForm(formData) {
     const errors = [];
     
@@ -331,24 +336,29 @@ function validateForm(formData) {
     if (!formData.email || !formData.email.trim()) {
         errors.push('L\'email est requis');
     } else if (!isValidEmail(formData.email)) {
-        errors.push('L\'email n\'est pas valide');
+        errors.push('L\'email n\'est pas valide (ex: nom@domaine.fr)');
     }
     
     if (!formData.service) {
         errors.push('Le service concerné est requis');
     }
     
+    // Validation du message : 20 caractères minimum
     if (!formData.message || !formData.message.trim()) {
         errors.push('Le message est requis');
-    } else if (formData.message.trim().length < 10) {
-        errors.push('Le message doit contenir au moins 10 caractères');
+    } else if (formData.message.trim().length < 20) {
+        errors.push('Le message doit contenir au moins 20 caractères');
     }
     
-    // Validation optionnelle du téléphone si fourni
+    // Validation du téléphone : autorise les espaces, pas de nombre minimum de chiffres
     if (formData.phone && formData.phone.trim()) {
-        const phoneRegex = /^[0-9+\-\s]{10,}$/;
-        if (!phoneRegex.test(formData.phone.trim())) {
-            errors.push('Le numéro de téléphone n\'est pas valide');
+        // Vérifier qu'il n'y a pas de lettres
+        if (/[a-zA-Z]/.test(formData.phone.trim())) {
+            errors.push('Le numéro de téléphone ne peut pas contenir de lettres');
+        }
+        // Vérifier qu'il n'y a pas de caractères spéciaux (sauf espaces, +, -, parenthèses)
+        if (/[^0-9+\-\s\(\)]/.test(formData.phone.trim())) {
+            errors.push('Le numéro de téléphone contient des caractères non autorisés');
         }
     }
     

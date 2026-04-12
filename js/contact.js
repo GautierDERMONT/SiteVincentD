@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Gestion du formulaire de contact avec validation de la case à cocher
+    // Gestion du formulaire de contact - Gestion de la case à cocher UNIQUEMENT
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -66,56 +66,98 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Validation du formulaire avant envoi
+        // Vérification UNIQUEMENT de la case à cocher avant envoi
         contactForm.addEventListener('submit', function(e) {
-            // Vérifier que la case à cocher est cochée (sécurité supplémentaire)
-            if (!checkbox.checked) {
+            if (checkbox && !checkbox.checked) {
                 e.preventDefault();
                 alert('Veuillez accepter la politique de confidentialité pour envoyer votre demande.');
                 return false;
             }
-            
-            // Vérifier que tous les champs requis sont remplis
-            const requiredFields = contactForm.querySelectorAll('[required]');
-            let allFilled = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    allFilled = false;
-                    field.style.borderColor = 'red';
-                } else {
-                    field.style.borderColor = '';
-                }
-            });
-            
-            if (!allFilled) {
-                e.preventDefault();
-                alert('Veuillez remplir tous les champs obligatoires.');
-                return false;
-            }
-            
-            // Si tout est OK, le formulaire sera envoyé normalement
-            // (le traitement via EmailJS ou autre se fera dans form.js)
-        });
-        
-        // Réinitialiser les bordures rouges lors de la saisie
-        const formInputs = contactForm.querySelectorAll('input, select, textarea');
-        formInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.value.trim()) {
-                    this.style.borderColor = '';
-                }
-            });
         });
     }
-    
-    // Optionnel: Ouvrir le premier item par défaut
-    // if (faqItems.length > 0) {
-    //     faqItems[0].classList.add('active');
-    //     faqItems[0].querySelector('.faq-question').setAttribute('aria-expanded', 'true');
-    //     const firstAnswer = faqItems[0].querySelector('.faq-answer');
-    //     firstAnswer.style.maxHeight = firstAnswer.scrollHeight + "px";
-    // }
+});
 
+// Animation bounce des boutons CTA au scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
+    const ctaSection = document.querySelector('.contact-cta');
     
+    if (ctaButtons.length === 0 || !ctaSection) return;
+    
+    let bounceTriggered = false;
+    
+    // Fonction pour vérifier si l'élément est visible dans la fenêtre
+    function isElementInViewport(el, offset = 100) {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // L'élément est considéré visible quand il entre dans la fenêtre
+        return rect.top <= windowHeight - offset && rect.bottom >= 0;
+    }
+    
+    // Fonction pour déclencher l'animation bounce
+    function triggerBounceAnimation() {
+        if (bounceTriggered) return;
+        
+        // Vérifier si la section CTA est visible
+        if (isElementInViewport(ctaSection, 150)) {
+            bounceTriggered = true;
+            
+            // Ajouter l'animation à chaque bouton avec un léger délai
+            ctaButtons.forEach((button, index) => {
+                setTimeout(() => {
+                    button.classList.add('bounce-animation');
+                    
+                    // Retirer la classe après l'animation pour permettre un éventuel re-jeu
+                    setTimeout(() => {
+                        button.classList.remove('bounce-animation');
+                    }, 800);
+                }, index * 300); // Délai progressif : 0ms, 150ms
+            });
+        }
+    }
+    
+    // Observer l'apparition de la section CTA avec Intersection Observer (plus performant)
+    function setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !bounceTriggered) {
+                    bounceTriggered = true;
+                    
+                    // Déclencher l'animation sur les boutons
+                    ctaButtons.forEach((button, index) => {
+                        setTimeout(() => {
+                            button.classList.add('bounce-animation');
+                            setTimeout(() => {
+                                button.classList.remove('bounce-animation');
+                            }, 800);
+                        }, index * 150);
+                    });
+                    
+                    // Déconnecter l'observateur une fois l'animation déclenchée
+                    observer.disconnect();
+                }
+            });
+        }, {
+            threshold: 0.3, // Se déclenche quand 30% de la section est visible
+            rootMargin: '0px'
+        });
+        
+        observer.observe(ctaSection);
+    }
+    
+    // Fallback avec scroll si Intersection Observer n'est pas supporté
+    if ('IntersectionObserver' in window) {
+        setupIntersectionObserver();
+    } else {
+        // Fallback pour les navigateurs plus anciens
+        window.addEventListener('scroll', function() {
+            triggerBounceAnimation();
+        });
+        window.addEventListener('resize', function() {
+            triggerBounceAnimation();
+        });
+        // Vérifier au chargement
+        triggerBounceAnimation();
+    }
 });
