@@ -101,7 +101,7 @@ function initHeroCarousel() {
     startCarousel();
 }
 
-// Animation d'entrée des logos clients en cercle lors du défilement
+// Animation d'entrée des logos clients en cercle lors du défilement - LOGO CENTRAL EN PREMIER
 function initClientLogos() {
     const clientsSection = document.querySelector('.clients');
     const clientLogos = document.querySelectorAll('.client-logo');
@@ -117,14 +117,30 @@ function initClientLogos() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                clientLogos.forEach((logo, index) => {
-                    logo.style.setProperty('--logo-index', index);
-                    logo.style.setProperty('--logo-angle', index * 60);
-                    logo.style.animationDelay = `${index * 0.1}s`;
+                // Compter les logos non-centraux pour l'indexation
+                const peripheralLogos = [...clientLogos].filter(l => !l.classList.contains('client-logo-center'));
+                const centerLogo = document.querySelector('.client-logo-center');
+                
+                // FAIRE APPARAÎTRE LE LOGO CENTRAL EN PREMIER
+                if (centerLogo) {
+                    // Logo central apparaît immédiatement
+                    centerLogo.style.setProperty('--logo-index', 0);
+                    centerLogo.style.animationDelay = '0s';
+                    centerLogo.classList.add('animate-logo');
+                }
+                
+                // Puis les logos périphériques apparaissent après un délai
+                peripheralLogos.forEach((logo, idx) => {
+                    const angle = idx * 60;
+                    logo.style.setProperty('--logo-index', idx);
+                    logo.style.setProperty('--logo-angle', angle);
+                    // Délai progressif pour les logos périphériques (commence après 0.3s)
+                    const delay = 0.3 + (idx * 0.1);
+                    logo.style.animationDelay = `${delay}s`;
                     
                     setTimeout(() => {
                         logo.classList.add('animate-logo');
-                    }, index * 100);
+                    }, delay * 1000);
                 });
                 
                 observer.unobserve(entry.target);
