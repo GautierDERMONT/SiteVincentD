@@ -106,7 +106,7 @@
 }
 
 .back-link:hover {
-    color: var(--accent-color);
+    color: var(--light-accent-color);
 }
 
 .back-link:hover i {

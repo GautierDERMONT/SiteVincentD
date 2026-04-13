@@ -622,8 +622,10 @@ select optgroup option {
     }
     
     .social-links2 {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
         
     }
     

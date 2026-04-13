@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Pages principales
+Allow: /$
+Allow: /services$
+Allow: /apropos$
+Allow: /expertise$
+Allow: /contact$
+
+# Dossiers légaux
+Allow: /legal/mentions-legales$
+Allow: /legal/politique-confidentialite$
+Allow: /legal/credits$
+
+# Ressources
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+
+# Exclusion des fichiers inutiles
+Disallow: /legal/*.html$
+Disallow: /images/*.html$
+Disallow: /js/*.html$
+Disallow: /css/*.html$
+
+# Sitemap
+Sitemap: https://pleiades-partners.fr/sitemap.xml
+
+# Délai d'exploration (secondes)
+Crawl-delay: 5
