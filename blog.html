@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLEIADES Partners | Accueil</title>
+    <title>Blog Supply Chain | Conseils d'expert & Actualités | PLEIADES Partners</title>
+    <meta name="description" content="Découvrez les conseils d'un expert supply chain avec 25+ ans d'expérience. Articles sur l'optimisation logistique, le transport, la douane, les ERP et les bonnes pratiques terrain.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pleiades-partners.fr/blog">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00000000"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-00000000');
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preload" href="fonts/montserrat-v31-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- Favicon pour tous les navigateurs -->
+    <link rel="preload" href="fonts/montserrat-v31-latin-600.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -19,13 +33,15 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-           <a href="index.html" class="logo"> <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="100" height="auto"></a> 
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="PLEIADES Partners - Expert Supply Chain" width="120" height="auto" loading="eager" fetchpriority="high">
+            </a>
             <ul class="nav-menu">
-                <li><a href="index.html" >Accueil</a></li>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="apropos.html">À propos</a></li>
                 <li><a href="expertise.html">Expertise</a></li>
-                <!-- <li><a href="blog.html">Actualités</a></li> -->
+                <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="contact.html" class="nav-contact-btn">Contact</a></li>
             </ul>
             <div class="burger">
@@ -38,9 +54,13 @@
 
     <!-- Header de page -->
     <section class="page-header">
+        <div class="page-header-bg">
+            <img src="images/banner.webp" alt="Blog Supply Chain" loading="eager" fetchpriority="high" width="1920" height="400">
+            <div class="page-header-overlay"></div>
+        </div>
         <div class="container">
-            <h1>Actualités Supply Chain</h1>
-            <p>Analyses, tendances et conseils pour optimiser votre chaîne logistique</p>
+            <h1>Blog & Actualités</h1>
+            <p>Conseils terrain, retours d'expérience et bonnes pratiques pour optimiser votre supply chain</p>
         </div>
     </section>
 
@@ -48,146 +68,185 @@
     <section class="blog">
         <div class="container">
             <div class="blog-content">
-                <!-- Article vedette -->
+                <!-- Message d'introduction -->
+                <div class="blog-intro">
+                    <p><i class="fas fa-pen-fancy"></i> Chaque article est rédigé sur la base de mon expérience terrain avec plus de 25 ans en direction logistique, supply chain et projets de transformation. Aucune théorie abstraite, uniquement du concret.</p>
+                </div>
+
+                <!-- ARTICLE VEDETTE -->
                 <div class="featured-article">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Automatisation logistique">
-                        <span class="article-category">Tendance</span>
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Optimisation d'entrepôt">
+                        <span class="article-category">Retour d'expérience</span>
                     </div>
                     <div class="article-content">
-                        <span class="article-date"><i class="far fa-calendar"></i> 15 Novembre 2023</span>
-                        <h2>L'automatisation des entrepôts : jusqu'où peut-on aller ?</h2>
-                        <p>L'automatisation révolutionne la logistique, mais quels sont les véritables gains et les limites de cette transformation ? Analyse des solutions disponibles et retour d'expérience sur des projets concrets.</p>
+                        <span class="article-date"><i class="far fa-calendar"></i> Mars 2026</span>
+                        <h2>Audit Supply Chain : la méthode qui a fait ses preuves</h2>
+                        <p>Découvrez ma méthodologie d'audit en 5 étapes, issue de 25 ans de terrain. Un diagnostic complet pour identifier les vrais leviers de performance de votre chaîne logistique.</p>
                         <div class="article-tags">
-                            <span class="tag">Automatisation</span>
-                            <span class="tag">Robotique</span>
-                            <span class="tag">Innovation</span>
+                            <span class="tag">Audit</span>
+                            <span class="tag">Diagnostic</span>
+                            <span class="tag">Méthodologie</span>
                         </div>
-                        <a href="#" class="btn btn-outline">Lire l'article complet</a>
+                        <a href="./articles/audit-supply-chain.html" class="btn btn-outline">Lire l'article complet</a>
                     </div>
                 </div>
-                
+
                 <!-- Grille d'articles -->
                 <div class="articles-grid">
+                    <article class="article-card">
+                        <div class="article-card-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Audit supply chain">
+                            <span class="article-category">Méthodologie</span>
+                        </div>
+                        <div class="article-card-content">
+                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
+                            <h3>Audit supply chain : les 5 points à vérifier en priorité</h3>
+                            <p>Un audit ne sert à rien s'il n'identifie pas les vrais leviers. Voici ma grille de lecture issue de 25 ans de terrain.</p>
+                            <div class="article-tags">
+                                <span class="tag">Audit</span>
+                                <span class="tag">Diagnostic</span>
+                            </div>
+                            <a href="expertise.html" class="article-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-card-image">
+                            <img src="https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet WMS">
+                            <span class="article-category">Projet</span>
+                        </div>
+                        <div class="article-card-content">
+                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
+                            <h3>Projet WMS : les erreurs qui coûtent cher (et comment les éviter)</h3>
+                            <p>Retour sur 3 missions où le WMS était mal paramétré, et les solutions que j'ai mises en place.</p>
+                            <div class="article-tags">
+                                <span class="tag">WMS</span>
+                                <span class="tag">ERP</span>
+                            </div>
+                            <button class="article-link disabled" disabled>À venir <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </article>
+
                     <article class="article-card">
                         <div class="article-card-image">
                             <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Supply chain durable">
                             <span class="article-category">Développement Durable</span>
                         </div>
                         <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> 5 Novembre 2023</span>
-                            <h3>Supply chain verte : 5 leviers pour réduire votre impact environnemental</h3>
-                            <p>Les entreprises doivent aujourd'hui concilier performance économique et responsabilité environnementale. Découvrez des solutions concrètes pour verdir votre supply chain.</p>
+                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
+                            <h3>Supply chain responsable : 4 actions concrètes qui fonctionnent</h3>
+                            <p>RSE sans greenwashing : ce que j'ai réellement mis en place chez mes clients avec des résultats mesurables.</p>
                             <div class="article-tags">
-                                <span class="tag">Écologie</span>
                                 <span class="tag">RSE</span>
+                                <span class="tag">Écologie</span>
                             </div>
-                            <a href="#" class="article-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                            <button class="article-link disabled" disabled>À venir <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </article>
-                    
+
                     <article class="article-card">
                         <div class="article-card-image">
-                            <img src="https://images.unsplash.com/photo-1556740734-4fef88ca4c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gestion des crises">
-                            <span class="article-category">Gestion de crise</span>
+                            <img src="https://images.unsplash.com/photo-1556740734-4fef88ca4c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Transport et douane">
+                            <span class="article-category">Transport</span>
                         </div>
                         <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> 25 Octobre 2023</span>
-                            <h3>Résilience supply chain : anticiper et gérer les crises</h3>
-                            <p>Face aux disruptions géopolitiques, climatiques et sanitaires, comment construire une supply chain résiliente ? Retour d'expérience et bonnes pratiques.</p>
+                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
+                            <h3>Transport international : comment j'ai réduit les coûts de 15%</h3>
+                            <p>Appel d'offres, renégociation des contrats, optimisation des modes : ma méthode pas à pas.</p>
                             <div class="article-tags">
-                                <span class="tag">Résilience</span>
-                                <span class="tag">Risques</span>
+                                <span class="tag">Transport</span>
+                                <span class="tag">Douane</span>
                             </div>
-                            <a href="#" class="article-link">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                            <button class="article-link disabled" disabled>À venir <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </article>
                 </div>
+
+                <!-- Section "Sujets proposés" -->
                 
-               
             </div>
-            
+
             <!-- Sidebar -->
             <aside class="blog-sidebar">
                 <div class="sidebar-widget">
                     <h3>Catégories</h3>
                     <ul class="categories">
-                        <li><a href="#">Optimisation <span>(12)</span></a></li>
-                        <li><a href="#">Digital <span>(8)</span></a></li>
-                        <li><a href="#">Développement Durable <span>(6)</span></a></li>
-                        <li><a href="#">Transport <span>(5)</span></a></li>
-                        <li><a href="#">Gestion des stocks <span>(7)</span></a></li>
-                        <li><a href="#">Formation <span>(4)</span></a></li>
-                        <li><a href="#">Tendances <span>(9)</span></a></li>
+                        <li><a href="#">Audit & Diagnostic <span>(à venir)</span></a></li>
+                        <li><a href="#">Optimisation Entrepôt <span>(à venir)</span></a></li>
+                        <li><a href="#">WMS & ERP <span>(à venir)</span></a></li>
+                        <li><a href="#">Transport & Douane <span>(à venir)</span></a></li>
+                        <li><a href="#">Supply Chain Durable <span>(à venir)</span></a></li>
+                        <li><a href="#">Retours d'expérience <span>(à venir)</span></a></li>
+                        <li><a href="#">Management & Leadership <span>(à venir)</span></a></li>
                     </ul>
                 </div>
-                
+
+                <div class="sidebar-widget author-widget">
+                    <div class="author-avatar">
+                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+                    </div>
+                    <h3>Vincent DERMONT</h3>
+                    <p class="author-title">Expert Senior Supply Chain</p>
+                    <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
+                    <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+
                 <div class="sidebar-widget">
-                    <h3>Articles populaires</h3>
+                    <h3>Articles à venir</h3>
                     <div class="popular-articles">
                         <div class="popular-article">
                             <div class="popular-article-image">
-                                <img src="https://images.unsplash.com/photo-1556740734-4fef88ca4c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article populaire">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article à venir">
                             </div>
                             <div class="popular-article-content">
-                                <h4>IA dans la logistique : révolution ou évolution ?</h4>
-                                <span class="article-date">12 Oct. 2023</span>
+                                <h4>Comment j'ai réduit la couverture stocks de 30%</h4>
+                                <span class="article-date">Prochainement</span>
                             </div>
                         </div>
-                        
                         <div class="popular-article">
                             <div class="popular-article-image">
-                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article populaire">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article à venir">
                             </div>
                             <div class="popular-article-content">
-                                <h4>5 erreurs à éviter dans un projet WMS</h4>
-                                <span class="article-date">5 Oct. 2023</span>
+                                <h4>Les 3 clés d'un S&OP qui fonctionne vraiment</h4>
+                                <span class="article-date">Prochainement</span>
                             </div>
                         </div>
-                        
                         <div class="popular-article">
                             <div class="popular-article-image">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article populaire">
+                                <img src="https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Article à venir">
                             </div>
                             <div class="popular-article-content">
-                                <h4>Lean logistics : réduire les gaspillages</h4>
-                                <span class="article-date">28 Sept. 2023</span>
+                                <h4>Migration ERP : mon retour sur S4/HANA</h4>
+                                <span class="article-date">Prochainement</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="sidebar-widget newsletter">
                     <h3>Newsletter</h3>
-                    <p>Recevez chaque mois les dernières actualités supply chain directement dans votre boîte mail.</p>
-                    <form class="newsletter-form">
+                    <p>Soyez informé dès la publication d'un nouvel article. Pas de spam, seulement du contenu utile.</p>
+                    <form class="newsletter-form" id="newsletter-form">
                         <input type="email" placeholder="Votre email" required>
                         <button type="submit" class="btn btn-primary">S'inscrire</button>
                     </form>
-                </div>
-
-                 <!-- Pagination -->
-                <div class="pagination">
-                    <a href="#" class="page-link active">1</a>
-                    <a href="#" class="page-link">2</a>
-                    <a href="#" class="page-link">3</a>
-                    <a href="#" class="page-link">4</a>
-                    <a href="#" class="page-link">></a>
+                    <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
                 </div>
             </aside>
         </div>
-    </section>
+  
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Besoin d'un conseil personnalisé ?</h2>
-                <p>Je réponds à vos questions sur l'optimisation de votre supply chain lors d'un échange gratuit.</p>
-                <a href="contact.html" class="btn btn-light">Poser une question</a>
-            </div>
-        </div>
-    </section>
+        
+     <!-- CTA Section -->
+    <div class="suggestions-box">
+        <h3><i class="fas fa-lightbulb"></i> Un sujet qui vous intéresse ?</h3>
+        <p>Je rédige mes articles en fonction des questions que me posent mes clients. Si vous souhaitez que j'aborde un thème spécifique, n'hésitez pas à me le suggérer.</p>
+        <a href="contact.html" class="btn btn-outline">Proposer un sujet</a>
+    </div>
+</section>
+   
 
     <!-- Footer -->
     <footer>
@@ -195,21 +254,21 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h3><span>PLEIADES</span> Partners</h3>
-                    <p>Expert indépendant en optimisation de la supply chain et de la logistique.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    <p>Expert indépendant en optimisation de la supply chain, logistique, transport et douane.</p>
+                     <div class="social-links">
+                        <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="tel:+33643670663"><i class="fas fa-phone"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
-                     <ul>
+                    <ul>
                         <li><a href="services.html#audit">Audit & Diagnostic</a></li>
                         <li><a href="services.html#achats">Achats & Approvisionnements</a></li>
                         <li><a href="services.html#entrepot">Optimisation d'Entrepôt</a></li>
                         <li><a href="services.html#transport">Distribution, Transport & Douane</a></li>
-                        <li><a href="services.html#planification">Projet(s) de progrès & de transformation</a></li>
+                        <li><a href="services.html#planification">Projets de transformation</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -218,20 +277,20 @@
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="apropos.html">À propos</a></li>
                         <li><a href="expertise.html">Expertise</a></li>
-                        <!-- <li><a href="blog.html">Actualités</a></li> -->
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> +33 6 43 67 06  63</li>
+                        <li><i class="fas fa-phone"></i> +33 6 43 67 06 63</li>
                         <li><i class="fas fa-envelope"></i> contact@pleiades-partners.fr</li>
                         <li><i class="fas fa-map-marker-alt"></i> France - Interventions internationales</li>
                     </ul>
                 </div>
             </div>
-          <div class="footer-bottom">
+            <div class="footer-bottom">
                 <p>&copy; 2026 PLEIADES Partners. Tous droits réservés. | <a href="legal/mentions-legales.html">Mentions légales</a> | <a href="legal/politique-confidentialite.html">Politique de confidentialité</a> | <a href="legal/credits.html">Crédits</a></p>
             </div>
         </div>

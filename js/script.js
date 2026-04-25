@@ -180,42 +180,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Animation des statistiques dans la section hero
-    function animateStats() {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        
-        statNumbers.forEach(stat => {
-            // Éviter de ré-animer plusieurs fois
-            if (stat.getAttribute('data-animated') === 'true') return;
-            
-            const originalText = stat.textContent;
-            const match = originalText.match(/([+-]?)(\d+)([+%]?)/);
-            if (!match) return;
-            
-            const symbol = match[1] || '';
-            const finalValue = parseInt(match[2]);
-            const suffix = match[3] || '';
-            
-            let startValue = 0;
-            const duration = 2000;
-            const increment = finalValue / (duration / 16);
-            
-            const timer = setInterval(() => {
-                startValue += increment;
-                if (startValue >= finalValue) {
-                    stat.textContent = symbol + finalValue + suffix;
-                    clearInterval(timer);
-                } else {
-                    stat.textContent = symbol + Math.floor(startValue) + suffix;
-                }
-            }, 16);
-            
-            stat.setAttribute('data-animated', 'true');
-        });
-    }
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
     
-    // Lancer l'animation des stats quand la section est visible
-    const statsSection = document.querySelector('.hero-stats');
-    if (statsSection) {
+    statNumbers.forEach(stat => {
+        // Éviter de ré-animer plusieurs fois
+        if (stat.getAttribute('data-animated') === 'true') return;
+        
+        const originalText = stat.textContent;
+        const match = originalText.match(/([+-]?)(\d+)([+%]?)/);
+        if (!match) return;
+        
+        const symbol = match[1] || '';
+        const finalValue = parseInt(match[2]);
+        const suffix = match[3] || '';
+        
+        let startValue = 0;
+        const duration = 2000;
+        const increment = finalValue / (duration / 16);
+        
+        const timer = setInterval(() => {
+            startValue += increment;
+            if (startValue >= finalValue) {
+                stat.textContent = symbol + finalValue + suffix;
+                clearInterval(timer);
+            } else {
+                stat.textContent = symbol + Math.floor(startValue) + suffix;
+            }
+        }, 16);
+        
+        stat.setAttribute('data-animated', 'true');
+    });
+}
+
+// Lancer l'animation des stats quand la section est visible
+const statsSection = document.querySelector('.hero-stats');
+if (statsSection) {
+    // Vérifier immédiatement si la section est déjà visible
+    const checkAndAnimate = () => {
+        const rect = statsSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Si la section est déjà visible dans la fenêtre
+        if (rect.top < windowHeight - 100 && rect.bottom > 0) {
+            animateStats();
+            return true;
+        }
+        return false;
+    };
+    
+    // Tentative immédiate
+    if (!checkAndAnimate()) {
+        // Sinon, utiliser l'observateur
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -223,10 +239,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     statsObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.1 }); // Réduire le threshold pour un déclenchement plus rapide
         
         statsObserver.observe(statsSection);
     }
+}
     
     // Smooth scroll pour les ancres
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

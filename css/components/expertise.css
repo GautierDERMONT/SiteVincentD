@@ -159,8 +159,6 @@
     text-align: center;
 }
 
-
-
 .result-text {
     font-size: 0.9rem;
     color: var(--gray-color);
@@ -188,7 +186,6 @@
     position: relative;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
 }
-
 
 /* Ligne supérieure */
 .case-card__row {
@@ -248,7 +245,6 @@
     letter-spacing: 0.5px;
     padding: 4px 12px;
     border-radius: 30px;
-    
 }
 
 .case-card__content h3 {
@@ -364,6 +360,7 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
+
 /* ===== PAGE EXPERTISE - TÉMOIGNAGES CLIENTS ===== */
 
 /* Conteneur principal des témoignages */
@@ -409,19 +406,77 @@
     text-align: justify;
 }
 
-/* Marge en dessous du dernier témoignage SEULEMENT */
-.detailed-testimonials .testimonial-full:last-child {
-    margin-bottom: 40px;
-}
+
 
 .detailed-testimonials {
     padding: var(--spacing-xl) 0;
 }
 
 /* =============================================
-   RESPONSIVE ÉTUDES DE CAS
+   CTA SECTION - STYLE IDENTIQUE À SERVICES.HTML
    ============================================= */
 
+.cta-section-expertise {
+    padding-bottom: 60px;
+    padding-top: 0;
+    background-color: white;
+}
+
+.cta-section-expertise .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.cta-section-expertise .cta-inner {
+    text-align: center;
+    padding: 60px 0px;
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.cta-section-expertise h2 {
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    color: var(--dark-color);
+}
+
+.cta-section-expertise p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--gray-color);
+}
+
+.btn-primary-expertise {
+    background-color: var(--accent-color);
+    color: white;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 2px solid transparent;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.btn-primary-expertise:hover {
+    background-color: #ff9a55;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+
+
+/* RESPONSIVE ÉTUDES DE CAS */
 @media (max-width: 1100px) {
     .case-card {
         padding: 30px;
@@ -495,7 +550,7 @@
 @media (max-width: 768px) {
     /* Ajustement des cartes d'expertise pour mobile */
     .domains-grid {
-        grid-template-columns: 1fr; /* Passe de 2 colonnes à 1 colonne sur mobile */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 
@@ -504,7 +559,7 @@
     }
 
     .domain-card h3 {
-        min-height: auto; /* Supprime la hauteur minimale fixe sur mobile */
+        min-height: auto;
         font-size: 1.3rem;
     }
 
@@ -512,7 +567,6 @@
         font-size: 0.9rem;
     }
     
-
     .domain-card ul li:before {
         top: -4px;
     }
@@ -600,8 +654,6 @@
         margin-bottom: 15px;
     }
 
-   
-
     .case-list li {
         font-size: 0.85rem;
         margin-bottom: 8px;
@@ -634,6 +686,8 @@
         margin-bottom: 30px;
     }
 }
+
+
 
 @media (max-width: 375px) {
     .case-card {

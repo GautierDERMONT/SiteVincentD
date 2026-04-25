@@ -1,4 +1,8 @@
 /* =============================================
+   BLOG CSS - VERSION COMPLÈTE
+   ============================================= */
+
+/* =============================================
    LAYOUT BLOG
    ============================================= */
 
@@ -282,6 +286,258 @@
 }
 
 /* =============================================
+   STYLES BLOG - COMPLÉMENTS
+   ============================================= */
+
+/* Message d'introduction */
+.blog-intro {
+    background: #f0f7ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.blog-intro i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.blog-intro p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* Boîte de suggestions */
+.suggestions-box {
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+    margin-top: 60px;
+}
+
+.suggestions-box h3 {
+    margin-bottom: 0.5rem;
+}
+
+.suggestions-box h3 i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.suggestions-box p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Widget auteur */
+.author-widget {
+    text-align: center;
+}
+
+.author-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.author-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.author-link:hover {
+    color: var(--accent-color);
+}
+
+/* Newsletter */
+.newsletter-note {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: #999;
+}
+
+/* Bouton désactivé */
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Calendrier éditorial */
+.editorial-plan {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.plan-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    border-top: 4px solid var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.plan-status {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.plan-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.plan-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.plan-date {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* =============================================
+   STYLES PAGE ARTICLE INDIVIDUEL
+   ============================================= */
+
+.article-content-single {
+    padding: var(--spacing-xl) 0;
+}
+
+.article-wrapper {
+    display: flex;
+    gap: 60px;
+}
+
+.article-body {
+    flex: 2;
+}
+
+.article-body h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.article-body h2 {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-body h3 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-body p {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.article-body ul, 
+.article-body ol {
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+}
+
+.article-body li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    margin: 1.5rem 0;
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--light-color);
+    font-style: italic;
+}
+
+.article-sidebar {
+    flex: 1;
+}
+
+.author-box {
+    background: white;
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 100px;
+}
+
+.author-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.author-box h3 {
+    margin-bottom: 0.5rem;
+}
+
+.author-box p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* =============================================
    RESPONSIVE BLOG
    ============================================= */
 
@@ -293,11 +549,40 @@
     .articles-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .article-wrapper {
+        flex-direction: column;
+    }
+    
+    .author-box {
+        position: static;
+        margin-top: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
     .articles-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .editorial-plan {
+        display: none;
+    }
+    
+    .blog-intro {
+        padding: 1rem;
+    }
+    
+    .suggestions-box {
+        padding: 1rem;
+    }
+    
+    .article-body h1 {
+        font-size: 1.8rem;
+    }
+    
+    .article-body h2 {
+        font-size: 1.4rem;
     }
 }
 
@@ -312,5 +597,13 @@
     
     .article-card-image {
         height: 150px;
+    }
+    
+    .featured-article .article-content {
+        padding: 1.5rem;
+    }
+    
+    .article-card-content {
+        padding: 1rem;
     }
 }

@@ -202,6 +202,8 @@
     background-color: white;
     border-radius: var(--border-radius-md);
     margin-top: 40px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
+
 }
 
 .cta-section h2 {

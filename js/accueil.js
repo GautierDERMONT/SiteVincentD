@@ -24,13 +24,11 @@ function initHeroCarousel() {
         });
     }
 
-    // Appeler le préchargement dès que possible
     preloadImages();
 
     function goToSlide(n) {
-        // S'assurer que n est valide
         if (n < 0 || n >= slides.length) {
-            n = 0; // Retour au début
+            n = 0;
         }
         
         slides.forEach(slide => slide.classList.remove('active'));
@@ -38,7 +36,6 @@ function initHeroCarousel() {
         
         currentSlide = n;
         
-        // Vérifier que les éléments existent avant d'y accéder
         if (slides[currentSlide]) {
             slides[currentSlide].classList.add('active');
         }
@@ -54,7 +51,7 @@ function initHeroCarousel() {
     }
 
     function startCarousel() {
-        stopCarousel(); // Arrêter avant de redémarrer
+        stopCarousel();
         slideInterval = setInterval(nextSlide, slideDuration);
     }
 
@@ -96,51 +93,48 @@ function initHeroCarousel() {
         });
     }
 
-    // Initialiser avant de démarrer
     goToSlide(0);
     startCarousel();
 }
 
-// Animation d'entrée des logos clients en cercle lors du défilement - LOGO CENTRAL EN PREMIER
+// ===== ANIMATION DES LOGOS CLIENTS AU SCROLL =====
 function initClientLogos() {
     const clientsSection = document.querySelector('.clients');
-    const clientLogos = document.querySelectorAll('.client-logo');
+    const logoItems = document.querySelectorAll('.client-logo-item');
     
-    if (!clientsSection || clientLogos.length === 0) return;
+    console.log('initClientLogos appelée, logos trouvés:', logoItems.length);
+    
+    if (!clientsSection || logoItems.length === 0) return;
+    
+    // S'assurer que les logos sont bien cachés au départ
+    logoItems.forEach(logo => {
+        logo.style.opacity = '0';
+        logo.style.transform = 'translateY(30px) scale(0.9)';
+        logo.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        // Supprimer les anciennes animations
+        logo.style.animation = 'none';
+    });
+    
+    let animationTriggered = false;
     
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.3
+        threshold: 0.15
     };
     
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Compter les logos non-centraux pour l'indexation
-                const peripheralLogos = [...clientLogos].filter(l => !l.classList.contains('client-logo-center'));
-                const centerLogo = document.querySelector('.client-logo-center');
+            if (entry.isIntersecting && !animationTriggered) {
+                console.log('Section clients visible, déclenchement animation');
+                animationTriggered = true;
                 
-                // FAIRE APPARAÎTRE LE LOGO CENTRAL EN PREMIER
-                if (centerLogo) {
-                    // Logo central apparaît immédiatement
-                    centerLogo.style.setProperty('--logo-index', 0);
-                    centerLogo.style.animationDelay = '0s';
-                    centerLogo.classList.add('animate-logo');
-                }
-                
-                // Puis les logos périphériques apparaissent après un délai
-                peripheralLogos.forEach((logo, idx) => {
-                    const angle = idx * 60;
-                    logo.style.setProperty('--logo-index', idx);
-                    logo.style.setProperty('--logo-angle', angle);
-                    // Délai progressif pour les logos périphériques (commence après 0.3s)
-                    const delay = 0.3 + (idx * 0.1);
-                    logo.style.animationDelay = `${delay}s`;
-                    
+                // Faire apparaître les logos un par un
+                logoItems.forEach((logo, index) => {
                     setTimeout(() => {
-                        logo.classList.add('animate-logo');
-                    }, delay * 1000);
+                        logo.style.opacity = '1';
+                        logo.style.transform = 'translateY(0) scale(1)';
+                    }, index * 60);
                 });
                 
                 observer.unobserve(entry.target);
@@ -151,29 +145,17 @@ function initClientLogos() {
     observer.observe(clientsSection);
 }
 
-// Carousel des services - VERSION AMÉLIORÉE
+// Carousel des services
 function initServicesCarousel() {
-    console.log('Initialisation du carousel services'); // Debug
+    console.log('Initialisation du carousel services');
     
     const track = document.querySelector('.services-carousel-track');
     const prevBtn = document.querySelector('.carousel-arrow-prev');
     const nextBtn = document.querySelector('.carousel-arrow-next');
     const cards = document.querySelectorAll('.service-card');
-    const container = document.querySelector('.services-carousel-container');
     
-    // Vérifications approfondies
-    if (!track) {
-        console.log('Track non trouvé');
-        return;
-    }
-    
-    if (!prevBtn || !nextBtn) {
-        console.log('Boutons non trouvés');
-        return;
-    }
-    
-    if (cards.length === 0) {
-        console.log('Aucune carte trouvée');
+    if (!track || !prevBtn || !nextBtn || cards.length === 0) {
+        console.log('Carousel: éléments manquants');
         return;
     }
     
@@ -183,60 +165,35 @@ function initServicesCarousel() {
     let cardsPerView = getCardsPerView();
     let maxIndex = Math.max(0, cards.length - cardsPerView);
     
-    // Mettre à jour le nombre de cartes visibles selon la largeur de l'écran
     function getCardsPerView() {
-        if (window.innerWidth <= 768) return 1; // Mobile
-        if (window.innerWidth <= 992) return 2; // Tablette
-        return 3; // Desktop
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
     }
     
-    // Recalculer maxIndex quand cardsPerView change
     function updateMaxIndex() {
         cardsPerView = getCardsPerView();
         maxIndex = Math.max(0, cards.length - cardsPerView);
-        console.log(`cardsPerView: ${cardsPerView}, maxIndex: ${maxIndex}`);
     }
     
-    // Calculer la largeur d'une carte (incluant le gap)
     function getCardWidth() {
         if (cards.length === 0) return 0;
-        
-        // Récupérer la première carte
         const firstCard = cards[0];
-        const cardStyle = window.getComputedStyle(firstCard);
         const cardWidth = firstCard.offsetWidth;
-        
-        // Récupérer le gap du track
         const trackStyle = window.getComputedStyle(track);
         const gap = parseInt(trackStyle.gap) || 30;
-        
-        // Récupérer les marges si présentes
-        const marginLeft = parseInt(cardStyle.marginLeft) || 0;
-        const marginRight = parseInt(cardStyle.marginRight) || 0;
-        
-        return cardWidth + gap + marginLeft + marginRight;
+        return cardWidth + gap;
     }
     
-    // Mettre à jour le carousel
     function updateCarousel(index) {
-        // S'assurer que l'index est dans les limites
         updateMaxIndex();
         index = Math.max(0, Math.min(index, maxIndex));
-        
-        if (index !== currentIndex) {
-            console.log(`Déplacement de ${currentIndex} à ${index}`);
-        }
-        
         currentIndex = index;
         
-        // Calculer le déplacement
         const cardWidth = getCardWidth();
         const translateX = -currentIndex * cardWidth;
-        
-        // Appliquer la transformation
         track.style.transform = `translateX(${translateX}px)`;
         
-        // Activer/désactiver les flèches
         if (prevBtn) {
             prevBtn.disabled = currentIndex === 0;
             prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
@@ -250,80 +207,44 @@ function initServicesCarousel() {
         }
     }
     
-    // Aller à la carte suivante
     function nextSlide() {
-        console.log('Clic sur suivant');
-        updateMaxIndex();
         if (currentIndex < maxIndex) {
             updateCarousel(currentIndex + 1);
-        } else {
-            console.log('Déjà à la fin');
         }
     }
     
-    // Aller à la carte précédente
     function prevSlide() {
-        console.log('Clic sur précédent');
         if (currentIndex > 0) {
             updateCarousel(currentIndex - 1);
-        } else {
-            console.log('Déjà au début');
         }
     }
     
-    // Événements pour les flèches - avec plusieurs méthodes pour garantir
-    if (prevBtn) {
-        // Supprimer les anciens événements pour éviter les doublons
-        prevBtn.removeEventListener('click', prevSlide);
-        prevBtn.addEventListener('click', prevSlide);
-        
-        // Ajouter aussi un événement sur le bouton parent au cas où
-        prevBtn.style.cursor = 'pointer';
-    }
+    prevBtn.removeEventListener('click', prevSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.removeEventListener('click', nextSlide);
+    nextBtn.addEventListener('click', nextSlide);
     
-    if (nextBtn) {
-        nextBtn.removeEventListener('click', nextSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        nextBtn.style.cursor = 'pointer';
-    }
-    
-    // Recalculer lors du redimensionnement
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            // Si on passe en mobile, désactiver le carousel
             if (window.innerWidth <= 768) {
-                if (track) {
-                    track.style.transform = 'none';
-                }
-                // Cacher les flèches
+                if (track) track.style.transform = 'none';
                 if (prevBtn) prevBtn.style.display = 'none';
                 if (nextBtn) nextBtn.style.display = 'none';
                 return;
             } else {
-                // Afficher les flèches
                 if (prevBtn) prevBtn.style.display = 'flex';
                 if (nextBtn) nextBtn.style.display = 'flex';
             }
             
             const newCardsPerView = getCardsPerView();
-            
-            // Si le nombre de cartes par vue change
             if (newCardsPerView !== cardsPerView) {
                 cardsPerView = newCardsPerView;
                 maxIndex = Math.max(0, cards.length - cardsPerView);
-                
-                // Ajuster l'index si nécessaire
-                if (currentIndex > maxIndex) {
-                    currentIndex = Math.max(0, maxIndex);
-                }
-                
-                // Réinitialiser la position sans animation
+                if (currentIndex > maxIndex) currentIndex = Math.max(0, maxIndex);
                 track.style.transition = 'none';
                 updateCarousel(currentIndex);
-                
-                // Réactiver la transition
                 setTimeout(() => {
                     track.style.transition = 'transform 0.4s ease-in-out';
                 }, 50);
@@ -333,36 +254,32 @@ function initServicesCarousel() {
         }, 150);
     });
     
-    // Support du swipe
-    if (window.innerWidth > 768) {
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50;
-        
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const swipeDistance = touchEndX - touchStartX;
-            
-            if (Math.abs(swipeDistance) > minSwipeDistance) {
-                if (swipeDistance > 0) {
-                    prevSlide();
-                } else {
-                    nextSlide();
-                }
-            }
-        }, { passive: true });
-    }
-    
-    // Initialiser
     updateMaxIndex();
     updateCarousel(0);
+}
+
+// Lazy loading pour les images des logos
+function initLazyLoading() {
+    const logoImages = document.querySelectorAll('.client-logo-item img');
     
-    // Vérifier que les boutons sont bien cliquables
-    console.log('Carousel prêt - boutons actifs');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    logoImages.forEach(img => {
+        if (img.dataset.src) {
+            imageObserver.observe(img);
+        }
+    });
 }
 
 // Initialisation au chargement du DOM
@@ -371,12 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroCarousel();
     initClientLogos();
     initServicesCarousel();
+    initLazyLoading();
 });
 
-// Réinitialiser le carousel après un chargement dynamique éventuel
+// Réinitialiser le carousel après chargement complet
 window.addEventListener('load', () => {
     console.log('Page chargée');
-    // Réinitialiser le carousel pour s'assurer qu'il fonctionne après tout chargement
     setTimeout(() => {
         initServicesCarousel();
     }, 100);

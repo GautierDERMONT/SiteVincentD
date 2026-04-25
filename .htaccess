@@ -1,39 +1,51 @@
-# Activer le moteur de réécriture
 RewriteEngine On
 
-# Forcer HTTPS (décommentez quand vous aurez un certificat SSL)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-# Rediriger www vers non-www (ou l'inverse)
-# Version : sans www vers www
-# RewriteCond %{HTTP_HOST} ^pleiades-partners\.fr [NC]
-# RewriteRule ^(.*)$ https://www.pleiades-partners.fr/$1 [R=301,L]
-
-# Version : www vers sans www (décommentez celle-ci et commentez l'autre)
+# Rediriger www vers non-www
 RewriteCond %{HTTP_HOST} ^www\.pleiades-partners\.fr [NC]
 RewriteRule ^(.*)$ https://pleiades-partners.fr/$1 [R=301,L]
 
-# Supprimer l'extension .html des URLs
+# ===== REDIRECTIONS PRIORITAIRES =====
+
+# 1. Rediriger index.html VERS la racine /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 2. Rediriger /index (sans .html) VERS la racine /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index
+RewriteRule ^index$ / [R=301,L]
+
+# 3. Rediriger HTTP vers HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://pleiades-partners.fr/$1 [R=301,L]
+
+# ===== RÉÉCRITURE INTERNE =====
+
+# 4. Si on demande /, servir index.html en interne
+RewriteRule ^$ index.html [L]
+
+# 5. Supprimer l'extension .html en interne
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# Rediriger les anciennes URLs avec .html vers la nouvelle version (SEO)
+# 6. Rediriger les URLs avec .html vers sans extension
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
 
-# Pages personnalisées d'erreur
+# ===== PAGES D'ERREUR =====
+
 ErrorDocument 404 /404
 ErrorDocument 403 /403
 
-# Compression GZIP
+# ===== COMPRESSION =====
+
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
 
-# Cache navigateur
+# ===== CACHE =====
+
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/jpg "access plus 1 year"

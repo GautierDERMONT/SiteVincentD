@@ -1,5 +1,5 @@
 // Initialisation de EmailJS avec votre clé publique
-emailjs.init('PM9XqztJbWOXqRK0G');
+emailjs.init('nprmHBAUc0DVWQCsT');
 
 // Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', function() {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             // Envoyer l'email via EmailJS
-            emailjs.send('service_ycu98z2', 'template_tcjkkjk', formData)
+            emailjs.send('service_a1nwg2w', 'template_8ad2e0w', formData)
                 .then(function() {
                     showModal('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.', 'success');
                     
