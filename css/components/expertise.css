@@ -280,6 +280,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+    align-items: flex-start;  
 }
 
 .case-grid__col {

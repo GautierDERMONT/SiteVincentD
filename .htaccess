@@ -48,12 +48,18 @@ ErrorDocument 403 /403
 
 <IfModule mod_expires.c>
     ExpiresActive On
+    
+    # Images (cache 1 an - OK car elles changent rarement)
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
+    
+    # CSS et JS : PAS DE CACHE (modifications visibles immédiatement)
+    ExpiresByType text/css "access plus 0 seconds"
+    ExpiresByType application/javascript "access plus 0 seconds"
+    
+    # HTML : PAS DE CACHE
     ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
