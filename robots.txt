@@ -1,14 +1,6 @@
 User-agent: *
 Allow: /
 
-# Exclure les dossiers système (pas les pages)
-Disallow: /css/
-Disallow: /js/
-Disallow: /fonts/
-Disallow: /favicon/
-
-# Sitemap
 Sitemap: https://pleiades-partners.fr/sitemap.xml
 
-# Délai d'exploration (secondes)
-Crawl-delay: 5
+
