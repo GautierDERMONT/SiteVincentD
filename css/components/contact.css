@@ -67,18 +67,25 @@
 .social-links2 {
     display: flex;
     gap: 50px;
-   margin-top: 50px;
-   justify-content: center;
+    margin-top: 50px;
+    justify-content: center;
 }
 
 .social-link2 {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
+    gap: 12px;
+    padding: 10px 24px;
     background-color: var(--light-color);
     border-radius: var(--border-radius-sm);
     color: var(--dark-color);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-link2 i {
+    font-size: 1.4rem;
 }
 
 .social-link2:hover {

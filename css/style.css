@@ -516,6 +516,56 @@ html {
     }
 }
 
+
+
+/* ===== BOUTON ÉTUDES DE CAS ===== */
+.btn-cas-client {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 5px 28px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-cas-client i {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.btn-cas-client:hover {
+    background: var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+}
+
+.btn-cas-client:hover i {
+    transform: translateX(3px);
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+}
+
+.plus {
+    font-size: 1.5em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-cas-client {
+        font-size: 0.9rem;
+    }
+}
+
 /* ===== SUPPRESSION DES OUTLINES ===== */
 button, button:focus, button:active, button:visited,
 .btn, .btn:focus, .btn:active, .btn:visited,

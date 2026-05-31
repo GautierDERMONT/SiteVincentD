@@ -36,13 +36,13 @@
 
 .profile-title {
     font-size: 1.2rem;
-    color: var(--primary-color);
+    color: var(--dark-color);
     font-weight: 600;
     margin-bottom: 1.5rem;
 }
 
 .profile-contact {
-    margin-top: 3rem;
+    margin-top: 4rem;
     background-color: var(--light-color);
     padding: 1.5rem;
     border-radius: var(--border-radius-sm);
@@ -144,6 +144,72 @@
     background: rgba(0, 86, 179, 0.1);
     border-radius: 50%;
     transition: all 0.2s ease;
+}
+
+
+/* ===== PROFIL NAME & LINKEDIN ALIGNMENT ===== */
+.profile-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.linkedin-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.linkedin-inline img {
+    width: 32px;
+    height: 32px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.linkedin-name {
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkedin-name:hover {
+    color: #0077be;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-name {
+        gap: 8px;
+    }
+    
+    .linkedin-inline {
+        margin-top: 3px;
+    }
+    
+    .linkedin-inline img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-name {
+        gap: 6px;
+    }
+    
+    .linkedin-inline {
+        margin-top: 2px;
+    }
+    
+    .linkedin-inline img {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* ===== TIMELINE ===== */
@@ -465,10 +531,10 @@
     .profile-image { width: 60% !important; max-width: 300px !important; }
     .about-main { padding: 40px 0; }
     .about-profile { gap: 30px; }
-    .profile-content h2 { font-size: 1.6rem; }
+    .profile-content h2 { font-size: 1.6rem; gap: 12px; }
     .profile-title { font-size: 1rem; margin-bottom: 0.75rem; }
     .profile-content p { font-size: 0.95rem; text-align: justify; hyphens: auto; }
-    .profile-contact { padding: 1rem; margin-top: 1.25rem; }
+    .profile-contact { padding: 1rem; margin-top: 2.5rem; }
     .profile-contact p { font-size: 0.85rem; align-items: flex-start; margin-bottom: 0.75rem; }
     .profile-contact i { margin-top: 2px; }
     .timeline { padding-left: 1.2rem; }

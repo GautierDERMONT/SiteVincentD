@@ -124,3 +124,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }, stepTime);
     }
 });
+// Accordéon fluide - avec scroll automatique
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+        
+        header.addEventListener('click', () => {
+            // Fermer les autres
+            accordionItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Force le recalcul
+            if (!item.classList.contains('active')) {
+                void content.offsetHeight;
+            }
+            
+            item.classList.toggle('active');
+            
+            // Optionnel : remonte un peu la page si l'accordéon est en bas de l'écran
+            if (item.classList.contains('active')) {
+                const rect = header.getBoundingClientRect();
+                if (rect.top < 100) {
+                    window.scrollBy({ top: rect.top - 80, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+});
