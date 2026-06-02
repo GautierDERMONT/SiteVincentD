@@ -547,7 +547,7 @@
     background: var(--light-color);
     border: none;
     border-radius: 10px;
-    padding: 10px 24px;
+    padding: 10px 15px;
     font-size: 0.95rem;
     font-weight: 500;
     cursor: pointer;
