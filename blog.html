@@ -75,7 +75,7 @@
                         <span class="article-category">Retour d'expérience</span>
                     </div>
                     <div class="article-content">
-                        <span class="article-date"><i class="far fa-calendar"></i> Mars 2026</span>
+                        <span class="article-date" ><i class="far fa-calendar"></i> Mars 2026</span>
                         <h2>Audit Supply Chain : la méthode qui a fait ses preuves</h2>
                         <p>Découvrez ma méthodologie d'audit en 5 étapes, issue de 25 ans de terrain. Un diagnostic complet pour identifier les vrais leviers de performance de votre chaîne logistique.</p>
                         <div class="article-tags">
@@ -96,7 +96,7 @@
             <aside class="blog-sidebar">
                 <div class="sidebar-widget author-widget">
                     <div class="author-avatar">
-                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy" >
                     </div>
                     <h3>Vincent DERMONT</h3>
                     <p class="author-title">Expert Senior Supply Chain</p>
@@ -117,74 +117,86 @@
             </aside>
         </div>
 
-                        <!-- SECTION RECHERCHE + FILTRE -->
-                <div class="blog-search-section">
-                    <div class="search-filters-wrapper">
-                        <div class="search-input-container">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="blog-search-input" placeholder="Rechercher un article (titre, tag, mot-clé...)" autocomplete="off">
-                        </div>
-                        <div class="filter-dropdown">
-                            <button class="filter-btn" id="filter-toggle-btn">
-                                <i class="fas fa-sliders-h"></i> 
-                                <span id="active-filter-count" class="filter-count-badge" style="display:none;">0</span>
+                     <!-- SECTION RECHERCHE + FILTRE -->
+            <div class="blog-search-section">
+                <div class="search-filters-wrapper">
+                    <div class="search-input-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="blog-search-input" placeholder="Rechercher un article (titre, tag, mot-clé...)" autocomplete="off">
+                    </div>
+                    <div class="filter-dropdown">
+                        <button class="filter-btn" id="filter-toggle-btn">
+                            <i class="fas fa-sliders-h"></i>
+                            <span class="filter-notification-badge" id="filter-notification-badge" style="display:none;">0</span>
+                        </button>
+                    <div class="dropdown-menu" id="filter-dropdown-menu">
+                        <div class="filter-header">
+                            <span class="filter-title">Filtrer par catégorie</span>
+                            <button class="filter-clear-all" id="clear-all-filters">
+                                <i class="fas fa-undo-alt"></i>
                             </button>
-                            <div class="dropdown-menu" id="filter-dropdown-menu">
-                                <div class="filter-option active-category" data-category="all">
-                                    <i class="fas fa-list-ul"></i> Toutes les catégories
-                                </div>
-                                <div class="filter-divider"></div>
-                                <div class="filter-option" data-category="Audit">
-                                    <i class="fas fa-chart-line"></i> Audit
-                                </div>
-                                <div class="filter-option" data-category="Diagnostic">
-                                    <i class="fas fa-stethoscope"></i> Diagnostic
-                                </div>
-                                <div class="filter-option" data-category="Méthodologie">
-                                    <i class="fas fa-cogs"></i> Méthodologie
-                                </div>
-                                <div class="filter-option" data-category="Projet">
-                                    <i class="fas fa-project-diagram"></i> Projet
-                                </div>
-                                <div class="filter-option" data-category="WMS">
-                                    <i class="fas fa-warehouse"></i> WMS
-                                </div>
-                                <div class="filter-option" data-category="ERP">
-                                    <i class="fas fa-database"></i> ERP
-                                </div>
-                                <div class="filter-option" data-category="RSE">
-                                    <i class="fas fa-leaf"></i> RSE
-                                </div>
-                                <div class="filter-option" data-category="Transport">
-                                    <i class="fas fa-truck"></i> Transport
-                                </div>
-                                <div class="filter-option" data-category="Douane">
-                                    <i class="fas fa-passport"></i> Douane
-                                </div>
-                                <div class="filter-divider"></div>
-                                <div class="filter-option clear-filter-btn" data-category="clear">
-                                    <i class="fas fa-times-circle"></i> Effacer tous les filtres
-                                </div>
-                            </div>
+                        </div>
+                        <div class="filter-divider"></div>
+                        
+                        <!-- Tous les filtres avec scroll -->
+                        <div class="filter-scroll-container">
+                            <label class="filter-checkbox-option" data-category="Audit">
+                                <input type="checkbox" value="Audit"> 
+                                <span>Audit</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Diagnostic">
+                                <input type="checkbox" value="Diagnostic"> 
+                                <span>Diagnostic</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Méthodologie">
+                                <input type="checkbox" value="Méthodologie"> 
+                                <span>Méthodologie</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Projet">
+                                <input type="checkbox" value="Projet"> 
+                                <span>Projet</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="WMS">
+                                <input type="checkbox" value="WMS"> 
+                                <span>WMS</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="ERP">
+                                <input type="checkbox" value="ERP"> 
+                                <span>ERP</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="RSE">
+                                <input type="checkbox" value="RSE"> 
+                                <span>RSE</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Transport">
+                                <input type="checkbox" value="Transport"> 
+                                <span>Transport</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Douane">
+                                <input type="checkbox" value="Douane"> 
+                                <span>Douane</span>
+                            </label>
                         </div>
                     </div>
-                    <div class="search-stats">
-                        <span id="results-count">4</span> article(s) trouvé(s)
                     </div>
                 </div>
+                <div class="search-stats">
+                    <span id="results-count">4</span> résultat(s) trouvé(s)
+                </div>
+            </div>
 
         <div class="container">
             <!-- Grille d'articles -->
                 <div class="articles-grid">
                     <article class="article-card">
                         <div class="article-card-image">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Audit supply chain">
+                            <img src="blog/images/Image-VDe1.webp" alt="Audit supply chain" loading="lazy">
                             <span class="article-category">Méthodologie</span>
                         </div>
                         <div class="article-card-content">
                             <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
                             <h3>Audit supply chain : les 5 points à vérifier en priorité</h3>
-                            <p>Un audit ne sert à rien s'il n'identifie pas les vrais leviers. Voici ma grille de lecture issue de 25 ans de terrain.</p>
+                            <p class="article">Un audit ne sert à rien s'il n'identifie pas les vrais leviers. Voici ma grille de lecture issue de 25 ans de terrain.</p>
                             <div class="article-tags">
                                 <span class="tag">Audit</span>
                                 <span class="tag">Diagnostic</span>
@@ -194,13 +206,13 @@
 
                     <article class="article-card">
                         <div class="article-card-image">
-                            <img src="https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet WMS">
+                            <img src="blog/images/event.webp" Projet WMS">
                             <span class="article-category">Projet</span>
                         </div>
                         <div class="article-card-content">
                             <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
                             <h3>Projet WMS : les erreurs qui coûtent cher (et comment les éviter)</h3>
-                            <p>Retour sur 3 missions où le WMS était mal paramétré, et les solutions que j'ai mises en place.</p>
+                            <p class="article">Retour sur 3 missions où le WMS était mal paramétré, et les solutions que j'ai mises en place.</p>
                             <div class="article-tags">
                                 <span class="tag">WMS</span>
                                 <span class="tag">ERP</span>
@@ -210,13 +222,13 @@
 
                     <article class="article-card">
                         <div class="article-card-image">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Supply chain durable">
+                            <img src="blog/images/etudiant1.webp" alt="Supply chain durable" loading="lazy">
                             <span class="article-category">Développement Durable</span>
                         </div>
                         <div class="article-card-content">
                             <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
                             <h3>Supply chain responsable : 4 actions concrètes qui fonctionnent</h3>
-                            <p>RSE sans greenwashing : ce que j'ai réellement mis en place chez mes clients avec des résultats mesurables.</p>
+                            <p class="article">RSE sans greenwashing : ce que j'ai réellement mis en place chez mes clients avec des résultats mesurables.</p>
                             <div class="article-tags">
                                 <span class="tag">RSE</span>
                                 <span class="tag">Écologie</span>
@@ -224,24 +236,32 @@
                         </div>
                     </article>
 
-                    <article class="article-card">
-                        <div class="article-card-image">
-                            <img src="https://images.unsplash.com/photo-1556740734-4fef88ca4c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Transport et douane">
-                            <span class="article-category">Transport</span>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
-                            <h3>Transport international : comment j'ai réduit les coûts de 15%</h3>
-                            <p>Appel d'offres, renégociation des contrats, optimisation des modes : ma méthode pas à pas.</p>
-                            <div class="article-tags">
-                                <span class="tag">Transport</span>
-                                <span class="tag">Douane</span>
-                            </div>
-                        </div>
-                    </article>
+
                 </div>
 
         </div>
+
+        <!-- SIDEBAR MOBILE (visible uniquement sur mobile, après les articles) -->
+<aside class="blog-sidebar-mobile">
+    <div class="sidebar-widget author-widget">
+        <div class="author-avatar">
+            <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+        </div>
+        <h3>Vincent DERMONT</h3>
+        <p class="author-title">Expert Senior Supply Chain</p>
+        <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
+        <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="sidebar-widget newsletter">
+        <h3>Newsletter</h3>
+        <form class="newsletter-form" id="newsletter-form-mobile">
+            <input type="email" placeholder="Votre email" required>
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        </form>
+        <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
+    </div>
+</aside>
   
 
         
@@ -303,5 +323,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/blog.js"></script>
+
 </body>
 </html>
