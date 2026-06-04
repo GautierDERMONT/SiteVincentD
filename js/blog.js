@@ -16,15 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mapping des catégories de filtre vers les valeurs possibles (catégorie principale + tags)
     const filterMapping = {
-        'Audit': ['Audit'],
-        'Diagnostic': ['Diagnostic'],
-        'Méthodologie': ['Méthodologie'],
-        'Projet': ['Projet'],
-        'WMS': ['WMS'],
-        'ERP': ['ERP'],
-        'RSE': ['RSE', 'Écologie', 'Développement Durable'],
-        'Transport': ['Transport'],
-        'Douane': ['Douane']
+        'Interview': ['Interview'],
+        'filtre1': ['filtre1'],
+        'filtre2': ['filtre2'],
+        'filtre3': ['filtre3'],
     };
     
     // Récupérer tous les articles
@@ -37,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const titleElem = article.querySelector('h3');
                 const title = titleElem ? titleElem.innerText : '';
                 
-                // Récupérer le contenu du paragraphe
                 const paragraphElem = article.querySelector('p');
                 const paragraph = paragraphElem ? paragraphElem.innerText : '';
                 
@@ -48,15 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const articleCategory = categorySpan ? categorySpan.innerText.trim() : '';
                 
                 article.setAttribute('data-title', title);
-                article.setAttribute('data-paragraph', paragraph);  // NOUVEAU
+                article.setAttribute('data-paragraph', paragraph);
                 article.setAttribute('data-tags', JSON.stringify(tags));
                 article.setAttribute('data-tags-string', tags.join(' '));
                 article.setAttribute('data-category', articleCategory);
-                
-                console.log("Article chargé :", title, "| Paragraphe:", paragraph.substring(0, 50) + "...");
             });
-        } else {
-            console.error("articlesGrid non trouvé - Vérifiez la classe .articles-grid dans le HTML");
         }
     }
     
@@ -65,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const hasActiveFilters = activeCategories.size > 0;
         
         if (filterToggleBtn) {
-            // Le bouton est actif si : des filtres sont sélectionnés OU le dropdown est ouvert
             if (hasActiveFilters || isDropdownOpen) {
                 filterToggleBtn.classList.add('active-filter');
             } else {
@@ -95,21 +84,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return false;
     }
     
- // Mettre à jour l'affichage
+    // Mettre à jour l'affichage
     function filterAndSearch() {
-        if (!allArticles.length) {
-            console.log("Aucun article à filtrer");
-            return;
-        }
+        if (!allArticles.length) return;
         
         let visibleCount = 0;
         const searchTerm = currentSearchTerm.toLowerCase().trim();
         
-        console.log("Recherche :", searchTerm, "| Catégories actives :", Array.from(activeCategories));
-        
         allArticles.forEach(article => {
             const title = article.getAttribute('data-title') || '';
-            const paragraph = article.getAttribute('data-paragraph') || '';  // NOUVEAU
+            const paragraph = article.getAttribute('data-paragraph') || '';
             const tagsString = article.getAttribute('data-tags-string') || '';
             let articleTags = [];
             try {
@@ -124,13 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
             let searchMatch = true;
             if (searchTerm !== '') {
                 const titleLower = title.toLowerCase();
-                const paragraphLower = paragraph.toLowerCase();  // NOUVEAU
+                const paragraphLower = paragraph.toLowerCase();
                 const tagsLower = tagsString.toLowerCase();
                 const categoryLower = articleCategory.toLowerCase();
                 
-                // Ajout du paragraphe dans la recherche
                 searchMatch = titleLower.includes(searchTerm) || 
-                            paragraphLower.includes(searchTerm) ||  // NOUVEAU
+                            paragraphLower.includes(searchTerm) ||
                             tagsLower.includes(searchTerm) ||
                             categoryLower.includes(searchTerm);
             }
@@ -149,8 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCheckboxStates();
         updateFilterButtonAppearance();
     }
-        
-
     
     // Animation des cartes
     function animateFilteredCards() {
@@ -171,15 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (filterCount > 0) {
                 notificationBadge.textContent = filterCount;
                 notificationBadge.style.display = 'flex';
-                notificationBadge.setAttribute('data-count', filterCount);
-                
                 notificationBadge.classList.add('badge-update');
                 setTimeout(() => {
                     notificationBadge.classList.remove('badge-update');
                 }, 300);
             } else {
                 notificationBadge.style.display = 'none';
-                notificationBadge.removeAttribute('data-count');
             }
         }
     }
@@ -219,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (filterDropdown) {
             filterDropdown.classList.add('show');
         }
-        // Ajouter une classe au parent pour le style CSS
         const filterDropdownContainer = document.querySelector('.filter-dropdown');
         if (filterDropdownContainer) {
             filterDropdownContainer.classList.add('open');
@@ -248,6 +225,74 @@ document.addEventListener('DOMContentLoaded', function() {
             openDropdown();
         }
     }
+
+    // === GESTION DU SCROLL : permet le scroll interne et ferme le dropdown quand on scroll la page ===
+    let lastScrollY = window.scrollY;
+    let scrollTimeout = null;
+    
+    // NE PAS fermer le dropdown si on scrolle à l'intérieur du conteneur
+    function handlePageScroll() {
+        if (!isDropdownOpen) return;
+        
+        const currentScrollY = window.scrollY;
+        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+        
+        // Seuil de 10px pour éviter les fermetures accidentelles
+        if (scrollDelta > 10) {
+            closeDropdown();
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = null;
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+    }
+    
+    // Version optimisée pour les performances
+    let ticking = false;
+    function onScrollHandler() {
+        if (!isDropdownOpen) return;
+        
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handlePageScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    // Ajouter l'écouteur de scroll sur la fenêtre
+    window.addEventListener('scroll', onScrollHandler);
+    
+    // === PERMETTRE LE SCROLL À L'INTÉRIEUR DU DROPDOWN SANS FERMER ===
+    if (filterDropdown) {
+        const scrollContainer = filterDropdown.querySelector('.filter-scroll-container');
+        
+        if (scrollContainer) {
+            // S'assurer que le conteneur est scrollable
+            scrollContainer.style.overflowY = 'auto';
+            scrollContainer.style.maxHeight = 'calc(2.5 * 42px)'; // déjà dans le CSS
+            
+            // Empêcher la propagation du scroll de la roulette quand on est dans le conteneur
+            scrollContainer.addEventListener('wheel', function(e) {
+                const isAtTop = scrollContainer.scrollTop === 0;
+                const isAtBottom = scrollContainer.scrollHeight - scrollContainer.scrollTop === scrollContainer.clientHeight;
+                
+                // Si on est en haut et qu'on scroll vers le haut, ou en bas et qu'on scroll vers le bas
+                if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+                    // On laisse le scroll passer à la page (ne rien faire)
+                    return;
+                }
+                
+                // Sinon, on laisse le scroll se faire à l'intérieur sans fermer le dropdown
+                // On n'appelle pas e.preventDefault() pour que le scroll fonctionne normalement
+                // On arrête juste la propagation pour ne pas déclencher la fermeture
+                e.stopPropagation();
+            });
+        }
+    }
     
     // Événement de recherche
     if (searchInput) {
@@ -264,10 +309,16 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleDropdown();
         });
         
-        document.addEventListener('click', function() {
+        // Fermer le dropdown lorsqu'on clique ailleurs sur la page
+        document.addEventListener('click', function(e) {
+            // Ne pas fermer si on clique sur le bouton filtre ou à l'intérieur du dropdown
+            if (filterToggleBtn.contains(e.target) || filterDropdown.contains(e.target)) {
+                return;
+            }
             closeDropdown();
         });
         
+        // Empêcher la fermeture quand on clique à l'intérieur du dropdown
         filterDropdown.addEventListener('click', function(e) {
             e.stopPropagation();
         });
@@ -298,3 +349,47 @@ document.addEventListener('DOMContentLoaded', function() {
     filterAndSearch();
 });
 
+// Ajouter la croix de suppression dans la barre de recherche
+function addClearSearchButton() {
+    const searchContainer = document.querySelector('.search-input-container');
+    const searchInput = document.getElementById('blog-search-input');
+    
+    if (!searchContainer || !searchInput) return;
+    
+    if (searchContainer.querySelector('.search-clear-btn')) return;
+    
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'search-clear-btn';
+    clearBtn.setAttribute('aria-label', 'Effacer la recherche');
+    clearBtn.innerHTML = '<i class="fas fa-times-circle"></i>';
+    searchContainer.appendChild(clearBtn);
+    
+    function toggleClearButton() {
+        if (searchInput.value.length > 0) {
+            clearBtn.classList.add('visible');
+        } else {
+            clearBtn.classList.remove('visible');
+        }
+    }
+    
+    searchInput.addEventListener('input', toggleClearButton);
+    
+    clearBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+        toggleClearButton();
+        
+        if (typeof filterAndSearchArticles === 'function') {
+            filterAndSearchArticles();
+        } else if (typeof updateBlogSearch === 'function') {
+            updateBlogSearch();
+        }
+    });
+    
+    toggleClearButton();
+}
+
+document.addEventListener('DOMContentLoaded', addClearSearchButton);

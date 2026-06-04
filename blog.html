@@ -71,23 +71,28 @@
                 <!-- ARTICLE VEDETTE -->
                 <div class="featured-article">
                     <div class="article-image">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Optimisation d'entrepôt">
-                        <span class="article-category">Retour d'expérience</span>
+                        <img src="blog/images/etudiant.webp" alt="Optimisation d'entrepôt">
+                        <span class="article-category">tag relief</span>
                     </div>
                     <div class="article-content">
-                        <span class="article-date" ><i class="far fa-calendar"></i> Mars 2026</span>
-                        <h2>Audit Supply Chain : la méthode qui a fait ses preuves</h2>
-                        <p>Découvrez ma méthodologie d'audit en 5 étapes, issue de 25 ans de terrain. Un diagnostic complet pour identifier les vrais leviers de performance de votre chaîne logistique.</p>
-                        <div class="article-tags">
-                            <span class="tag">Audit</span>
-                            <span class="tag">Diagnostic</span>
-                            <span class="tag">Méthodologie</span>
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i> date</span>
+                            <span class="article-author"></i>Vincent Dermont</span>
                         </div>
-                        <a href="./blog/articles/audit-supply-chain.html" class="btn btn-outline">Lire l'article complet</a>
+                        <h2>Titre ################################################</h2>
+                        <p>paragraphe ############################################################################################### </p>
+                        <div class="article-footer">
+                            <div class="article-tags">
+                                <span class="tag">tag</span>
+                                <span class="tag">tag</span>
+                                <span class="tag">tag</span>
+                            </div>
+                            <span class="reading-time"><i class="far fa-clock"></i>8 min</span>
+                        </div>
+                        <a href="./blog/articles/1.html" class="btn btn-outline" style="margin-top: 1.5rem; display: inline-block;">Lire l'article complet</a>
                     </div>
                 </div>
 
-                
                 <!-- Section "Sujets proposés" -->
                 
             </div>
@@ -96,7 +101,7 @@
             <aside class="blog-sidebar">
                 <div class="sidebar-widget author-widget">
                     <div class="author-avatar">
-                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy" >
+                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
                     </div>
                     <h3>Vincent DERMONT</h3>
                     <p class="author-title">Expert Senior Supply Chain</p>
@@ -104,10 +109,8 @@
                     <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-
                 <div class="sidebar-widget newsletter">
                     <h3>Newsletter</h3>
-            
                     <form class="newsletter-form" id="newsletter-form">
                         <input type="email" placeholder="Votre email" required>
                         <button type="submit" class="btn btn-primary">S'inscrire</button>
@@ -117,21 +120,21 @@
             </aside>
         </div>
 
-                     <!-- SECTION RECHERCHE + FILTRE -->
-            <div class="blog-search-section">
-                <div class="search-filters-wrapper">
-                    <div class="search-input-container">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="blog-search-input" placeholder="Rechercher un article (titre, tag, mot-clé...)" autocomplete="off">
-                    </div>
-                    <div class="filter-dropdown">
-                        <button class="filter-btn" id="filter-toggle-btn">
-                            <i class="fas fa-sliders-h"></i>
-                            <span class="filter-notification-badge" id="filter-notification-badge" style="display:none;">0</span>
-                        </button>
+        <!-- SECTION RECHERCHE + FILTRE -->
+        <div class="blog-search-section">
+            <div class="search-filters-wrapper">
+                <div class="search-input-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="blog-search-input" placeholder="Rechercher un article (titre, tag, mot-clé...)" autocomplete="off">
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-btn" id="filter-toggle-btn">
+                        <i class="fas fa-sliders-h"></i>
+                        <span class="filter-notification-badge" id="filter-notification-badge" style="display:none;">0</span>
+                    </button>
                     <div class="dropdown-menu" id="filter-dropdown-menu">
                         <div class="filter-header">
-                            <span class="filter-title">Filtrer par catégorie</span>
+                            <span class="filter-title">Filtrer</span>
                             <button class="filter-clear-all" id="clear-all-filters">
                                 <i class="fas fa-undo-alt"></i>
                             </button>
@@ -140,139 +143,131 @@
                         
                         <!-- Tous les filtres avec scroll -->
                         <div class="filter-scroll-container">
-                            <label class="filter-checkbox-option" data-category="Audit">
-                                <input type="checkbox" value="Audit"> 
-                                <span>Audit</span>
+                            <label class="filter-checkbox-option" data-category="Interview">
+                                <input type="checkbox" value="Interview"> 
+                                <span>Interview</span>
                             </label>
-                            <label class="filter-checkbox-option" data-category="Diagnostic">
-                                <input type="checkbox" value="Diagnostic"> 
-                                <span>Diagnostic</span>
+                            <label class="filter-checkbox-option" data-category="filtre1">
+                                <input type="checkbox" value="filtre1"> 
+                                <span>filtre1</span>
                             </label>
-                            <label class="filter-checkbox-option" data-category="Méthodologie">
-                                <input type="checkbox" value="Méthodologie"> 
-                                <span>Méthodologie</span>
+                            <label class="filter-checkbox-option" data-category="filtre2">
+                                <input type="checkbox" value="filtre2"> 
+                                <span>filtre2</span>
                             </label>
-                            <label class="filter-checkbox-option" data-category="Projet">
-                                <input type="checkbox" value="Projet"> 
-                                <span>Projet</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="WMS">
-                                <input type="checkbox" value="WMS"> 
-                                <span>WMS</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="ERP">
-                                <input type="checkbox" value="ERP"> 
-                                <span>ERP</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="RSE">
-                                <input type="checkbox" value="RSE"> 
-                                <span>RSE</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="Transport">
-                                <input type="checkbox" value="Transport"> 
-                                <span>Transport</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="Douane">
-                                <input type="checkbox" value="Douane"> 
-                                <span>Douane</span>
+                            <label class="filter-checkbox-option" data-category="filtre3">
+                                <input type="checkbox" value="filtre3"> 
+                                <span>filtre3</span>
                             </label>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="search-stats">
-                    <span id="results-count">4</span> résultat(s) trouvé(s)
                 </div>
             </div>
+            <div class="search-stats">
+                <span id="results-count"></span> résultat(s) trouvé(s)
+            </div>
+        </div>
 
         <div class="container">
             <!-- Grille d'articles -->
-                <div class="articles-grid">
-                    <article class="article-card">
-                        <div class="article-card-image">
-                            <img src="blog/images/Image-VDe1.webp" alt="Audit supply chain" loading="lazy">
-                            <span class="article-category">Méthodologie</span>
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-card-image">
+                        <img src="blog/images/Image-VDe.webp" alt="Audit supply chain" loading="lazy">
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i>15 mars 2026</span>
+                            <span class="article-author"></i>Vincent Dermont</span>
                         </div>
-                        <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
-                            <h3>Audit supply chain : les 5 points à vérifier en priorité</h3>
-                            <p class="article">Un audit ne sert à rien s'il n'identifie pas les vrais leviers. Voici ma grille de lecture issue de 25 ans de terrain.</p>
+                        <h3>Audit Supply Chain : Les 5 points critiques à vérifier</h3>
+                        <p class="article-excerpt">Découvrez comment réaliser un audit complet de votre supply chain pour identifier les axes d'amélioration et générer des économies rapides.</p>
+                        <div class="article-footer">
                             <div class="article-tags">
                                 <span class="tag">Audit</span>
-                                <span class="tag">Diagnostic</span>
+                                <span class="tag">Optimisation</span>
                             </div>
+                            <span class="reading-time"><i class="far fa-clock"></i>6 min</span>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="article-card">
-                        <div class="article-card-image">
-                            <img src="blog/images/event.webp" Projet WMS">
-                            <span class="article-category">Projet</span>
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-card-image">
+                        <img src="blog/images/event.webp" alt="Interview expert supply chain" loading="lazy">
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i>28 février 2026</span>
+                            <span class="article-author"></i>Vincent Dermont</span>
                         </div>
-                        <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
-                            <h3>Projet WMS : les erreurs qui coûtent cher (et comment les éviter)</h3>
-                            <p class="article">Retour sur 3 missions où le WMS était mal paramétré, et les solutions que j'ai mises en place.</p>
+                        <h3>Interview : Les défis du transport international en 2026</h3>
+                        <p class="article-excerpt">Retour d'expérience sur les mutations du secteur du transport et les solutions pour anticiper les perturbations.</p>
+                        <div class="article-footer">
                             <div class="article-tags">
-                                <span class="tag">WMS</span>
-                                <span class="tag">ERP</span>
+                                <span class="tag">Interview</span>
+                                <span class="tag">Transport</span>
                             </div>
+                            <span class="reading-time"><i class="far fa-clock"></i>10 min</span>
                         </div>
-                    </article>
+                    </div>
+                </article>
 
-                    <article class="article-card">
-                        <div class="article-card-image">
-                            <img src="blog/images/etudiant1.webp" alt="Supply chain durable" loading="lazy">
-                            <span class="article-category">Développement Durable</span>
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-card-image">
+                        <img src="blog/images/etudiant.webp" alt="Supply chain durable" loading="lazy">
+                    </div>
+                    <div class="article-card-content">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="far fa-calendar"></i>10 février 2026</span>
+                            <span class="article-author"></i>Vincent Dermont</span>
                         </div>
-                        <div class="article-card-content">
-                            <span class="article-date"><i class="far fa-calendar"></i> À venir</span>
-                            <h3>Supply chain responsable : 4 actions concrètes qui fonctionnent</h3>
-                            <p class="article">RSE sans greenwashing : ce que j'ai réellement mis en place chez mes clients avec des résultats mesurables.</p>
+                        <h3>Supply Chain Durable : Comment concilier performance et RSE</h3>
+                        <p class="article-excerpt">Les bonnes pratiques pour réduire l'empreinte carbone de votre chaîne logistique sans sacrifier la performance opérationnelle.</p>
+                        <div class="article-footer">
                             <div class="article-tags">
                                 <span class="tag">RSE</span>
-                                <span class="tag">Écologie</span>
+                                <span class="tag">Durabilité</span>
                             </div>
+                            <span class="reading-time"><i class="far fa-clock"></i>7 min</span>
                         </div>
-                    </article>
-
-
-                </div>
-
+                    </div>
+                </article>
+            </div>
         </div>
 
         <!-- SIDEBAR MOBILE (visible uniquement sur mobile, après les articles) -->
-<aside class="blog-sidebar-mobile">
-    <div class="sidebar-widget author-widget">
-        <div class="author-avatar">
-            <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+        <aside class="blog-sidebar-mobile">
+            <div class="sidebar-widget author-widget">
+                <div class="author-avatar">
+                    <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+                </div>
+                <h3>Vincent DERMONT</h3>
+                <p class="author-title">Expert Senior Supply Chain</p>
+                <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
+                <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="sidebar-widget newsletter">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form" id="newsletter-form-mobile">
+                    <input type="email" placeholder="Votre email" required>
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                </form>
+                <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
+            </div>
+        </aside>
+
+
+        <div class="suggestions-box">
+            <h3><i class="fas fa-lightbulb"></i> Un sujet qui vous intéresse ?</h3>
+            <p>Je rédige mes articles en fonction des questions que me posent mes clients. Si vous souhaitez que j'aborde un thème spécifique, n'hésitez pas à me le suggérer.</p>
+            <a href="contact.html" class="btn btn-outline">Proposer un sujet</a>
         </div>
-        <h3>Vincent DERMONT</h3>
-        <p class="author-title">Expert Senior Supply Chain</p>
-        <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
-        <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="sidebar-widget newsletter">
-        <h3>Newsletter</h3>
-        <form class="newsletter-form" id="newsletter-form-mobile">
-            <input type="email" placeholder="Votre email" required>
-            <button type="submit" class="btn btn-primary">S'inscrire</button>
-        </form>
-        <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
-    </div>
-</aside>
-  
-
-        
-     <!-- CTA Section -->
-    <div class="suggestions-box">
-        <h3><i class="fas fa-lightbulb"></i> Un sujet qui vous intéresse ?</h3>
-        <p>Je rédige mes articles en fonction des questions que me posent mes clients. Si vous souhaitez que j'aborde un thème spécifique, n'hésitez pas à me le suggérer.</p>
-        <a href="contact.html" class="btn btn-outline">Proposer un sujet</a>
-    </div>
-</section>
-   
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -281,7 +276,7 @@
                 <div class="footer-col">
                     <h3><span>PLEIADES</span> Partners</h3>
                     <p>Expert indépendant en optimisation de la supply chain, logistique, transport et douane.</p>
-                     <div class="social-links">
+                    <div class="social-links">
                         <a href="https://www.linkedin.com/company/pleiades-partners/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="tel:+33643670663"><i class="fas fa-phone"></i></a>
                         <a href="mailto:contact@pleiades-partners.fr"><i class="fas fa-envelope"></i></a>
@@ -324,6 +319,5 @@
 
     <script src="js/script.js"></script>
     <script src="js/blog.js"></script>
-
 </body>
-</html>
+</html> 

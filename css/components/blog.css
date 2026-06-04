@@ -21,7 +21,6 @@
 .blog-sidebar {
     flex: 1;
     align-self: flex-start;
-   
 }
 
 /* =============================================
@@ -32,17 +31,20 @@
     margin-top: 40px;
 }
 
+
+
+
 /* =============================================
    ARTICLE VEDETTE
    ============================================= */
 .featured-article {
+    max-width: 735px !important;
     margin-bottom: 60px;
     background: white;
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
 }
-
 .article-image {
     position: relative;
     height: 300px;
@@ -69,15 +71,7 @@
 }
 
 .article-content {
-    padding: 2.3rem;
-}
-
-.article-date {
-    color: var(--gray-color);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 1rem;
+    padding: 1.2rem;
 }
 
 .article-content h2 {
@@ -100,6 +94,118 @@
 }
 
 /* =============================================
+   META INFORMATION (Auteur + Date)
+   ============================================= */
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.article-date {
+    color: var(--gray-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    line-height: 1;
+    margin-top: 3px;
+}
+
+.article-date i {
+    font-size: 0.85rem;
+    width: 14px;
+    height: 14px;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-author {
+    color: var(--gray-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.article-author i {
+    font-size: 0.85rem;
+    width: 14px;
+    height: 14px;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =============================================
+   ARTICLE FOOTER (Tags + Temps de lecture)
+   ============================================= */
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.article-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.reading-time {
+    color: var(--gray-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.reading-time i {
+    font-size: 0.85rem;
+    width: 14px;
+    height: 14px;
+    color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pour l'article vedette (featured) */
+.featured-article .article-content .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.featured-article .article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eaeef2;
+}
+
+/* =============================================
    TRONCATURE DES TEXTES
    ============================================= */
 .article-card-content h3,
@@ -112,6 +218,7 @@
     word-break: break-word;
     line-height: 1.4;
     max-height: calc(1.4em * 2);
+    
 }
 
 .article-card-content p,
@@ -124,7 +231,14 @@
     word-break: break-word;
     line-height: 1.5;
     max-height: calc(1.5em * 3);
+    text-align: justify;
+
 }
+.article-card-content p{
+    font-size: 1rem;
+    text-align: justify;
+}
+
 
 /* =============================================
    GRILLE DES ARTICLES
@@ -157,7 +271,6 @@
 
 .article-card-image img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -196,7 +309,6 @@
 
 .author-avatar img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -258,10 +370,11 @@
     border-radius: 15px;
     box-shadow: var(--shadow-sm);
     border: 1px solid #eaeef2;
-    gap: 20px;
+    
 }
 
 .search-input-container {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -282,6 +395,51 @@
     font-family: var(--font-secondary);
     background: transparent;
     outline: none;
+}
+
+/* Croix de suppression - style identique à filter-clear-all */
+.search-clear-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    font-size: 0.75rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    width: 28px;
+    height: 28px;
+}
+
+.search-clear-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-clear-btn i {
+    color: var(--danger-color);
+}
+
+
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 768px) {
+    .search-clear-btn {
+        right: 12px;
+    }
+    
+    .search-clear-btn i {
+        font-size: 1rem;
+    }
 }
 
 #blog-search-input::placeholder {
@@ -349,7 +507,7 @@
 }
 
 .filter-scroll-container {
-    max-height: calc(3 * 42px);
+    max-height: calc(2.5 * 42px);
     overflow-y: auto;
     padding: 5px 0;
 }
@@ -358,10 +516,7 @@
     width: 5px;
 }
 
-.filter-scroll-container::-webkit-scrollbar-track {
-    background: #eef2f6;
-    border-radius: 10px;
-}
+
 
 .filter-scroll-container::-webkit-scrollbar-thumb {
     background: var(--primary-color);
@@ -385,6 +540,7 @@
     align-items: center;
     gap: 6px;
 }
+
 
 .filter-clear-all i {
     font-size: 1rem;
@@ -555,7 +711,7 @@
     padding: 1.5rem;
     text-align: center;
     max-width: 800px;
-    margin: 60px auto 0;
+    margin: 30px auto 0;
 }
 
 .suggestions-box h3 {
@@ -716,7 +872,7 @@
     
     .search-filters-wrapper {
         flex-wrap: wrap;
-        gap: 12px;
+        
     }
     
     .search-input-container {
@@ -742,6 +898,7 @@
         margin-right: 3.5%;
         margin-left: 3.5%;
     }
+    
 }
 
 @media (max-width: 576px) {
@@ -751,6 +908,10 @@
     
     .article-image {
         height: 200px;
+    }
+
+    .article-footer{
+        margin-bottom: 0rem;
     }
     
     .article-card-image {
@@ -778,7 +939,45 @@
     .filter-btn {
         padding: 8px 15px;
     }
+
+    /* CORRECTION : Garder date à gauche et auteur à droite sur mobile */
+    .article-meta {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* CORRECTION : Garder tags à gauche et temps de lecture à droite */
+    .article-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .reading-time {
+        white-space: nowrap;
+    }
 }
 
+/* Pour les très petits mobiles (moins de 450px) on passe en colonne */
+@media (max-width: 450px) {
+    .article-meta {
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .article-footer {
+       
+        gap: 10px;
+    }
+    
+    .reading-time {
+        white-space: normal;
+    }
 
-
+    .article-footer{
+        margin-bottom: 0rem;
+    }
+}
