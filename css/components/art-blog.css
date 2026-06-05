@@ -1,0 +1,424 @@
+/* blog-article.css - Style spécifique pour la page d'article du blog */
+
+/* ============================================= */
+/* CONTENEUR PRINCIPAL DE L'ARTICLE */
+/* ============================================= */
+.blog-article-main .article-container {
+    max-width: 900px;
+    margin: 150px auto 0 auto;
+    padding: 2rem 20px;
+    min-height: 60vh;
+}
+
+/* ============================================= */
+/* LIEN DE RETOUR */
+/* ============================================= */
+.blog-article-main .back-link {
+    display: inline-block;
+    margin-bottom: 0rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    margin-left: 1rem;
+}
+
+.blog-article-main .back-link i {
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.blog-article-main .back-link:hover {
+    color: var(--light-accent-color);
+}
+
+.blog-article-main .back-link:hover i {
+    transform: translateX(-5px);
+}
+
+/* ============================================= */
+/* IMAGE MISE EN AVANT */
+/* ============================================= */
+.blog-article-main .article-featured-image {
+    margin: 1.5rem auto 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 750px;  
+    width: 85%;        
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.blog-article-main .article-featured-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* ============================================= */
+/* MÉTADONNÉES DE L'ARTICLE (HEADER) */
+/* ============================================= */
+.blog-article-main .article-meta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 1rem auto 0.5rem auto;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaeef2;
+    max-width: 750px;
+    width: 85%;
+}
+
+.blog-article-main .article-meta-left {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.blog-article-main .article-date,
+.blog-article-main .article-author {
+    color: #6c757d;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-article-main .article-date i,
+.blog-article-main .article-author i {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+}
+
+.blog-article-main .reading-time {
+    color: #6c757d;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-article-main .reading-time i {
+    color: var(--accent-color);
+}
+
+/* ============================================= */
+/* TAGS DE L'ARTICLE */
+/* ============================================= */
+.blog-article-main .article-tags-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0.5rem auto 1.5rem auto;
+    max-width: 750px;
+    width: 85%;
+}
+
+.blog-article-main .article-tags-header .tag {
+    background-color: #f0f2f5;
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ============================================= */
+/* TITRE PRINCIPAL */
+/* ============================================= */
+.blog-article-main .article-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1a2a3a;
+    font-weight: 700;
+    max-width: 750px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================= */
+/* ZONE DE CONTENU RÉDACTIONNEL */
+/* ============================================= */
+.blog-article-main .article-content {
+    max-width: 750px;
+    width: 85%;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #1a2a3a;
+}
+
+.blog-article-main .article-content h2 {
+    font-size: 1.64rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #0056b3;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+.blog-article-main .article-content h3 {
+    font-size: 1.2rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.blog-article-main .article-content p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.blog-article-main .article-content ul,
+.blog-article-main .article-content ol {
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+}
+
+.blog-article-main .article-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================= */
+/* SECTION "DÉCOUVREZ AUSSI" */
+/* ============================================= */
+.blog-article-main .also-read {
+    background: #f8f9fa;
+    padding: 3rem 0;
+    margin-top: 3rem;
+}
+
+.blog-article-main .also-read-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.blog-article-main .also-read-header h3 {
+    font-size: 1.8rem;
+    color: #1a2a3a;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.blog-article-main .also-read-header h3 i {
+    color: var(--primary-color, #0056b3);
+    margin-right: 10px;
+}
+
+.blog-article-main .also-read-header p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.blog-article-main .suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.blog-article-main .suggestion-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-article-main .suggestion-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================= */
+/* TRONCATURE DES TEXTES DANS LES SUGGESTIONS */
+/* ============================================= */
+
+/* Troncature du titre (h4) - max 2 lignes */
+.blog-article-main .suggestion-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    line-height: 1.4;
+    max-height: calc(1.4em * 2);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    color: #1a2a3a;
+}
+
+/* Troncature de la description (p) - max 3 lignes */
+.blog-article-main .suggestion-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    line-height: 1.5;
+    max-height: calc(1.5em * 3);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: justify;
+}
+
+/* ============================================= */
+/* MÉTADONNÉES DES SUGGESTIONS */
+/* ============================================= */
+.blog-article-main .suggestion-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    
+}
+
+.blog-article-main .suggestion-date{
+     margin-top: 3px;
+}
+   
+
+.blog-article-main .suggestion-date,
+.blog-article-main .suggestion-author {
+    color: #6c757d;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-article-main .suggestion-date i,
+.blog-article-main .suggestion-author i {
+    font-size: 0.7rem;
+    color: var(--primary-color);
+}
+
+.blog-article-main .suggestion-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eaeef2;
+}
+
+.blog-article-main .suggestion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.blog-article-main .suggestion-tags .tag {
+    background-color: #f0f2f5;
+    color: var(--dark-color);
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.blog-article-main .suggestion-reading-time {
+    color: #6c757d;
+    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.blog-article-main .suggestion-reading-time i {
+    color: var(--accent-color);
+    font-size: 0.7rem;
+}
+
+/* ============================================= */
+/* RESPONSIVE */
+/* ============================================= */
+@media (max-width: 992px) {
+    .blog-article-main .article-container {
+        margin-top: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-article-main .article-container {
+        margin-top: 150px;
+        padding: 1rem 15px;
+    }
+    
+    .blog-article-main .article-featured-image,
+    .blog-article-main .article-meta-header,
+    .blog-article-main .article-tags-header,
+    .blog-article-main .article-content {
+        width: 95%;
+    }
+    
+    .blog-article-main .article-content h1 {
+        width: 95%;
+        font-size: 1.6rem;
+    }
+    
+    .blog-article-main .article-content h2 {
+        font-size: 1.4rem;
+        padding-left: 0.75rem;
+    }
+    
+    .blog-article-main .article-meta-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .blog-article-main .also-read-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .blog-article-main .suggestions-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-article-main .article-container {
+        margin-top: 150px;
+        padding: 0.75rem 12px;
+    }
+    
+    .blog-article-main .back-link {
+        margin-right: 1.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .blog-article-main .article-content {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .blog-article-main .article-content h2 {
+        font-size: 1.3rem;
+        margin-top: 1.8rem;
+    }
+    
+    .blog-article-main .suggestion-meta {
+        gap: 5px;
+    }
+    
+    .blog-article-main .suggestion-footer {
+        align-items: flex-start;
+    }
+}

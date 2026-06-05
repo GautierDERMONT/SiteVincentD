@@ -7,7 +7,9 @@
 @import url('components/home.css');
 @import url('components/services.css');
 @import url('components/legal.css');
+@import url('components/art-blog.css');
 @import url('fonts.css');
+
 
 /* ===== RESET & VARIABLES ===== */
 * {
