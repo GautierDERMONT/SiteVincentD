@@ -60,42 +60,19 @@
         </div>
         <div class="container">
             <h1>Articles & Interviews</h1>
-            <p>Conseils terrain, retours d'expérience et bonnes pratiques pour optimiser votre supply chain</p>
-        </div>
+        <p>Découvrez mes analyses, retours d'expérience et conseils terrain pour améliorer la performance de votre supply chain.</p>
+      </div>
     </section>
 
     <!-- Blog Section -->
     <section class="blog">
         <div class="container">
-            <div class="blog-content">
-                <!-- ARTICLE VEDETTE -->
-                <div class="featured-article">
-                    <div class="article-image">
-                        <img src="blog/images/etudiant.webp" alt="Optimisation d'entrepôt">
-                        <span class="article-category">tag relief</span>
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-date"><i class="far fa-calendar"></i> date</span>
-                            <span class="article-author"></i>Vincent Dermont</span>
-                        </div>
-                        <h2>Titre ################################################</h2>
-                        <p>paragraphe ############################################################################################### </p>
-                        <div class="article-footer">
-                            <div class="article-tags">
-                                <span class="tag">tag</span>
-                                <span class="tag">tag</span>
-                                <span class="tag">tag</span>
-                            </div>
-                            <span class="reading-time"><i class="far fa-clock"></i>8 min</span>
-                        </div>
-                        <a href="./blog/articles/1.html" class="btn btn-outline" style="margin-top: 1.5rem; display: inline-block;">Lire l'article complet</a>
-                    </div>
-                </div>
-
-                <!-- Section "Sujets proposés" -->
-                
+        <div class="blog-content">
+            <!-- ARTICLE VEDETTE - chargé dynamiquement -->
+            <div id="featured-article-container">
+                <!-- Le contenu sera injecté ici par JS -->
             </div>
+        </div>
 
             <!-- Sidebar -->
             <aside class="blog-sidebar">
@@ -106,7 +83,7 @@
                     <h3>Vincent DERMONT</h3>
                     <p class="author-title">Expert Senior Supply Chain</p>
                     <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
-                    <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <a href="apropos.html" class="author-link">En savoir plus </i></a>
                 </div>
 
                 <div class="sidebar-widget newsletter">
@@ -136,28 +113,26 @@
                         <div class="filter-header">
                             <span class="filter-title">Filtrer</span>
                             <button class="filter-clear-all" id="clear-all-filters">
-                                <i class="fas fa-undo-alt"></i>
+                                <i class="fas fa-undo-alt"></i> 
                             </button>
                         </div>
                         <div class="filter-divider"></div>
-                        
-                        <!-- Tous les filtres avec scroll -->
                         <div class="filter-scroll-container">
+                            <label class="filter-checkbox-option" data-category="Audit">
+                                <input type="checkbox" value="Audit"> 
+                                <span>Audit</span>
+                            </label>
+                            <label class="filter-checkbox-option" data-category="Optimisation">
+                                <input type="checkbox" value="Optimisation"> 
+                                <span>Optimisation</span>
+                            </label>
                             <label class="filter-checkbox-option" data-category="Interview">
                                 <input type="checkbox" value="Interview"> 
                                 <span>Interview</span>
                             </label>
-                            <label class="filter-checkbox-option" data-category="filtre1">
-                                <input type="checkbox" value="filtre1"> 
-                                <span>filtre1</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="filtre2">
-                                <input type="checkbox" value="filtre2"> 
-                                <span>filtre2</span>
-                            </label>
-                            <label class="filter-checkbox-option" data-category="filtre3">
-                                <input type="checkbox" value="filtre3"> 
-                                <span>filtre3</span>
+                            <label class="filter-checkbox-option" data-category="Transport">
+                                <input type="checkbox" value="Transport"> 
+                                <span>Transport</span>
                             </label>
                         </div>
                     </div>
@@ -170,77 +145,9 @@
 
         <div class="container">
             <!-- Grille d'articles -->
-            <div class="articles-grid">
-                <!-- Article 1 -->
-            <a href="./blog/articles/2.html">
-                <article class="article-card">
-                    <div class="article-card-image">
-                        <img src="blog/images/Image-VDe.webp" alt="Audit supply chain" loading="lazy">
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-meta">
-                            <span class="article-date"><i class="far fa-calendar"></i>15 mars 2026</span>
-                            <span class="article-author"></i>Vincent Dermont</span>
-                        </div>
-                        <h3>Audit Supply Chain : Les 5 points critiques à vérifier</h3>
-                        <p class="article-excerpt">Découvrez comment réaliser un audit complet de votre supply chain pour identifier les axes d'amélioration et générer des économies rapides.</p>
-                        <div class="article-footer">
-                            <div class="article-tags">
-                                <span class="tag">Audit</span>
-                                <span class="tag">Optimisation</span>
-                            </div>
-                            <span class="reading-time"><i class="far fa-clock"></i>6 min</span>
-                        </div>
-                    </div>
-                </article>
-            </a>
-                <!-- Article 2 -->
-            <a href="./blog/articles/2.html">
-                <article class="article-card">
-                    <div class="article-card-image">
-                        <img src="blog/images/event.webp" alt="Interview expert supply chain" loading="lazy">
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-meta">
-                            <span class="article-date"><i class="far fa-calendar"></i>28 février 2026</span>
-                            <span class="article-author"></i>Vincent Dermont</span>
-                        </div>
-                        <h3>Interview : Les défis du transport international en 2026</h3>
-                        <p class="article-excerpt">Retour d'expérience sur les mutations du secteur du transport et les solutions pour anticiper les perturbations.</p>
-                        <div class="article-footer">
-                            <div class="article-tags">
-                                <span class="tag">Interview</span>
-                                <span class="tag">Transport</span>
-                            </div>
-                            <span class="reading-time"><i class="far fa-clock"></i>10 min</span>
-                        </div>
-                    </div>
-                </article>
-            </a>
-                <!-- Article 3 -->
-            <a href="./blog/articles/2.html">
-                <article class="article-card">
-                    <div class="article-card-image">
-                        <img src="blog/images/etudiant.webp" alt="Supply chain durable" loading="lazy">
-                    </div>
-                    <div class="article-card-content">
-                        <div class="article-meta">
-                            <span class="article-date"><i class="far fa-calendar"></i>10 février 2026</span>
-                            <span class="article-author"></i>Vincent Dermont</span>
-                        </div>
-                        <h3>Supply Chain Durable : Comment concilier performance et RSE</h3>
-                        <p class="article-excerpt">Les bonnes pratiques pour réduire l'empreinte carbone de votre chaîne logistique sans sacrifier la performance opérationnelle.</p>
-                        <div class="article-footer">
-                            <div class="article-tags">
-                                <span class="tag">RSE</span>
-                                <span class="tag">Durabilité</span>
-                            </div>
-                            <span class="reading-time"><i class="far fa-clock"></i>7 min</span>
-                        </div>
-                    </div>
-                </article>
-            </a>
-            </div>
+            <div class="articles-grid" id="articles-grid">
+        </div>
+
         </div>
 
         <!-- SIDEBAR MOBILE (visible uniquement sur mobile, après les articles) -->
@@ -252,7 +159,7 @@
                 <h3>Vincent DERMONT</h3>
                 <p class="author-title">Expert Senior Supply Chain</p>
                 <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
-                <a href="apropos.html" class="author-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                <a href="apropos.html" class="author-link">En savoir plus</i></a>
             </div>
 
             <div class="sidebar-widget newsletter">
@@ -264,7 +171,6 @@
                 <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
             </div>
         </aside>
-
 
         <div class="suggestions-box">
             <h3><i class="fas fa-lightbulb"></i> Un sujet qui vous intéresse ?</h3>
@@ -321,7 +227,10 @@
         </div>
     </footer>
 
+    <script src="blog/js/articles-data.js"></script>
+    <script src="blog/js/articles.js"></script>
     <script src="js/script.js"></script>
     <script src="js/blog.js"></script>
+   
 </body>
-</html> 
+</html>

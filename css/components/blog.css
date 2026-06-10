@@ -29,6 +29,8 @@
 .blog-sidebar-mobile {
     display: none;
     margin-top: 40px;
+    clear: both;
+    width: 100%;
 }
 
 
@@ -53,7 +55,7 @@
 
 .article-image img {
     width: 100%;
-    height: 100%;
+   
     object-fit: cover;
 }
 
@@ -241,6 +243,15 @@
     margin-bottom: 20px;
 }
 
+/* Style pour le surlignage des recherches */
+.search-highlight {
+    background-color: var(--light-accent-color);
+
+}
+
+
+
+
 
 /* =============================================
    GRILLE DES ARTICLES
@@ -260,6 +271,8 @@
     box-shadow: var(--shadow-md);
     transition: var(--transition-fast);
 }
+
+
 
 .article-card:hover {
     transform: translateY(-5px);
@@ -825,6 +838,20 @@
     margin-bottom: 1rem;
 }
 
+@keyframes subtlePop {
+    0% {
+        transform: scale(0.98);
+        opacity: 0.95;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.pop-animation {
+    animation: subtlePop 0.10s ease-out;
+}
 
 /* =============================================
    RESPONSIVE
@@ -861,19 +888,12 @@
 @media (max-width: 768px) {
     .articles-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .article-body h1 {
-        font-size: 1.8rem;
-    }
-    
-    .article-body h2 {
-        font-size: 1.4rem;
+        min-height: auto;
+        margin-bottom: 0;
     }
     
     .search-filters-wrapper {
         flex-wrap: wrap;
-        
     }
     
     .search-input-container {
@@ -888,23 +908,45 @@
     
     .search-stats {
         font-size: 0.8rem;
+        margin-bottom: 15px;
     }
     
+    /* CORRECTION PRINCIPALE : réinitialiser la sidebar mobile */
     .blog-sidebar-mobile {
-        margin-top: -10px;
+        display: block !important;
+        float: none !important;
+        clear: both !important;
+        margin-top: 20px !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+        position: relative !important;
+        width: 100% !important;
     }
     
+    /* Supprimer les marges négatives qui créent des espaces */
     .sidebar-widget {
         margin-bottom: 20px;
         margin-right: 3.5%;
         margin-left: 3.5%;
     }
     
+    /* Éviter les espaces vides après la grille d'articles */
+    .articles-grid:after {
+        display: none;
+    }
+    
+    .blog-search-section {
+        margin-bottom: 25px;
+    }
 }
 
 @media (max-width: 576px) {
     .blog {
         padding: 60px 0;
+    }
+
+    .blog-sidebar-mobile {
+        margin-top: 15px !important;
     }
     
     .article-image {

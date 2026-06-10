@@ -14,21 +14,165 @@ document.addEventListener('DOMContentLoaded', function() {
     let allArticles = [];
     let isDropdownOpen = false;
     
-    // Mapping des catégories de filtre vers les valeurs possibles (catégorie principale + tags)
+    // Mapping des catégories de filtre vers les valeurs possibles
     const filterMapping = {
         'Interview': ['Interview'],
-        'filtre1': ['filtre1'],
-        'filtre2': ['filtre2'],
-        'filtre3': ['filtre3'],
+        'Audit': ['Audit'],
+        'Optimisation': ['Optimisation'],
+        'Transport': ['Transport'],
     };
+    
+    // =============================================
+    // FONCTIONS DE SURlIGNAGE
+    // =============================================
+    
+    // Fonction pour surligner le texte recherché
+    function highlightText(text, searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            return text;
+        }
+        
+        // Échapper les caractères spéciaux regex
+        const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escapedTerm})`, 'gi');
+        
+        return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+    }
+    
+    // Fonction pour restaurer le contenu original
+    function restoreOriginalContent() {
+        allArticles.forEach(articleLink => {
+            const article = articleLink.querySelector('.article-card');
+            if (!article) return;
+            
+            // Restaurer le titre
+            const titleElem = article.querySelector('h3');
+            if (titleElem && titleElem.getAttribute('data-original-title')) {
+                titleElem.innerHTML = titleElem.getAttribute('data-original-title');
+            }
+            
+            // Restaurer la description
+            const descElem = article.querySelector('p');
+            if (descElem && descElem.getAttribute('data-original-desc')) {
+                descElem.innerHTML = descElem.getAttribute('data-original-desc');
+            }
+            
+            // Restaurer les tags
+            const tagElems = article.querySelectorAll('.tag');
+            tagElems.forEach(tagElem => {
+                if (tagElem.getAttribute('data-original-tag')) {
+                    tagElem.innerHTML = tagElem.getAttribute('data-original-tag');
+                }
+            });
+        });
+    }
+    
+    // Fonction pour appliquer le surlignage aux articles visibles
+    function applyHighlightToVisibleArticles(searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') return;
+        
+        // Parcourir les articles visibles
+        const visibleArticles = allArticles.filter(articleLink => articleLink.style.display !== 'none');
+        
+        visibleArticles.forEach(articleLink => {
+            const article = articleLink.querySelector('.article-card');
+            if (!article) return;
+            
+            // Surligner dans le titre
+            const titleElem = article.querySelector('h3');
+            if (titleElem) {
+                const originalTitle = titleElem.getAttribute('data-original-title') || titleElem.innerText;
+                const highlightedTitle = highlightText(originalTitle, searchTerm);
+                if (highlightedTitle !== originalTitle) {
+                    titleElem.innerHTML = highlightedTitle;
+                }
+            }
+            
+            // Surligner dans la description
+            const descElem = article.querySelector('p');
+            if (descElem) {
+                const originalDesc = descElem.getAttribute('data-original-desc') || descElem.innerText;
+                const highlightedDesc = highlightText(originalDesc, searchTerm);
+                if (highlightedDesc !== originalDesc) {
+                    descElem.innerHTML = highlightedDesc;
+                }
+            }
+            
+            // Surligner dans les tags
+            const tagElems = article.querySelectorAll('.tag');
+            tagElems.forEach(tagElem => {
+                const originalTag = tagElem.getAttribute('data-original-tag') || tagElem.innerText;
+                const highlightedTag = highlightText(originalTag, searchTerm);
+                if (highlightedTag !== originalTag) {
+                    tagElem.innerHTML = highlightedTag;
+                }
+            });
+        });
+    }
+    
+    // Animation pop des articles
+    function animatePopArticles() {
+        const visibleArticles = allArticles.filter(articleLink => articleLink.style.display !== 'none');
+        
+        visibleArticles.forEach((articleLink, index) => {
+            const article = articleLink.querySelector('.article-card');
+            if (article) {
+                article.classList.add('pop-animation');
+                setTimeout(() => {
+                    article.classList.remove('pop-animation');
+                }, 400);
+            }
+        });
+    }
+    
+    // Vérifier si un article correspond aux catégories/filtres sélectionnés
+    function matchesSelectedFilters(articleCategory, articleTags, title, paragraph) {
+        if (activeCategories.size === 0) return true;
+        
+        const titleLower = title.toLowerCase();
+        const paragraphLower = paragraph.toLowerCase();
+        
+        for (let filter of activeCategories) {
+            const filterLower = filter.toLowerCase();
+            const filterTerms = filterMapping[filter] || [filter];
+            
+            // Vérification dans la catégorie
+            if (filterTerms.includes(articleCategory)) {
+                return true;
+            }
+            
+            // Vérification dans les tags
+            for (let term of filterTerms) {
+                if (articleTags.includes(term)) {
+                    return true;
+                }
+            }
+            
+            // Vérification dans le TITRE
+            if (titleLower.includes(filterLower)) {
+                return true;
+            }
+            
+            // Vérification dans la DESCRIPTION
+            if (paragraphLower.includes(filterLower)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
     
     // Récupérer tous les articles
     function initArticles() {
         if (articlesGrid) {
-            allArticles = Array.from(articlesGrid.querySelectorAll('.article-card'));
+            // Récupérer les liens <a> qui contiennent les articles
+            allArticles = Array.from(articlesGrid.querySelectorAll('.article-card-link'));
             console.log("Articles trouvés :", allArticles.length);
             
-            allArticles.forEach(article => {
+            allArticles.forEach(articleLink => {
+                const article = articleLink.querySelector('.article-card');
+                if (!article) return;
+                
                 const titleElem = article.querySelector('h3');
                 const title = titleElem ? titleElem.innerText : '';
                 
@@ -46,6 +190,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 article.setAttribute('data-tags', JSON.stringify(tags));
                 article.setAttribute('data-tags-string', tags.join(' '));
                 article.setAttribute('data-category', articleCategory);
+                
+                // Sauvegarder le contenu HTML original
+                if (titleElem && !titleElem.getAttribute('data-original-title')) {
+                    titleElem.setAttribute('data-original-title', titleElem.innerHTML);
+                }
+                if (paragraphElem && !paragraphElem.getAttribute('data-original-desc')) {
+                    paragraphElem.setAttribute('data-original-desc', paragraphElem.innerHTML);
+                }
+                article.querySelectorAll('.tag').forEach(tagElem => {
+                    if (!tagElem.getAttribute('data-original-tag')) {
+                        tagElem.setAttribute('data-original-tag', tagElem.innerHTML);
+                    }
+                });
             });
         }
     }
@@ -63,35 +220,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Vérifier si un article correspond aux catégories/filtres sélectionnés
-    function matchesSelectedFilters(articleCategory, articleTags) {
-        if (activeCategories.size === 0) return true;
-        
-        for (let filter of activeCategories) {
-            const filterTerms = filterMapping[filter] || [filter];
-            
-            if (filterTerms.includes(articleCategory)) {
-                return true;
-            }
-            
-            for (let term of filterTerms) {
-                if (articleTags.includes(term)) {
-                    return true;
-                }
-            }
-        }
-        
-        return false;
-    }
-    
-    // Mettre à jour l'affichage
-    function filterAndSearch() {
+    function filterAndSearch(isFilterClick = false) {
         if (!allArticles.length) return;
         
         let visibleCount = 0;
         const searchTerm = currentSearchTerm.toLowerCase().trim();
         
-        allArticles.forEach(article => {
+        // D'abord, masquer/afficher les articles
+        allArticles.forEach(articleLink => {
+            const article = articleLink.querySelector('.article-card');
+            if (!article) return;
+            
             const title = article.getAttribute('data-title') || '';
             const paragraph = article.getAttribute('data-paragraph') || '';
             const tagsString = article.getAttribute('data-tags-string') || '';
@@ -103,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             const articleCategory = article.getAttribute('data-category') || '';
             
-            const categoryMatch = matchesSelectedFilters(articleCategory, articleTags);
+            const categoryMatch = matchesSelectedFilters(articleCategory, articleTags, title, paragraph);
             
             let searchMatch = true;
             if (searchTerm !== '') {
@@ -119,30 +258,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const shouldShow = categoryMatch && searchMatch;
-            article.style.display = shouldShow ? '' : 'none';
+            articleLink.style.display = shouldShow ? '' : 'none';
             if (shouldShow) visibleCount++;
         });
+        
+        // Restaurer le contenu original puis appliquer le surlignage
+        restoreOriginalContent();
+        if (searchTerm !== '') {
+            applyHighlightToVisibleArticles(currentSearchTerm);
+        }
         
         if (resultsCountSpan) {
             resultsCountSpan.textContent = visibleCount;
         }
         
-        animateFilteredCards();
+        // PLUS DE RÉORGANISATION DE LA GRILLE - on garde l'ordre original
+        
+        // Si c'est un clic sur filtre, on anime les articles
+        if (isFilterClick) {
+            animatePopArticles();
+        }
+        
         updateNotificationBadge();
         updateCheckboxStates();
         updateFilterButtonAppearance();
     }
-    
-    // Animation des cartes
-    function animateFilteredCards() {
-        const visibleCards = allArticles.filter(article => article.style.display !== 'none');
-        visibleCards.forEach((card) => {
-            card.classList.add('filter-highlight');
-            setTimeout(() => {
-                card.classList.remove('filter-highlight');
-            }, 400);
-        });
-    }
+   
     
     // Mise à jour de la bulle de notification
     function updateNotificationBadge() {
@@ -178,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             activeCategories.add(category);
         }
-        filterAndSearch();
+        filterAndSearch(true);
     }
     
     // Réinitialisation complète
@@ -187,8 +328,8 @@ document.addEventListener('DOMContentLoaded', function() {
         activeCategories.clear();
         if (searchInput) searchInput.value = '';
         updateCheckboxStates();
-        filterAndSearch();
-        closeDropdown();
+        filterAndSearch(true);
+        
     }
     
     // Ouvrir le dropdown
@@ -226,18 +367,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // === GESTION DU SCROLL : permet le scroll interne et ferme le dropdown quand on scroll la page ===
+    // === GESTION DU SCROLL ===
     let lastScrollY = window.scrollY;
     let scrollTimeout = null;
     
-    // NE PAS fermer le dropdown si on scrolle à l'intérieur du conteneur
     function handlePageScroll() {
         if (!isDropdownOpen) return;
         
         const currentScrollY = window.scrollY;
         const scrollDelta = Math.abs(currentScrollY - lastScrollY);
         
-        // Seuil de 10px pour éviter les fermetures accidentelles
         if (scrollDelta > 10) {
             closeDropdown();
             if (scrollTimeout) {
@@ -249,7 +388,6 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollY = currentScrollY;
     }
     
-    // Version optimisée pour les performances
     let ticking = false;
     function onScrollHandler() {
         if (!isDropdownOpen) return;
@@ -263,32 +401,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Ajouter l'écouteur de scroll sur la fenêtre
     window.addEventListener('scroll', onScrollHandler);
     
-    // === PERMETTRE LE SCROLL À L'INTÉRIEUR DU DROPDOWN SANS FERMER ===
     if (filterDropdown) {
         const scrollContainer = filterDropdown.querySelector('.filter-scroll-container');
         
         if (scrollContainer) {
-            // S'assurer que le conteneur est scrollable
             scrollContainer.style.overflowY = 'auto';
-            scrollContainer.style.maxHeight = 'calc(2.5 * 42px)'; // déjà dans le CSS
+            scrollContainer.style.maxHeight = 'calc(2.5 * 42px)';
             
-            // Empêcher la propagation du scroll de la roulette quand on est dans le conteneur
             scrollContainer.addEventListener('wheel', function(e) {
                 const isAtTop = scrollContainer.scrollTop === 0;
                 const isAtBottom = scrollContainer.scrollHeight - scrollContainer.scrollTop === scrollContainer.clientHeight;
                 
-                // Si on est en haut et qu'on scroll vers le haut, ou en bas et qu'on scroll vers le bas
                 if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-                    // On laisse le scroll passer à la page (ne rien faire)
                     return;
                 }
                 
-                // Sinon, on laisse le scroll se faire à l'intérieur sans fermer le dropdown
-                // On n'appelle pas e.preventDefault() pour que le scroll fonctionne normalement
-                // On arrête juste la propagation pour ne pas déclencher la fermeture
                 e.stopPropagation();
             });
         }
@@ -298,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
             currentSearchTerm = e.target.value;
-            filterAndSearch();
+            filterAndSearch(false);
         });
     }
     
@@ -309,21 +438,17 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleDropdown();
         });
         
-        // Fermer le dropdown lorsqu'on clique ailleurs sur la page
         document.addEventListener('click', function(e) {
-            // Ne pas fermer si on clique sur le bouton filtre ou à l'intérieur du dropdown
             if (filterToggleBtn.contains(e.target) || filterDropdown.contains(e.target)) {
                 return;
             }
             closeDropdown();
         });
         
-        // Empêcher la fermeture quand on clique à l'intérieur du dropdown
         filterDropdown.addEventListener('click', function(e) {
             e.stopPropagation();
         });
         
-        // Gestion des cases à cocher
         const checkboxes = filterDropdown.querySelectorAll('.filter-checkbox-option input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', function(e) {
@@ -333,20 +458,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Gestion du bouton "Tout désactiver"
         if (clearAllBtn) {
             clearAllBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                activeCategories.clear();
-                updateCheckboxStates();
-                filterAndSearch();
+                resetAllFilters();
             });
         }
     }
     
     // Initialisation
     initArticles();
-    filterAndSearch();
+    filterAndSearch(false);
 });
 
 // Ajouter la croix de suppression dans la barre de recherche
