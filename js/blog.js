@@ -514,4 +514,6 @@ function addClearSearchButton() {
     toggleClearButton();
 }
 
+
+
 document.addEventListener('DOMContentLoaded', addClearSearchButton);

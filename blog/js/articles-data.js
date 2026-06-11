@@ -18,7 +18,8 @@ const ARTICLES_DATA = {
       tags: ["Interview", "Tag"],
       image: "blog/images/event.webp",
       imageFull: "../images/event.webp",
-      imageAlt: "Interview transport international 2026"
+      imageAlt: "Interview transport international 2026",
+      lazyLoad: true  
     },
     
     {
@@ -34,7 +35,8 @@ const ARTICLES_DATA = {
       tags: ["Tag", "Tag"],
       image: "blog/images/etudiant.webp",
       imageFull: "../images/etudiant.webp",
-      imageAlt: "Supply chain durable"
+      imageAlt: "Supply chain durable",
+      lazyLoad: true  
     },
 
     {
@@ -50,7 +52,8 @@ const ARTICLES_DATA = {
       tags: ["Tag", "Tag"],
       image: "blog/images/Image-VDe.webp",
       imageFull: "../images/Image-VDe.webp",
-      imageAlt: "Gestion d'entrepôt"
+      imageAlt: "Gestion d'entrepôt",
+      lazyLoad: true  
     },
 
     {
@@ -64,9 +67,11 @@ const ARTICLES_DATA = {
       author: "Vincent Dermont",
       readTime: "durée",
       tags: ["Interview", "Tag"],
-      image: "blog/images/Image-VDe.webp",
-      imageFull: "../images/Image-VDe.webp",
-      imageAlt: "Gestion d'entrepôt"
+      image: "blog/images/louis-dupont.webp",
+      imageFull: "../images/louis-dupont.webp",
+      imageAlt: "Gestion d'entrepôt",
+      lazyLoad: true  
+
     },
     
   ],

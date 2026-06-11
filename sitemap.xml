@@ -36,6 +36,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+
+    <url>
+        <loc>https://pleiades-partners.fr/blog</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
     
     <!-- Pages légales -->
     <url>
@@ -57,6 +64,35 @@
         <lastmod>2026-05-12</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.2</priority>
+    </url>
+
+        <!-- Pages blogs -->
+    <url>
+        <loc>https://pleiades-partners.fr/blog/articles/1</loc>
+        <lastmod>2026-03-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://pleiades-partners.fr/blog/articles/2</loc>
+        <lastmod>2026-02-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://pleiades-partners.fr/blog/interviews/3</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://pleiades-partners.fr/blog/interviews/4</loc>
+        <lastmod>2026-03-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
     
 </urlset>

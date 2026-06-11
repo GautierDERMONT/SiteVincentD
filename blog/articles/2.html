@@ -6,7 +6,7 @@
     <title>##</title>
     <meta name="description" content="##">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pleiades-partners.fr/blog/1">
+    <link rel="canonical" href="https://pleiades-partners.fr/blog/articles/1">
 
      <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-00000000"></script>
@@ -30,6 +30,8 @@
     <link rel="preload" href="../../fonts/montserrat-v31-latin-600.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="../../fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body class="blog-article-main">
 
@@ -76,10 +78,44 @@
 
              <div class="article-content">
              <h2 style="text-align: center;">########</h2>
-             </div>
-            <div class="article-featured-image">
-                <img src="../images/event.webp" alt="Audit supply chain">
-            </div>
+
+                <div class="article-magazine-grid">
+                    <div class="magazine-grid-container">
+                        <!-- Grande image à gauche (50%) -->
+                        <div class="grid-item grid-large" data-index="0">
+                            <img src="../images/etudiant.webp" alt="Audit supply chain 1" loading="lazy">
+                            <div class="grid-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Deux petites images à droite (50% divisé en deux) -->
+                        <div class="grid-small-column">
+                            <div class="grid-item grid-small" data-index="1">
+                                <img src="../images/etudiant2.webp" alt="Audit supply chain 2" loading="lazy">
+                                <div class="grid-overlay">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                            <div class="grid-item grid-small" data-index="2">
+                                <img src="../images/etudiant3.webp" alt="Audit supply chain 3" loading="lazy">
+                                <div class="grid-overlay">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL POUR AGRANDIR -->
+                <div id="image-modal" class="image-modal">
+                    <span class="modal-close">&times;</span>
+                    <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+                    <img class="modal-content-img" id="modal-img">
+                    <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="modal-counter" id="modal-counter"></div>
+                </div>
+                            
 
             <!-- ZONE DE RÉDACTION -->
             <!-- <div class="article-content">
@@ -189,11 +225,14 @@
     </footer>
 
    
-    <script src="../js/random-articles.js"></script>
-    <script src="../js/articles-data.js"></script>
-    <script src="../js/articles.js"></script>
-    <script src="../../js/script.js"></script>
-    <script src="../../js/share.js"></script>
+    
+    <script src="../js/random-articles.js" async></script>
+    <script src="../js/grilles.js" async></script>
+    <script src="../js/articles-data.js" async></script>
+    <script src="../js/articles.js" async></script>
+
+    <script src="../../js/script.js" defer></script>
+    <script src="../../js/share.js" defer></script>
 
 </body>
 </html>
