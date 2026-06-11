@@ -49,7 +49,6 @@
 }
 .article-image {
     position: relative;
-    aspect-ratio: 735 / 300;  
     overflow: hidden;
 }
 
@@ -410,7 +409,6 @@
 
 .article-card-image {
     position: relative;
-    aspect-ratio: 16 / 9;  
     overflow: hidden;
 }
 
