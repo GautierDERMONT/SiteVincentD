@@ -86,14 +86,14 @@
                     <a href="apropos.html" class="author-link">En savoir plus </i></a>
                 </div>
 
-                <div class="sidebar-widget newsletter">
-                    <h3>Newsletter</h3>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Votre email" required>
-                        <button type="submit" class="btn btn-primary">S'inscrire</button>
-                    </form>
-                    <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
-                </div>
+            <div class="sidebar-widget newsletter">
+            <h3>Newsletter</h3>
+            <form id="newsletter-form-brevo">
+                <input type="email" id="brevo-email" placeholder="Votre email" required>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+            <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
+        </div>
             </aside>
         </div>
 
@@ -162,10 +162,10 @@
                 <a href="apropos.html" class="author-link">En savoir plus</i></a>
             </div>
 
-            <div class="sidebar-widget newsletter">
+         <div class="sidebar-widget newsletter">
                 <h3>Newsletter</h3>
-                <form class="newsletter-form" id="newsletter-form-mobile">
-                    <input type="email" placeholder="Votre email" required>
+                <form id="newsletter-form-brevo-mobile">
+                    <input type="email" id="brevo-email-mobile" placeholder="Votre email" required>
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
                 </form>
                 <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
@@ -231,6 +231,8 @@
     <script src="blog/js/articles.js"></script>
     <script src="js/script.js"></script>
     <script src="js/blog.js"></script>
+    <script src="js/newletters.js"></script>
+
    
 </body>
 </html>
