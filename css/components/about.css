@@ -490,6 +490,9 @@
 
 .philosophy-item p { flex: 1; }
 
+
+
+
 /* ===== RESPONSIVE ABOUT ===== */
 @media (max-width: 992px) {
     .profile-image { width: 50%; }
