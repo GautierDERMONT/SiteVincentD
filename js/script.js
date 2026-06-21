@@ -435,3 +435,122 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 })();
+
+
+// ===== DÉSACTIVATION DU HOVER SUR MOBILE =====
+(function disableHoverOnTouch() {
+    // Détecter si c'est un appareil tactile
+    const isTouchDevice = ('ontouchstart' in window) || 
+                          (navigator.maxTouchPoints > 0) ||
+                          (window.matchMedia && window.matchMedia('(any-hover: none)').matches);
+    
+    if (!isTouchDevice) return;
+    
+    // Ajouter une classe au body
+    document.body.classList.add('touch-device');
+    
+    // Fonction pour supprimer les styles hover
+    function removeHoverStyles(element) {
+        // Supprimer les classes d'animation
+        element.classList.remove('hover', 'hover-effect');
+        
+        // Réinitialiser les styles inline
+        element.style.transform = '';
+        element.style.boxShadow = '';
+        element.style.backgroundColor = '';
+        element.style.color = '';
+        element.style.borderColor = '';
+        element.style.transition = '';
+    }
+    
+    // Sélectionner tous les éléments interactifs
+    const interactiveElements = document.querySelectorAll(
+        '.btn, a, button, .service-card, .testimonial-card, ' +
+        '.expertise-card, .blog-card, .nav-menu a, .social-link, ' +
+        '.scroll-spinner, .about-summary .btn-primary'
+    );
+    
+    // Pour chaque élément, désactiver le hover
+    interactiveElements.forEach(el => {
+        // Sauvegarder les styles originaux
+        const originalStyles = {
+            transform: el.style.transform,
+            boxShadow: el.style.boxShadow,
+            backgroundColor: el.style.backgroundColor,
+            color: el.style.color,
+            borderColor: el.style.borderColor,
+            transition: el.style.transition
+        };
+        
+        // Au survol (qui est en fait un clic sur mobile), réinitialiser
+        el.addEventListener('mouseenter', function(e) {
+            // Si c'est un appareil tactile, on désactive le hover
+            if (isTouchDevice) {
+                // Réinitialiser les styles
+                removeHoverStyles(this);
+                
+                // Forcer le reflow
+                void this.offsetHeight;
+            }
+        });
+        
+        // Au clic, retirer l'état hover
+        el.addEventListener('click', function() {
+            // Retirer les styles hover après le clic
+            setTimeout(() => {
+                removeHoverStyles(this);
+            }, 10);
+        });
+        
+        // Au toucher (touchstart), désactiver le hover
+        el.addEventListener('touchstart', function() {
+            removeHoverStyles(this);
+        });
+    });
+    
+    // Désactiver spécifiquement pour le spinner scroll
+    const spinner = document.querySelector('.scroll-spinner');
+    if (spinner) {
+        spinner.addEventListener('mouseenter', function() {
+            const core = this.querySelector('.spinner-core');
+            const ring = this.querySelector('.spinner-ring');
+            if (core) {
+                core.style.background = '#02458d';
+                core.style.transform = 'translate(-50%, -50%)';
+                core.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+            }
+            if (ring) {
+                const progress = ring.style.getPropertyValue('--progress-deg') || '0deg';
+                ring.style.background = `conic-gradient(from 0deg, #0056b3 ${progress}, #e0e0e0 ${progress})`;
+            }
+        });
+    }
+    
+    // Observer les nouveaux éléments ajoutés dynamiquement
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1) { // Element
+                    // Vérifier si c'est un élément interactif
+                    const selectors = ['.btn', 'a', 'button', '.service-card', 
+                                     '.testimonial-card', '.expertise-card', '.blog-card'];
+                    selectors.forEach(selector => {
+                        if (node.matches && node.matches(selector)) {
+                            // Appliquer la désactivation du hover
+                            node.addEventListener('mouseenter', function(e) {
+                                if (isTouchDevice) {
+                                    removeHoverStyles(this);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+})();

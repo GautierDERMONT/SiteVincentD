@@ -490,6 +490,9 @@ html {
     pointer-events: none;
 }
 
+
+
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .scroll-spinner {
