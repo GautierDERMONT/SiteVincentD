@@ -503,6 +503,7 @@ select optgroup option {
     padding: 0.8rem 1rem;
     background-color: rgba(248, 249, 250, 0.5);
     border-radius: 6px;
+    text-align: justify;
 }
 
 /* Espacement entre paragraphes multiples */

@@ -100,6 +100,8 @@ a {
     font-weight: 700;
     
 }
+.highlight-thirdary { color: var(--dark-color); }
+
 .highlight-primary { color: var(--primary-color); }
 .text-center { text-align: center; }
 .bloc { text-align: justify; }
