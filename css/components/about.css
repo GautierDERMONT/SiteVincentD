@@ -21,6 +21,14 @@
     
 }
 
+
+
+.quote-icon {
+    font-size: 2.5rem;
+    color: #c89b3c; /* adapte à ton thème */
+    margin-top: 5px;
+}
+
 .profile-image img {
     width: 95%;
     border-radius: var(--border-radius-md);

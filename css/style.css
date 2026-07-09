@@ -103,6 +103,19 @@ a {
 .highlight-thirdary { color: var(--dark-color); }
 
 .highlight-primary { color: var(--primary-color); }
+.highlight-secondary { color: var(--secondary-color); }
+
+.highlight-accent { color: var(--accent-color); }
+.highlight-light-accent { color: var(--light-accent-color); }
+
+.highlight-light-accent {
+    transform: scale(1.08);
+    text-shadow: 0 0 20px rgba(255, 179, 71, 0.6),
+                 0 0 40px rgba(255, 179, 71, 0.3),
+                 0 0 80px rgba(255, 179, 71, 0.15);
+}
+
+
 .text-center { text-align: center; }
 .bloc { text-align: justify; }
 

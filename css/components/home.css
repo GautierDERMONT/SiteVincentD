@@ -224,6 +224,78 @@
     transform: scale(1.2);
 }
 
+/* ===== FLÈCHE DE SCROLL ANIMÉE ===== */
+.scroll-indicator {
+    display: none; /* caché par défaut, visible uniquement sur desktop */
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    animation: bounce-arrow 2s ease-in-out infinite;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+
+.scroll-wheel {
+    display: block;
+    width: 3px;
+    height: 8px;
+    background: var(--light-accent-color);
+    border-radius: 2px;
+    animation: scroll-wheel 1.8s ease-in-out infinite;
+}
+
+.scroll-arrow {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    margin-top: 2px;
+}
+
+@keyframes scroll-wheel {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
+}
+
+
+/* Desktop uniquement */
+@media (min-width: 769px) {
+    .scroll-indicator {
+        display: flex !important;
+    }
+    .scroll-indicator-simple {
+        display: block !important;
+    }
+}
+
+/* Mobile : caché */
+@media (max-width: 768px) {
+    .scroll-indicator,
+    .scroll-indicator-simple {
+        display: none !important;
+    }
+}
+
 /* ===== CAROUSEL SERVICES ===== */
 @media (min-width: 769px) {
     .services-carousel-container {
