@@ -185,6 +185,18 @@ html {
     transform: translateY(-3px);
 }
 
+.btn-light2 {
+    background-color:var(--accent-color);
+    color: white;
+}
+.btn-light2:hover {
+    background-color: #ff9a55;
+    transform: translateY(-3px)!important;
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+}
+
+
+
 .btn-full { width: 100%; }
 
 /* ===== PAGE HEADER ===== */
@@ -219,7 +231,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.8));
+    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7));
 }
 
 .page-header .container {
@@ -261,28 +273,148 @@ html {
     margin-bottom: 3%;
 }
 
+
 /* ===== CTA ===== */
 .cta {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, #003a8f 0%, #0056b3 100%);
+    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7)),
+                url('../images/banner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 60%;  
     color: white;
-    text-align: center;
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: background-position 0.05s linear;
+    will-change: background-position;
+}
+
+/* Version mobile : image zoomée comme le header */
+@media (max-width: 768px) {
+    .cta {
+        background-size: auto 130%;
+        background-position: center 50%;
+        min-height: 350px;
+        padding: var(--spacing-lg) 0;
+        background-position: center 80%; 
+
+    }
+}
+
+@media (max-width: 576px) {
+    .cta {
+        background-size: auto 150%;
+        background-position: center 50%;
+        min-height: 300px;
+        padding: var(--spacing-md) 0;
+    }
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+}
+
+.cta-text {
+    flex: 1;
 }
 
 .cta-content h2 {
     font-size: 2.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: white;
+    text-align: left;
 }
 
 .cta-content p {
     font-size: 1.2rem;
     max-width: 700px;
-    margin: 0 auto 2rem;
+    margin: 0;
     opacity: 0.9;
     color: rgba(255, 255, 255, 0.9);
 }
 
+.cta-content .btn {
+    flex-shrink: 0;
+}
+
+/* ===== RESPONSIVE CTA ===== */
+@media (max-width: 992px) {
+    .cta-content {
+        gap: 2rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cta {
+        min-height: 350px;
+        padding: var(--spacing-lg) 0;
+        background-size: auto 130%;
+        background-position: center 100%;  
+
+    }
+    
+    .cta-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .cta-content .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: normal;
+        padding: 12px 20px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .cta {
+        min-height: 300px;
+        padding: var(--spacing-md) 0;
+        background-size: auto 150%;
+        background-position: center 100%;  
+    }
+    
+    .cta-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .cta-content p {
+        font-size: 0.95rem;
+    }
+    
+    .cta-content .btn {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+}
 /* ===== ANIMATIONS ===== */
 .fade-up {
     opacity: 0;
@@ -649,7 +781,7 @@ textarea, textarea:focus, textarea:active,
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.25rem; }
     .page-header { padding: 40px 0 40px; }
-    .cta { padding: 60px 0; }
+    .cta { padding: 40px 0; }
     .section-title { font-size: 1.75rem; }
     .hero-content { padding-top: 120px; }
     .page-header { padding-top: 180px; padding-bottom: 40px; }

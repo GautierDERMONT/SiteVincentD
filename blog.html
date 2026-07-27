@@ -8,15 +8,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://pleiades-partners.fr/blog">
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00000000"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-00000000');
-    </script>
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preload" href="fonts/montserrat-v31-latin-600.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -62,40 +53,40 @@
         </div>
         <div class="container">
             <h1>Actualités</h1>
-        <p>Découvrez mes analyses, retours d'expérience et conseils terrain pour améliorer la performance de votre supply chain.</p>
-      </div>
+            <p>Découvrez mes analyses, retours d'expérience et conseils terrain pour améliorer la performance de votre supply chain.</p>
+        </div>
     </section>
 
     <!-- Blog Section -->
     <section class="blog">
         <div class="container">
-        <div class="blog-content">
-            <!-- ARTICLE VEDETTE - chargé dynamiquement -->
-            <div id="featured-article-container">
-                <!-- Le contenu sera injecté ici par JS -->
+            <div class="blog-content">
+                <!-- ARTICLE VEDETTE - chargé dynamiquement -->
+                <div id="featured-article-container">
+                    <!-- Le contenu sera injecté ici par JS -->
+                </div>
             </div>
-        </div>
 
             <!-- Sidebar -->
             <aside class="blog-sidebar">
                 <div class="sidebar-widget author-widget">
                     <div class="author-avatar">
-                        <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+                        <img src="images/portrait/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
                     </div>
                     <h3>Vincent DERMONT</h3>
                     <p class="author-title">Expert Senior Supply Chain</p>
                     <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
-                    <a href="apropos.html" class="author-link">En savoir plus </i></a>
+                    <a href="apropos.html" class="author-link">En savoir plus</a>
                 </div>
 
-            <div class="sidebar-widget newsletter">
-            <h3>Newsletter</h3>
-            <form id="newsletter-form-brevo">
-                <input type="email" id="brevo-email" placeholder="Votre email" required>
-                <button type="submit" class="btn btn-primary">S'inscrire</button>
-            </form>
-            <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
-        </div>
+                <div class="sidebar-widget newsletter">
+                    <h3>Newsletter</h3>
+                    <form id="newsletter-form-brevo">
+                        <input type="email" id="brevo-email" placeholder="Votre email" required>
+                        <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    </form>
+                    <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
+                </div>
             </aside>
         </div>
 
@@ -148,23 +139,22 @@
         <div class="container">
             <!-- Grille d'articles -->
             <div class="articles-grid" id="articles-grid">
-        </div>
-
+            </div>
         </div>
 
         <!-- SIDEBAR MOBILE (visible uniquement sur mobile, après les articles) -->
         <aside class="blog-sidebar-mobile">
             <div class="sidebar-widget author-widget">
                 <div class="author-avatar">
-                    <img src="images/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
+                    <img src="images/portrait/profil.webp" alt="Vincent DERMONT - Expert Supply Chain" loading="lazy">
                 </div>
                 <h3>Vincent DERMONT</h3>
                 <p class="author-title">Expert Senior Supply Chain</p>
                 <p>25+ ans d'expérience en direction logistique, supply chain et projets de transformation. Ancien directeur en Codir, j'écris ce que je mets en pratique.</p>
-                <a href="apropos.html" class="author-link">En savoir plus</i></a>
+                <a href="apropos.html" class="author-link">En savoir plus</a>
             </div>
 
-         <div class="sidebar-widget newsletter">
+            <div class="sidebar-widget newsletter">
                 <h3>Newsletter</h3>
                 <form id="newsletter-form-brevo-mobile">
                     <input type="email" id="brevo-email-mobile" placeholder="Votre email" required>
@@ -173,20 +163,21 @@
                 <p class="newsletter-note"><small>Votre email n'est jamais partagé. Désabonnement en 1 clic.</small></p>
             </div>
         </aside>
-
-            
+        
     </section>
 
-    <!-- CTA Section -->
-            <section class="cta">
-                <div class="container">
-                    <div class="cta-content">
-                        <h2>Un sujet qui vous intéresse ?</h2>
-                        <p>Je rédige mes articles en fonction des questions que me posent mes clients. Si vous souhaitez que j'aborde un thème spécifique, n'hésitez pas à me le suggérer.</p>
-                        <a href="contact.html" class="btn btn-light">Proposer un sujet</a>
-                    </div>
+    <!-- ✅ CTA - placé juste avant le footer dans le HTML -->
+    <section class="cta" id="cta-blog">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Un sujet qui vous intéresse ?</h2>
+                    <p>Je rédige mes articles en fonction des questions que me posent mes clients. Si vous souhaitez que j'aborde un thème spécifique, n'hésitez pas à me le suggérer.</p>
                 </div>
-            </section>
+                <a href="contact.html" class="btn btn-light">Proposer un sujet</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -242,6 +233,43 @@
     <script src="js/blog.js"></script>
     <script src="js/newletters.js"></script>
 
-   
+    <!-- Script pour repositionner le CTA -->
+    <script>
+    (function() {
+        var cta = document.getElementById('cta-blog');
+        var blogSection = document.querySelector('.blog');
+        var footer = document.querySelector('footer');
+        var sidebarMobile = document.querySelector('.blog-sidebar-mobile');
+        
+        if (!cta || !blogSection || !footer) return;
+
+        function positionCTA() {
+            var isMobile = window.innerWidth <= 992;
+            
+            if (isMobile) {
+                // Sur mobile : CTA AVANT la sidebar mobile
+                if (sidebarMobile && cta.nextElementSibling !== sidebarMobile) {
+                    blogSection.insertBefore(cta, sidebarMobile);
+                }
+            } else {
+                // Sur desktop : CTA AVANT le footer
+                if (cta.nextElementSibling !== footer) {
+                    footer.parentNode.insertBefore(cta, footer);
+                }
+            }
+        }
+
+        // Exécuter au chargement
+        positionCTA();
+
+        // Réexécuter au redimensionnement
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(positionCTA, 100);
+        });
+    })();
+    </script>
+
 </body>
 </html>

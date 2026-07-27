@@ -1,14 +1,237 @@
-// Script pour l'animation des statistiques des études de cas
+// =============================================
+// TÉMOIGNAGES - Version fluide avec animations
+// =============================================
+
 document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.testimonials-track');
+    if (!track) return;
+
+    // Variables
+    let isModalOpen = false;
+    let isClosing = false;
+    let hoverTimer = null;
+    let closeTimeoutId = null;
+    let currentHoveredCard = null;
+    let isHoveringModal = false;
+    let isHoveringCard = false;
+
+    // Créer la modale
+    const modal = document.createElement('div');
+    modal.className = 'testimonial-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.innerHTML = `
+        <div class="testimonial-modal__overlay"></div>
+        <div class="testimonial-modal__box">
+            <button class="testimonial-modal__close" aria-label="Fermer">&times;</button>
+            <div class="testimonial-modal__body"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalBox = modal.querySelector('.testimonial-modal__box');
+    const modalBody = modal.querySelector('.testimonial-modal__body');
+    const modalClose = modal.querySelector('.testimonial-modal__close');
+    const modalOverlay = modal.querySelector('.testimonial-modal__overlay');
+
+    // Fonction pour ouvrir la modale avec animation
+    function openModal(card) {
+        if (isModalOpen || isClosing) return;
+        
+        // Cloner la carte
+        const clone = card.cloneNode(true);
+        clone.style.cursor = 'default';
+        clone.classList.remove('is-hovered');
+        
+        modalBody.innerHTML = '';
+        modalBody.appendChild(clone);
+        
+        // Nettoyer les classes précédentes
+        modal.classList.remove('closing');
+        
+        // Forcer le reflow pour l'animation
+        void modalBox.offsetHeight;
+        
+        // Ouvrir
+        modal.classList.add('active');
+        isModalOpen = true;
+        isClosing = false;
+        
+        // Pause du carrousel
+        track.style.animationPlayState = 'paused';
+        
+        // Marquer la carte
+        if (currentHoveredCard) {
+            currentHoveredCard.classList.remove('is-hovered');
+        }
+        currentHoveredCard = card;
+        card.classList.add('is-hovered');
+        track.classList.add('has-hover');
+    }
+
+    // Fonction pour fermer la modale - Fermeture immédiate
+    function closeModal() {
+        if (!isModalOpen || isClosing) return;
+        
+        isClosing = true;
+        
+        // Fermeture immédiate sans animation
+        modal.classList.remove('active', 'closing');
+        isModalOpen = false;
+        isClosing = false;
+        
+        // Reprendre le carrousel
+        track.style.animationPlayState = 'running';
+        
+        // Nettoyer
+        if (currentHoveredCard) {
+            currentHoveredCard.classList.remove('is-hovered');
+            currentHoveredCard = null;
+        }
+        track.classList.remove('has-hover');
+        
+        if (closeTimeoutId) {
+            clearTimeout(closeTimeoutId);
+            closeTimeoutId = null;
+        }
+    }
+
+    // Gestion du survol des cartes
+    track.addEventListener('mouseenter', function() {
+        isHoveringCard = true;
+    });
+
+    track.addEventListener('mouseleave', function() {
+        isHoveringCard = false;
+        // Si la modale n'est pas ouverte, on nettoie
+        if (!isModalOpen && hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
+    });
+
+    track.addEventListener('mouseover', function(e) {
+        const card = e.target.closest('.testimonial-card');
+        if (!card || !track.contains(card)) return;
+        
+        if (isModalOpen || isClosing) return;
+        
+        // Nettoyer les timers
+        if (closeTimeoutId) {
+            clearTimeout(closeTimeoutId);
+            closeTimeoutId = null;
+        }
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+        }
+        
+        // Délai avant ouverture (évite les déclenchements intempestifs)
+        hoverTimer = setTimeout(() => {
+            // Vérifier que la carte est toujours survolée
+            if (card.matches(':hover')) {
+                openModal(card);
+            }
+            hoverTimer = null;
+        }, 280);
+    });
+
+    track.addEventListener('mouseout', function(e) {
+        const card = e.target.closest('.testimonial-card');
+        if (!card) return;
+        
+        if (card.contains(e.relatedTarget)) return;
+        
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
+    });
+
+    // Gestion du clic (mobile)
+    track.addEventListener('click', function(e) {
+        const card = e.target.closest('.testimonial-card');
+        if (!card) return;
+        e.stopPropagation();
+        
+        if (isModalOpen) {
+            closeModal();
+        } else {
+            if (hoverTimer) {
+                clearTimeout(hoverTimer);
+                hoverTimer = null;
+            }
+            if (closeTimeoutId) {
+                clearTimeout(closeTimeoutId);
+                closeTimeoutId = null;
+            }
+            openModal(card);
+        }
+    });
+
+    // Modale - survol
+    modal.addEventListener('mouseenter', function() {
+        isHoveringModal = true;
+        if (closeTimeoutId) {
+            clearTimeout(closeTimeoutId);
+            closeTimeoutId = null;
+        }
+    });
+
+    modal.addEventListener('mouseleave', function(e) {
+        isHoveringModal = false;
+        // Vérifier si la souris est sur une carte du track
+        const hoveredCard = track.querySelector('.testimonial-card:hover');
+        if (!hoveredCard && isModalOpen) {
+            closeTimeoutId = setTimeout(() => {
+                closeModal();
+                closeTimeoutId = null;
+            }, 350);
+        }
+    });
+
+    // Bouton de fermeture
+    modalClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeModal();
+    });
     
-    // Sélectionner tous les blocs de statistiques dans les études de cas
+    // Overlay (cliquer en dehors)
+    modalOverlay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeModal();
+    });
+
+    // Touche Echap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isModalOpen) {
+            closeModal();
+        }
+    });
+
+    // Nettoyage
+    window.addEventListener('beforeunload', function() {
+        if (hoverTimer) {
+            clearTimeout(hoverTimer);
+            hoverTimer = null;
+        }
+        if (closeTimeoutId) {
+            clearTimeout(closeTimeoutId);
+            closeTimeoutId = null;
+        }
+    });
+});
+
+// =============================================
+// ANIMATION DES STATISTIQUES
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
     const caseStudyStats = document.querySelectorAll('.case-studies .results-stats');
     
     if (caseStudyStats.length === 0) return;
     
-    // Observer chaque bloc de statistiques
     const observerOptions = {
-        threshold: 0.3, // Déclenche quand 30% de l'élément est visible
+        threshold: 0.3,
         rootMargin: '0px 0px -50px 0px'
     };
     
@@ -17,39 +240,31 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 const statsBlock = entry.target;
                 animateStatsBlock(statsBlock);
-                observer.unobserve(statsBlock); // Ne déclencher qu'une seule fois
+                observer.unobserve(statsBlock);
             }
         });
     }, observerOptions);
     
-    // Observer chaque bloc de statistiques
     caseStudyStats.forEach(statsBlock => {
         observer.observe(statsBlock);
     });
     
-    // Fonction d'animation d'un bloc de statistiques complet
     function animateStatsBlock(block) {
-        // Trouver tous les éléments .result-number dans ce bloc
         const resultNumbers = block.querySelectorAll('.result-number');
-        
         resultNumbers.forEach(element => {
             animateNumber(element);
         });
     }
     
-    // Fonction d'animation du compteur
     function animateNumber(element) {
-        // Récupérer le texte original
         const originalText = element.textContent;
         
-        // Extraire la valeur numérique et le format
         let targetValue = 0;
         let prefix = '';
         let suffix = '';
         let hasInequality = false;
         let inequalityText = '';
         
-        // Gérer "OTD > 98%"
         if (originalText.includes('OTD')) {
             const match = originalText.match(/OTD\s*>\s*(\d+)/);
             if (match) {
@@ -58,17 +273,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 suffix = '%';
                 hasInequality = true;
             }
-        }
-        // Gérer "x3"
-        else if (originalText.includes('x')) {
+        } else if (originalText.includes('x')) {
             const match = originalText.match(/x(\d+)/);
             if (match) {
                 targetValue = parseFloat(match[1]);
                 prefix = 'x';
             }
-        }
-        // Gérer "+14%" ou "-30%"
-        else if (originalText.includes('%')) {
+        } else if (originalText.includes('%')) {
             const match = originalText.match(/([+-]?\d+)%/);
             if (match) {
                 targetValue = parseFloat(match[1]);
@@ -76,18 +287,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (originalText.startsWith('+')) prefix = '+';
                 if (originalText.startsWith('-')) prefix = '-';
             }
-        }
-        // Gérer "Break-Even" - pas d'animation
-        else if (originalText === 'Break-Even') {
+        } else if (originalText === 'Break-Even') {
             return;
         }
         
-        // Vérifier qu'on a une valeur à animer
         if (targetValue === 0) return;
         
         let currentValue = 0;
-        const duration = 2500; // 2 secondes
-        const stepTime = 16; // ~60fps
+        const duration = 2500;
+        const stepTime = 16;
         const steps = duration / stepTime;
         const increment = Math.abs(targetValue) / steps;
         
@@ -98,14 +306,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (currentValue >= Math.abs(targetValue)) {
                 currentValue = Math.abs(targetValue);
-                
-                // Afficher la valeur finale exacte comme dans l'original
                 element.textContent = originalText;
                 clearInterval(timer);
                 return;
             }
             
-            // Construire le texte pendant l'animation
             const roundedValue = Math.floor(currentValue);
             
             if (hasInequality) {
@@ -124,7 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, stepTime);
     }
 });
-// Accordéon fluide - avec scroll automatique
+
+// =============================================
+// ACCORDÉON FLUIDE
+// =============================================
+
 document.addEventListener('DOMContentLoaded', function() {
     const accordionItems = document.querySelectorAll('.accordion-item');
     
@@ -132,22 +341,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const header = item.querySelector('.accordion-header');
         const content = item.querySelector('.accordion-content');
         
-        header.addEventListener('click', () => {
-            // Fermer les autres
+        if (!header || !content) return;
+        
+        header.addEventListener('click', function() {
             accordionItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
                 }
             });
             
-            // Force le recalcul
             if (!item.classList.contains('active')) {
                 void content.offsetHeight;
             }
             
             item.classList.toggle('active');
             
-            // Optionnel : remonte un peu la page si l'accordéon est en bas de l'écran
             if (item.classList.contains('active')) {
                 const rect = header.getBoundingClientRect();
                 if (rect.top < 100) {

@@ -274,6 +274,87 @@ if (statsSection) {
     });
 });
 
+
+// Effet parallax sur le CTA (Desktop + Mobile) - Version améliorée pour .cta et .contact-cta
+document.addEventListener('DOMContentLoaded', function() {
+    const ctaElements = document.querySelectorAll('.cta, .contact-cta');
+    
+    ctaElements.forEach(cta => {
+        if (!cta) return;
+
+        // Détection de l'appareil
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 576;
+        
+        // Configuration du parallax
+        let intensity, startPosition;
+        
+        if (isSmallMobile) {
+            intensity = 25;
+            startPosition = 70;
+        } else if (isMobile) {
+            intensity = 20;
+            startPosition = 70;
+        } else {
+            intensity = 6;
+            startPosition = 65;
+        }
+
+        function updateParallax() {
+            const rect = cta.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Calcul du pourcentage de visibilité du CTA
+            const visiblePercent = 1 - (rect.top / windowHeight);
+            const clamped = Math.max(0, Math.min(1, visiblePercent));
+            
+            // Décalage : l'image bouge de startPosition - intensity à startPosition + intensity
+            const offset = startPosition + (clamped - 0.5) * intensity * 2;
+            
+            cta.style.backgroundPosition = `center ${offset}%`;
+        }
+
+        // Initialisation
+        updateParallax();
+
+        // Mise à jour au scroll
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Mise à jour au redimensionnement
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                const newIsMobile = window.innerWidth <= 768;
+                const newIsSmallMobile = window.innerWidth <= 576;
+                
+                if (newIsMobile !== isMobile || newIsSmallMobile !== isSmallMobile) {
+                    if (newIsSmallMobile) {
+                        intensity = 25;
+                        startPosition = 80;
+                    } else if (newIsMobile) {
+                        intensity = 20;
+                        startPosition = 80;
+                    } else {
+                        intensity = 6;
+                        startPosition = 65;
+                    }
+                    updateParallax();
+                }
+            }, 200);
+        }, { passive: true });
+    });
+});
+
 // Lazy loading pour les images du carousel hero
 document.addEventListener('DOMContentLoaded', function() {
     // Chargement différé des images hero

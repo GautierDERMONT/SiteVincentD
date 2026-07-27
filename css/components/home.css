@@ -543,6 +543,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-align: justify;
 }
 
 .expertise-list i {
@@ -588,13 +589,13 @@
 .about-summary .about-content p:nth-of-type(2) {
     border-left: 3px solid var(--light-accent-color);
     padding-left: 13px;
-    margin-left: 7px;
+    margin-left: 5px;
    
 }
 
 /* ===== SECTION CLIENTS - DISPOSITION RESPONSIVE ===== */
 .clients {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     background-color: #ffffff;
     position: relative;
     overflow: hidden;
@@ -604,7 +605,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px 60px;
-    margin: var(--spacing-lg) auto;
+    margin: var(--spacing-lg) auto 0;
     width: 90%;
     max-width: 1200px;
 }
@@ -702,6 +703,80 @@
 .services-dot:hover {
     background-color: var(--light-accent-color);
 
+}
+
+/* ============================================================
+   STATISTIQUES - INTRODUCTION & CTA TEXTE
+   ============================================================ */
+
+/* --- Introduction au-dessus des stats --- */
+.stats-intro {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 2.5rem auto;
+    font-weight: 500;
+    line-height: 1.7;
+    font-family: var(--font-secondary);
+    position: relative;
+    padding: 0 1rem;
+}
+
+.stats-intro__icon {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Version responsive */
+@media (max-width: 768px) {
+    .stats-intro {
+        font-size: 1rem;
+        max-width: 100%;
+        margin-bottom: 1.8rem;
+        padding: 0 0.5rem;
+    }
+    .stats-intro__icon {
+        font-size: 1rem;
+        margin-right: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-intro {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* --- Phrase au-dessus du bouton "En savoir +" --- */
+.cta-expertise-text {
+    text-align: center;
+    margin-top: 2.8rem;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--gray-color);
+    font-weight: 400;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.3px;
+}
+
+/* Version responsive */
+@media (max-width: 768px) {
+    .cta-expertise-text {
+        font-size: 0.95rem;
+        margin-top: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cta-expertise-text {
+        font-size: 0.9rem;
+        margin-top: 1.8rem;
+    }
 }
 
 /* Masquer les points sur mobile (car affichage en grille) */
@@ -935,7 +1010,7 @@
         right: 0;
         width: 100%;
         height: 300px;
-        background-image: url('/images/about_index.png');
+        background-image: url('/images/portrait/about_index.png');
         background-size: cover;
         background-position: center;
         border-radius: var(--border-radius-md);
@@ -972,9 +1047,11 @@
     
     .about-content > p:first-of-type { 
         order: 1; 
+        font-size: 16px;
     }
     .about-content > p:nth-of-type(2) { 
         order: 2; 
+        
     }
     .expertise-list { 
         order: 4; 
@@ -1023,7 +1100,7 @@
 }
 
 @media (max-width: 576px) {
-    .hero, .services, .about-summary { padding: 40px 0 40px; }
+    .hero, .services, .about-summary { padding: 40px 0 60px; }
     .hero { padding: 120px 0 40px; min-height: 500px; }
     .hero h1 { font-size: 1.9rem; padding: 0 15px; line-height: 1.2; margin-bottom: 0.8rem; }
     .hero-subtitle-directeur { font-size: 1.2rem; }

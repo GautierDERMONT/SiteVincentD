@@ -120,7 +120,8 @@
     gap: 10px;
     margin: 0 0 1rem 0;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 15px 15px 15px; 
+    border-bottom: 1px solid #e0e0e0; 
 }
 
 .blog-article-main .article-tags-header .tag {
@@ -290,7 +291,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    margin-bottom: 3rem;
+    margin-bottom: 10px;
 }
 
 .blog-article-main .suggestion-card {
@@ -863,6 +864,12 @@
 /* 12. RESPONSIVE - VERSIONS MOBILE FINALES */
 /* ============================================= */
 
+
+/* ============================================= */
+/* 13. BOUTON VOIR TOUT MOBILE - CORRECTION */
+/* ============================================= */
+
+
 /* Bureau : cacher le bouton mobile */
 @media (min-width: 769px) {
     .also-read .also-read-mobile-link {
@@ -904,7 +911,7 @@
     .also-read .also-read-mobile-link {
         display: flex !important;
         justify-content: center;
-        margin-top: 0.5rem;
+        margin-top: 2rem;
         margin-bottom: 1rem;
     }
     
@@ -923,7 +930,7 @@
     }
     
     .also-read .also-read-mobile-link a:hover {
-        color: var(--light-accent-color);
+        color: var(--light-accent-color) !important;
     }
     
     .also-read .also-read-mobile-link a i {

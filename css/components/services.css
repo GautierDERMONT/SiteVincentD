@@ -101,6 +101,7 @@
     color: #4a5568;
     line-height: 1.5;
     margin-bottom: 12px;
+    text-align: justify;
 }
 
 .premium-card__method {
@@ -197,6 +198,7 @@
     list-style: none;
     padding-left: 0;
     margin: 0;
+    text-align: justify;
 }
 
 .premium-list li {
@@ -240,10 +242,8 @@
 .cta-section {
     text-align: center;
     padding: 60px 0;
-    background-color: white;
     border-radius: var(--border-radius-md);
     margin-top: 40px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
 }
 
 .cta-section h2 {
@@ -377,12 +377,11 @@
 /* SECTION 4 : STATISTIQUES - FOND BLANC */
 .section-stats {
     background: #ffffff;
-    padding: 60px 0 10px 0;
+    padding: 80px 0 70px 0;
 }
 
 /* SECTION 5 : CTA - FOND BLANC */
 .section-cta {
-    background: #ffffff;
     padding: 10px 0 60px 0;
 }
 
@@ -394,14 +393,13 @@
 
 /* Ajustement du padding de la section stats */
 .section-stats .services-premium-stats {
-    margin: 0 0 20px 0;
+    margin: 0 0 30px 0;
 }
 
 /* Ajustement du CTA dans sa section */
 .section-cta .cta-section {
     margin-top: 0;
-    background: #ffffff;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    background: #F8F9FA;
 }
 
 /* =============================================
@@ -472,7 +470,7 @@
     }
     
     .section-stats {
-        padding: 35px 0 10px 0;
+        padding: 50px 0 50px 0;
     }
     
     .section-cta {
@@ -484,23 +482,54 @@
     }
     
     .services-intro__item {
-        margin-left: 10px;   
+        
         margin-right: 0.5rem;
     }
     
     .services-intro__question {
         font-size: 1rem;
+        text-align: justify;
     }
 
-    .services-intro__footer {
-        margin-left: 2rem;  
-        margin-right: 2em;
+    /* =============================================
+       STATS EN PYRAMIDE INVERSÉE SUR MOBILE
+       ============================================= */
+    .services-premium-stats {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 500px;
+        margin: 20px auto 15px;
+    }
+    
+    .services-premium-stats .stat-item {
+        flex: 0 0 auto;
+        width: calc(50% - 15px);
+        min-width: 140px;
+        padding: 15px;
+    }
+    
+    /* 3ème élément : tout en haut, centré, prend toute la largeur */
+    .services-premium-stats .stat-item:nth-child(3) {
+        order: -1;
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .services-premium-stats .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .services-premium-stats .stat-label {
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 576px) {
     .section-services-intro {
-        padding: 10px 0 5px 0;
+        padding: 0px 0 0px 0;
     }
     
     .section-services-premium {
@@ -558,9 +587,12 @@
 
 @media (max-width: 480px) {
     .services-premium-stats .stat-item {
-        width: calc(100% - 40px);
+        width: calc(50% - 15px);
+        min-width: 120px;
+    }
+    
+    .services-premium-stats .stat-item:nth-child(3) {
         max-width: 280px;
-        margin: 0 auto;
     }
 }
 

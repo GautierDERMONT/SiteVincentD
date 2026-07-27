@@ -33,6 +33,36 @@
     width: 100%;
 }
 
+/* Espacement quand le CTA (déplacé en JS) se retrouve dans la sidebar mobile */
+.blog-sidebar-mobile .cta {
+    margin-top: 3rem;
+    margin-bottom: 30px;
+}
+
+/* =============================================
+   SIDEBAR
+   ============================================= */
+.blog-sidebar {
+    flex: 1;
+    align-self: flex-start;
+    background-color: #F8F9FA;
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+}
+
+/* =============================================
+   SIDEBAR MOBILE (cachée sur desktop, visible sur mobile)
+   ============================================= */
+.blog-sidebar-mobile {
+    display: none;
+    margin-top: 40px;
+    clear: both;
+    width: 100%;
+    background-color: #F8F9FA;
+    padding: 0 3.5% 20px 3.5%;
+    border-radius: var(--border-radius-md);
+}
+
 
 
 
@@ -388,7 +418,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-bottom: 40px;
     justify-items: center;
 }
 
@@ -434,8 +463,14 @@
     background: white;
     padding: 1.5rem;
     border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
     margin-bottom: 35px;
+    box-shadow: var(--shadow-md);
+
+}
+
+.sidebar-widget.newsletter {
+    margin-bottom: 0;
+    
 }
 
 /* Widget auteur */
@@ -503,7 +538,7 @@
 .blog-search-section {
     margin-bottom: 40px;
     max-width: 1200px;
-    margin: 0 auto 40px auto;
+    margin: 40px auto 40px auto;  
     padding: 0 20px;
 }
 
@@ -1015,6 +1050,17 @@
         position: static;
         margin-top: 2rem;
     }
+
+     #cta-blog {
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        border-radius: 0 !important;
+        padding: 60px 20px !important;  /* Garde padding haut/bas, 20px sur les côtés pour le texte */
+        margin-top: 40px !important;    /* Garde la marge du haut */
+        margin-bottom: 0 !important;    /* Pas de marge en bas */
+    }
+
+
 }
 
 @media (max-width: 768px) {
@@ -1069,6 +1115,7 @@
     
     .blog-search-section {
         margin-bottom: 25px;
+        margin-top: 0px;
     }
 }
 
@@ -1080,6 +1127,7 @@
 
     .blog-sidebar-mobile {
         margin-top: 15px !important;
+        padding-top: 20px !important;
     }
     
     .article-image {

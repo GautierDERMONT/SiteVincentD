@@ -288,8 +288,6 @@ select optgroup option {
     transition: transform 0.3s ease;
 }
 
-
-
 /* =============================================
    CUSTOM CHECKBOX DESIGN
    ============================================= */
@@ -528,10 +526,20 @@ select optgroup option {
 .contact-cta {
     text-align: center;
     padding: 60px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #004494 100%);
+    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7)),
+                url('../../images/banner.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 100%;
     color: white;
     border-radius: var(--border-radius-md);
     margin-top: 40px;
+    min-height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-position 0.05s linear;
+    will-change: background-position;
 }
 
 .contact-cta h2 {
@@ -559,6 +567,74 @@ select optgroup option {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+}
+
+/* ===== RESPONSIVE CONTACT CTA ===== */
+@media (max-width: 992px) {
+    .contact-cta {
+        padding: 50px 30px;
+        min-height: 300px;
+    }
+    
+    .contact-cta h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-cta {
+        padding: 40px 20px;
+        min-height: 280px;
+        background-attachment: scroll;
+        background-size: auto 130%;
+        background-position: center 80%;
+        border-radius: var(--border-radius-sm);
+    }
+    
+    .contact-cta h2 {
+        font-size: 1.6rem;
+    }
+    
+    .contact-cta p {
+        font-size: 1rem;
+        padding: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-cta {
+        padding: 30px 15px;
+        min-height: 250px;
+        margin-top: 30px;
+        background-size: auto 150%;
+        background-position: center 80%;
+    }
+    
+    .contact-cta h2 {
+        font-size: 1.4rem;
+    }
+    
+    .contact-cta p {
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .cta-buttons .btn {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
 }
 
 /* =============================================
@@ -635,7 +711,6 @@ select optgroup option {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
-        
     }
     
     .faq-question {
