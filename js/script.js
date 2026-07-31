@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuration des animations par défaut
     const defaultAnimatedElements = [
         '.service-card',
-        '.testimonial-card',
         '.hero-content',
         '.about-content > p',
         '.about-content .credo-simple',
@@ -272,6 +271,42 @@ if (statsSection) {
             document.body.classList.remove('scrolling');
         }, 150);
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cta = document.querySelector('.cta');
+    if (!cta) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                cta.classList.add('is-visible');
+                observer.unobserve(cta); // Arrête d'observer une fois chargé
+            }
+        });
+    }, {
+        rootMargin: '200px 0px' // Charge un peu avant que l'élément soit visible
+    });
+    
+    observer.observe(cta);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactCta = document.querySelector('.contact-cta');
+    if (!contactCta) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                contactCta.classList.add('is-visible');
+                observer.unobserve(contactCta);
+            }
+        });
+    }, {
+        rootMargin: '200px 0px'
+    });
+    
+    observer.observe(contactCta);
 });
 
 

@@ -76,7 +76,7 @@
 }
 
 .premium-card__number {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: #0056b3;
     letter-spacing: 2px;
@@ -111,7 +111,7 @@
 }
 
 .accent-text {
-    color: red;
+    color: var(--accent-color);
     font-weight: 600;
 }
 
@@ -645,7 +645,7 @@
     }
     
     .premium-card__number {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 700;
         opacity: 0.4;
     }

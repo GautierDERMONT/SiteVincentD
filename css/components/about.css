@@ -538,7 +538,7 @@
     padding: 2rem;
     text-align: center;
     transition: var(--transition-fast);
-    border-left: 4px solid var(--primary-color);
+    border-left: 3px solid var(--primary-color);
 }
 
 .cert-carousel-track .cert-card:hover {
@@ -641,9 +641,6 @@
 .cert-dot.active:hover {
     background-color: var(--light-accent-color);
 }
-
-
-
 
 
 

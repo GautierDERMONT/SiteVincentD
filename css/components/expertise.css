@@ -121,14 +121,14 @@
 
 .case-badge {
     display: inline-block;
-    background: #e8f0fe;
-    color: #0056b3;
+    background: linear-gradient(135deg, #0056b3 0%, #00a8e8 100%);    color: #0056b3;
     font-size: 0.7rem;
     font-weight: 700;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 4px 12px;
-    border-radius: 30px;
+    border-radius: 30px 20px 30px 20px;
 }
 
 .case-card__number {
@@ -726,6 +726,7 @@
     .case-card {
         padding: 20px;
         margin-bottom: 35px;
+        gap: 5px;
     }
     .case-card__content h3 {
         font-size: 1.2rem;

@@ -231,7 +231,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7));
+    background: linear-gradient(rgba(9, 52, 80, 0.85), rgba(0, 50, 100, 0.9));
 }
 
 .page-header .container {
@@ -277,11 +277,6 @@ html {
 /* ===== CTA ===== */
 .cta {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7)),
-                url('../images/banner.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 60%;  
     color: white;
     min-height: 330px;
     display: flex;
@@ -289,8 +284,35 @@ html {
     position: relative;
     transition: background-position 0.05s linear;
     will-change: background-position;
+    
+    /* Image en arrière-plan avec lazy loading via background-image */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect fill="%23005b96" width="100" height="100"/%3E%3C/svg%3E');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 60%;
 }
 
+/* Chargement de l'image réelle UNIQUEMENT quand la section est visible */
+.cta.is-visible {
+    background-image: url('../images/banner.webp');
+}
+
+/* Overlay */
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 91, 150, 0.85), rgba(0, 50, 100, 0.7));
+    z-index: 0;
+}
+
+.cta .container {
+    position: relative;
+    z-index: 1;
+}
 /* Version mobile : image zoomée comme le header */
 @media (max-width: 768px) {
     .cta {
