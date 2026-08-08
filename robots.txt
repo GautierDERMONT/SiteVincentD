@@ -1,12 +1,5 @@
 User-agent: *
 Allow: /
 
-User-agent: Googlebot-Image
-Disallow: /images/
-Allow: /images/portraits/
-
-User-agent: Googlebot
-Disallow: /images/
-Allow: /images/portraits/
 
 Sitemap: https://pleiades-partners.fr/sitemap.xml

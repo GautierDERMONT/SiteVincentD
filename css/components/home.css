@@ -1014,7 +1014,7 @@
         right: 0;
         width: 100%;
         height: 300px;
-        background-image: url('/images/portrait/about_index.png');
+        background-image: url('/images/about_index.png');
         background-size: cover;
         background-position: center;
         border-radius: var(--border-radius-md);
