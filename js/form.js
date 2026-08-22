@@ -1,5 +1,5 @@
 // Initialisation de EmailJS avec votre clé publique
-emailjs.init('nprmHBAUc0DVWQCsT');
+emailjs.init('A3XsFdCjZ4_gzWr32');
 
 // Attendre que le DOM soit chargé
 document.addEventListener('DOMContentLoaded', function() {

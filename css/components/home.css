@@ -160,19 +160,16 @@
     min-width: 0;
     max-width: 180px;
     padding: 20px 10px;
-    border-radius: var(--border-radius-md);
+    border-radius: 20px;
     background: linear-gradient(
         135deg,
-        rgba(10, 37, 64, 0.8) 90%,
-        rgba(26, 74, 111, 0.8) 100%
+        rgba(9, 37, 66, 0.8) 
+        
     );
-    border: 2px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
 
-.stat:hover {
-    border-color: rgba(255, 170, 0, 0.5);
-}
+
 
 .stat-number {
     display: block;
