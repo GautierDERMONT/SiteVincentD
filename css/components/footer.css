@@ -20,11 +20,6 @@ footer {
     margin-bottom: 1.5rem;
 }
 
-.footer-col h3 span {
-    color: var(--secondary-color);
-    font-family: serif;
-    font-size: 1.3rem;
-}
 
 .footer-col p {
     color: #b0b7c3;
@@ -84,12 +79,11 @@ footer {
 }
 
 .footer-bottom a {
-    color: var(--secondary-color);
+    color: white;
 }
 
 .footer-bottom a:hover {
-    color: var(--light-accent-color);
-    transition: var(--transition-fast);
+    text-decoration: underline;
 }
 
 /* =============================================

@@ -487,6 +487,21 @@
         </div>
     </footer>
 
+    <!-- Navigation rapide entre les services (page Services uniquement) -->
+    <nav class="service-quicknav" aria-label="Navigation rapide entre les services">
+        <div class="service-quicknav__list">
+            <a href="#audit" class="service-quicknav__btn" data-target="audit" aria-label="Aller à Audit & Diagnostic"><i class="fas fa-chart-line"></i></a>
+            <a href="#achats" class="service-quicknav__btn" data-target="achats" aria-label="Aller à Achats & Approvisionnements"><i class="fas fa-truck-loading"></i></a>
+            <a href="#entrepot" class="service-quicknav__btn" data-target="entrepot" aria-label="Aller à Optimisation d'Entrepôt"><i class="fas fa-warehouse"></i></a>
+            <a href="#transport" class="service-quicknav__btn" data-target="transport" aria-label="Aller à Distribution, Transport & Douane"><i class="fas fa-project-diagram"></i></a>
+            <a href="#planification" class="service-quicknav__btn" data-target="planification" aria-label="Aller à Projets de transformation"><i class="fas fa-rocket"></i></a>
+        </div>
+        <!-- Bouton unique visible uniquement sur mobile pour ouvrir/fermer la liste -->
+        <button type="button" class="service-quicknav__toggle" aria-label="Ouvrir la navigation entre les services" aria-expanded="false">
+            <i class="fas fa-list"></i>
+        </button>
+    </nav>
+
     <script src="js/script.js"></script>
     <script src="js/services.js"></script>
 </body>

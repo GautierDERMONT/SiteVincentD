@@ -101,3 +101,55 @@ function animateNumberEasing(element) {
     
     requestAnimationFrame(updateNumber);
 }
+
+// =============================================
+// NAVIGATION RAPIDE PAR ICÔNES ENTRE LES SERVICES
+// (au-dessus du bouton "remonter en haut")
+// =============================================
+document.addEventListener('DOMContentLoaded', function () {
+    const quicknav = document.querySelector('.service-quicknav');
+    if (!quicknav) return;
+
+    // Afficher/masquer selon le scroll (même seuil que le bouton remonter)
+    function toggleVisibility() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        quicknav.classList.toggle('show', scrollTop > 100);
+    }
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    toggleVisibility();
+
+    // Met en surbrillance l'icône du service actuellement visible à l'écran
+    const buttons = quicknav.querySelectorAll('.service-quicknav__btn');
+    const sections = Array.from(buttons)
+        .map(btn => document.getElementById(btn.dataset.target))
+        .filter(Boolean);
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const btn = quicknav.querySelector(`[data-target="${entry.target.id}"]`);
+            if (!btn) return;
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Bouton unique mobile : ouvre/ferme la liste des icônes
+    const toggle = quicknav.querySelector('.service-quicknav__toggle');
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const isOpen = quicknav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Fermer automatiquement le menu après avoir choisi un service (mobile)
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                quicknav.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+});
