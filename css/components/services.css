@@ -758,7 +758,7 @@
 /* Sur mobile : un bouton unique ouvre/ferme la liste des icônes */
 @media (max-width: 768px) {
     .service-quicknav {
-        right: 13px;
+        right: 12px;
         bottom: 60px;
         gap: 8px;
     }
@@ -788,8 +788,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         border: none;
         cursor: pointer;
@@ -803,5 +803,11 @@
     .service-quicknav.open .service-quicknav__toggle {
         transform: rotate(90deg);
         background: linear-gradient(135deg, #ff7e30 0%, #ff9a55 100%);
+        
+    }
+
+     .service-quicknav.open .service-quicknav__toggle .fa-list::before {
+        content: "\f00d";
+        
     }
 }
