@@ -81,8 +81,7 @@ h2 { font-size: 1.7rem; margin-bottom: 1rem; }
 h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
 
 p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    
     color: var(--gray-color);
 }
 

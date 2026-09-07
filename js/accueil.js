@@ -11,16 +11,17 @@ function initHeroCarousel() {
     const slideDuration = 5000;
 
     // PRÉCHARGEMENT DES IMAGES
+    // On récupère les vraies images déjà posées en background-image sur les slides
+    // (entrepot.webp, bateau.webp, avion.webp) au lieu des anciennes URLs Unsplash
+    // qui ne correspondaient à rien et étaient téléchargées pour rien.
     function preloadImages() {
-        const imageUrls = [
-            'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-            'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=70',
-            'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=70'
-        ];
-        
-        imageUrls.forEach(url => {
-            const img = new Image();
-            img.src = url;
+        slides.forEach(slide => {
+            const bg = slide.style.backgroundImage; // ex: url("images/entrepot.webp")
+            const match = bg && bg.match(/url\(["']?(.*?)["']?\)/);
+            if (match && match[1]) {
+                const img = new Image();
+                img.src = match[1];
+            }
         });
     }
 
@@ -388,4 +389,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
     console.log('Page chargée');
-}); 
+});

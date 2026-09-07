@@ -89,7 +89,7 @@
 }
 
 .social-link2:hover {
-    background-color: var(--secondary-color);
+    background-color: #0A66C2;
     color: white;
 }
 
@@ -342,10 +342,9 @@ select optgroup option {
     content: '';
     position: absolute;
     display: none;
-    left: 6px;
-    top: 2px;
+    left: 4px;
     width: 6px;
-    height: 10px;
+    height: 11px;
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);

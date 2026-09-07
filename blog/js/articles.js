@@ -122,17 +122,18 @@ function loadArticleMeta() {
     const metaHeader = document.querySelector('.article-meta-header');
     if (metaHeader) {
         metaHeader.innerHTML = `
-            <div class="article-meta-left">
-                <span class="article-date"><i class="far fa-calendar"></i> ${article.date}</span>
-                <span class="article-author"><i class="far fa-user"></i> ${article.author}</span>
-            </div>
-            <span class="reading-time"><i class="fas fa-eye"></i> ${article.readTime}</span>
+            <span class="article-date"><i class="far fa-calendar"></i> ${article.date}</span>
+            <span class="article-author"><i class="far fa-user"></i> ${article.author}</span>
         `;
     }
     
     const tagsHeader = document.querySelector('.article-tags-header');
     if (tagsHeader) {
-        tagsHeader.innerHTML = article.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        const tagsHtml = article.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        tagsHeader.innerHTML = `
+            <div class="article-tags-list">${tagsHtml}</div>
+            <span class="reading-time"><i class="fas fa-eye"></i> ${article.readTime}</span>
+        `;
     }
 }
 

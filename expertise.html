@@ -26,7 +26,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="/" class="logo"> 
-                <img src="images/logo.png" alt="Manager de transition SupplyChainExpert" width="120" height="auto" loading="eager" fetchpriority="high">
+                <img src="images/logo.webp" alt="Manager de transition SupplyChainExpert" width="120" height="auto" loading="eager" fetchpriority="high">
             </a>
             <ul class="nav-menu">
                 <li><a href="/">Accueil</a></li>
@@ -73,7 +73,7 @@
                     <h3>Industrie B-to-B</h3>
                     <p>Optimisation des flux de distribution, gestion des approvisionnements, planification MRP/DRP.</p>
                     <ul>
-                        <li>Gestion des stocks produits finis en mode « customer centric »</li>
+                        <li>Gestion des stocks produits finis en mode "customer centric"</li>
                         <li>Planification différenciée de la distribution</li>
                         <li>Livraisons clients finaux multicanaux</li>
                     </ul>
@@ -131,7 +131,7 @@
             <p class="section-subtitle">Des réalisations concrètes avec des résultats mesurables</p>
 
             <!-- Cas 1 - Métaux spéciaux -->
-            <div class="case-card">
+            <div class="case-card" id="cas-1">
                 <div class="case-card__row">
                     <div class="case-card__badge">
                         <span class="case-badge">B2B Industrie</span>
@@ -188,7 +188,7 @@
             </div>
 
             <!-- Cas 2 - Pharmaceutique -->
-            <div class="case-card case-card--reverse">
+            <div class="case-card case-card--reverse" id="cas-2">
                 <div class="case-card__row">
                     <div class="case-card__badge">
                         <span class="case-badge">Pharmaceutique & Santé</span>
@@ -245,7 +245,7 @@
             </div>
 
             <!-- Cas 3 - Vins & Spiritueux -->
-            <div class="case-card">
+            <div class="case-card" id="cas-3">
                 <div class="case-card__row">
                     <div class="case-card__badge">
                         <span class="case-badge">Vins & Spiritueux</span>
@@ -542,10 +542,23 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PLEIADES Partners. Tous droits réservés. | <a href="/legal/mentions-legales">Mentions légales</a> | <a href="/legal/politique-confidentialite">Politique de confidentialité</a> | <a href="/legal/credits">Crédits</a></p>
+                <p>&copy; 2026 PLEIADES Partners. Tous droits réservés.  <a href="/legal/mentions-legales">Mentions légales</a> | <a href="/legal/politique-confidentialite">Politique de confidentialité</a> | <a href="/legal/credits">Crédits</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Navigation rapide entre les cas (page Expertise uniquement) -->
+    <nav class="service-quicknav" aria-label="Navigation rapide entre les études de cas">
+        <div class="service-quicknav__list">
+            <a href="#cas-1" class="service-quicknav__btn" data-target="cas-1" aria-label="Aller au cas Optimisation du BFR"><i class="fas fa-industry"></i></a>
+            <a href="#cas-2" class="service-quicknav__btn" data-target="cas-2" aria-label="Aller au cas Externalisation logistique 4PL"><i class="fas fa-prescription-bottle"></i></a>
+            <a href="#cas-3" class="service-quicknav__btn" data-target="cas-3" aria-label="Aller au cas Optimisation digitale S&OP"><i class="fas fa-sync-alt"></i></a>
+        </div>
+        <!-- Bouton unique visible uniquement sur mobile pour ouvrir/fermer la liste -->
+        <button type="button" class="service-quicknav__toggle" aria-label="Ouvrir la navigation entre les cas" aria-expanded="false">
+            <i class="fas fa-list"></i>
+        </button>
+    </nav>
 
     <script src="js/script.js"></script>
     <script src="js/expertise.js"></script>

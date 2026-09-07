@@ -126,11 +126,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
             const btn = quicknav.querySelector(`[data-target="${entry.target.id}"]`);
             if (!btn) return;
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            if (entry.isIntersecting) {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                // On quitte la section : on désactive son bouton si aucune autre section n'est active
+                btn.classList.remove('active');
+            }
         });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
 

@@ -21,7 +21,7 @@
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.3s ease;
-    margin-left: 1rem;
+    margin-left: 1.1rem;
 }
 
 .blog-article-main .back-link i {
@@ -66,22 +66,18 @@
 /* ============================================= */
 /* 4. MÉTADONNÉES DE L'ARTICLE (HEADER) */
 /* ============================================= */
+/* Cadre englobant les 2 rangées (date/auteur puis tags/durée) */
 .blog-article-main .article-meta-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 16px 10px 8px 20px; 
-    padding-bottom: 0.5rem;
-    max-width: 750px;
-    width: 95%;
-}
-
-.blog-article-main .article-meta-left {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    margin: 10px 10px 0 20px; 
+    padding: 10px 0px;
+    max-width: 815px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
 }
 
 .blog-article-main .article-date,
@@ -116,12 +112,22 @@
 /* ============================================= */
 .blog-article-main .article-tags-header {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 0 0 1rem 0;
+    margin: 0 10px 1rem 20px;
+    max-width: 815px;
     width: 100%;
-    padding: 0 15px 15px 15px; 
-    border-bottom: 1px solid #e0e0e0; 
+    padding: 10px 0px;
+    border-radius: 0 0 8px 8px;
+
+}
+
+.blog-article-main .article-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .blog-article-main .article-tags-header .tag {
@@ -156,6 +162,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     color: #1a2a3a;
+    border-top: 1px solid #eaeef2;
 }
 
 .blog-article-main .article-content h2 {
@@ -620,13 +627,6 @@
         aspect-ratio: 16 / 9;
     }
 
-    .blog-article-main .reading-time {
-        margin-left: 0;
-        width: 100%;
-        justify-content: flex-start;
-        padding-top: 4px;
-    }
-    
     
     .blog-article-main .grid-small-column {
         flex: 1;
@@ -1000,6 +1000,12 @@
     
     .blog-article-main .article-meta-header {
         align-items: flex-start;
+        max-width: 90%;
+    }
+
+    .blog-article-main .article-tags-header {
+        align-items: flex-start;
+        max-width: 90%;
     }
     
     .blog-article-main .also-read-header {

@@ -308,7 +308,7 @@
 
 .services-intro {
     max-width: 1000px;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 1.2rem auto;
     text-align: center;
 }
 
@@ -333,7 +333,7 @@
 }
 
 .services-intro__question {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #2d3748;
     margin: 0;
     line-height: 1.5;
@@ -357,6 +357,8 @@
     color: #4a5568;
     margin: 0;
 }
+
+
 
 /* =============================================
    NOUVELLES SECTIONS - ALTERNANCE BLANC/GRIS
@@ -485,7 +487,7 @@
     
     .services-intro__item {
         
-        margin-right: 0.5rem;
+        margin-right: 2.1rem;
     }
     
     .services-intro__question {
@@ -557,6 +559,7 @@
 
     .premium-card__desc {
         font-size: 0.95rem;
+        padding: 0 0.50rem;
     }
 
     .premium-grid__col--method,
