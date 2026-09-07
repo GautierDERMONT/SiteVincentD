@@ -101,6 +101,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-top: 7px;
 }
 
 .blog-article-main .reading-time i {
