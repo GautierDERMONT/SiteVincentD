@@ -48,7 +48,7 @@ const ARTICLES_DATA = {
       date: "Mai 2026",
       dateIso: "2026-05",
       author: "Vincent Dermont",
-      readTime: "durée",
+      readTime: "10 min",
       tags: ["A propos", "Tag"],
       image: "blog/images/Image-VDe.webp",
       imageFull: "../images/Image-VDe.webp",
