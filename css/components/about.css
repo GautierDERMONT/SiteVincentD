@@ -9,7 +9,6 @@
 .about-profile {
     display: flex;
     flex-direction: column;
-    gap: 40px;
     align-items: center;
 }
 
@@ -17,8 +16,6 @@
     width: 35%;
     max-width: 350px;
     margin-bottom: 20px;
-
-
 }
 
 
@@ -76,7 +73,7 @@
 
 /* ===== INTERVENTIONS MANAGER ===== */
 .manager-interventions {
-    margin: 2rem 0 1.5rem;
+    margin: 2.5rem 0 1.5rem;
     background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
     border-radius: var(--border-radius-md);
     padding: 1.5rem 2rem;
@@ -791,7 +788,7 @@
 
     .about-profile {
         flex-direction: column;
-        gap: 40px;
+        
     }
 
     .profile-image,
@@ -917,7 +914,7 @@
     }
 
     .manager-interventions {
-        margin: 1.5rem 0;
+        margin: 2rem 0;
         padding: 1.25rem 1.5rem;
     }
 
@@ -956,9 +953,7 @@
         padding: 40px 0;
     }
 
-    .about-profile {
-        gap: 30px;
-    }
+  
 
     .profile-content h2 {
         font-size: 1.6rem;
@@ -1032,7 +1027,7 @@
     }
 
     .manager-interventions {
-        margin: 1.25rem 0;
+        margin: 2rem 0;
         padding: 1rem 1.25rem;
     }
 
@@ -1130,8 +1125,8 @@
         float: left;
         width: 30%;
         max-width: 300px;
-        margin-right: 20px;
-        margin-bottom: 20px;
+        margin-right: 7px;
+        margin-bottom: 0px;
     }
 
     .profile-content {
