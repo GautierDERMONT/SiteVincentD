@@ -431,7 +431,7 @@
 
 .blog-article-main .suggestion-reading-time {
     color: #6c757d;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -441,7 +441,7 @@
 .blog-article-main .suggestion-reading-time i {
     color: var(--accent-color);
     font-size: 0.7rem;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     
 }
 
