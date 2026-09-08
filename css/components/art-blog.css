@@ -417,6 +417,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin-top: 6px;
 }
 
 .blog-article-main .suggestion-tags .tag {
@@ -430,12 +431,11 @@
 
 .blog-article-main .suggestion-reading-time {
     color: #6c757d;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    white-space: nowrap;
-
+    margin-top: 7px
 }
 
 .blog-article-main .suggestion-reading-time i {
