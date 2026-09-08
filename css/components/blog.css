@@ -501,10 +501,11 @@
     display: inline-block;
     color: var(--primary-color);
     font-weight: 500;
+    padding-top: 7px;
 }
 
 .author-link:hover {
-    color: var(--accent-color);
+    color: var(--secondary-color);
 }
 
 /* Newsletter */
