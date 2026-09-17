@@ -325,6 +325,9 @@ html {
         background-position: center 80%; 
 
     }
+     .page-header {
+        min-height: auto; 
+    }
 }
 
 @media (max-width: 576px) {
@@ -333,6 +336,10 @@ html {
         background-position: center 50%;
         min-height: 300px;
         padding: var(--spacing-md) 0;
+    }
+
+     .page-header {
+        min-height: auto; 
     }
 }
 
