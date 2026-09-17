@@ -71,6 +71,9 @@
     color: var(--accent-color);
     font-weight: 600;
     margin-right: 0.4rem;
+    display: inline-block; /* nécessaire pour transform */
+    transform: scale(1.2);
+    transform-origin: center;
 }
 
 /* =============================================
