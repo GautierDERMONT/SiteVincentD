@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Configuration des animations par défaut
-    const defaultAnimatedElements = [
+    const defaultAnimatedElements = [     
         '.service-card',
         '.hero-content',
         '.about-content > p',
@@ -95,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '.cta-content',
         '.feature-card'
     ];
+
+    
     
     // Observer tous les éléments par défaut avec fade-up
     defaultAnimatedElements.forEach(selector => {
@@ -672,3 +674,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 })();
+

@@ -80,19 +80,13 @@ function initHeroCarousel() {
         });
     });
 
-    const carousel = document.querySelector('.hero-bg-carousel');
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopCarousel);
-        carousel.addEventListener('mouseleave', startCarousel);
-        
-        document.addEventListener('visibilitychange', () => {
+    document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 stopCarousel();
             } else {
                 startCarousel();
             }
         });
-    }
 
     goToSlide(0);
     startCarousel();
@@ -378,10 +372,57 @@ function initLazyLoading() {
     });
 }
 
+// ===== POINT LUMINEUX QUI REMPLACE LE CURSEUR (HERO) =====
+function initHeroSparkle() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const root = document.documentElement;
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+
+    let x = 0, y = 0, raf = null, active = false;
+
+    function render() {
+        raf = null;
+        glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
+
+    function onMove(e) {
+        x = e.clientX;
+        y = e.clientY;
+        if (!active) {
+            active = true;
+            glow.classList.add('visible');
+            root.classList.add('hide-cursor');
+        }
+        if (!raf) raf = requestAnimationFrame(render);
+    }
+
+    function hide() {
+        active = false;
+        glow.classList.remove('visible');
+        root.classList.remove('hide-cursor');
+    }
+
+    hero.addEventListener('pointermove', onMove, { passive: true });
+    hero.addEventListener('pointerleave', hide);
+
+    // Cache le glow si le hero est passé sous le curseur pendant un scroll
+    window.addEventListener('scroll', () => {
+        if (active && hero.getBoundingClientRect().bottom < y) hide();
+    }, { passive: true });
+}
+
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM chargé');
     initHeroCarousel();
+    initHeroSparkle();
     initClientLogos();
     initServicesCarousel();
     initLazyLoading();

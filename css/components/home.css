@@ -255,6 +255,91 @@
     margin-top: 2px;
 }
 
+/* ===== POINT LUMINEUX SUR LE CURSEUR ===== */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    will-change: transform;
+}
+
+.cursor-glow.visible {
+    opacity: 1;
+}
+
+/* Cœur lumineux */
+.cursor-glow::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:
+        0 0 6px 2px #e4870e,
+        0 0 14px 6px rgba(255, 179, 71, 0.9),
+        0 0 30px 12px rgba(255, 179, 71, 0.45);
+    animation: glowPulse 1.6s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+/* Branches de l'étoile */
+.cursor-glow::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background:
+        linear-gradient(to right, transparent, rgba(255, 255, 255, 0.95) 50%, transparent) center / 100% 2px no-repeat,
+        linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95) 50%, transparent) center / 2px 100% no-repeat;
+    animation: glowTwinkle 1.6s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+/* Les animations ne tournent que quand le glow est visible */
+.cursor-glow.visible::before,
+.cursor-glow.visible::after {
+    animation-play-state: running;
+}
+
+/* Curseur système caché tant que la souris est dans le hero (desktop) */
+@media (min-width: 1025px) {
+    html.hide-cursor,
+    html.hide-cursor * {
+        cursor: none !important;
+    }
+}
+
+/* Pas de point lumineux sur mobile et tablette */
+@media (max-width: 1024px) {
+    .cursor-glow {
+        display: none !important;
+    }
+    .hero {
+        cursor: auto;
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.35); }
+}
+
+@keyframes glowTwinkle {
+    0%, 100% { transform: scale(0.7) rotate(0deg);  opacity: 0.6; }
+    50%      { transform: scale(1.15) rotate(45deg); opacity: 1; }
+}
+
 @keyframes scroll-wheel {
     0% {
         opacity: 1;

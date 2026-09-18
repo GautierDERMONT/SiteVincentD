@@ -515,6 +515,32 @@ html {
     transform: translateY(0);
 }
 
+/* Cache les éléments dès le premier affichage (évite le flash) */
+:root { --fade-y: 40px; }
+@media (max-width: 768px) {
+    :root { --fade-y: 20px; }
+}
+
+.js :is(   
+    .service-card,
+    .hero-content,
+    .about-content > p,
+    .about-content .credo-simple,
+    .about-content .expertise-list,
+    .expertise-card,
+    .blog-card,
+    .contact-info,
+    .contact-form,
+    .cta-content,
+    .feature-card
+):not(.animate-in) {
+    opacity: 0;
+    transform: translateY(var(--fade-y));
+}
+
+
+
+
 /* ===== FORMULAIRES & MESSAGES ===== */
 .error {
     color: var(--danger-color);
@@ -553,6 +579,7 @@ html {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
 
 /* ===== ACCESSIBILITÉ ===== */
 .sr-only {
