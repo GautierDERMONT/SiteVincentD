@@ -30,7 +30,7 @@
 }
 
 .blog-article-main .back-link:hover {
-    color: var(--light-accent-color);
+    color: var(--secondary-color);
 }
 
 .blog-article-main .back-link:hover i {
