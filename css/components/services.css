@@ -823,7 +823,6 @@
 .section-services-premium {
     overflow-x: hidden; /* repli pour anciens navigateurs mobiles */
     overflow-x: clip;   /* évite tout scroll horizontal pendant la glissade */
-    contain: paint;     /* garantit que rien ne dépasse de la section (mobile) */
 }
 
 .premium-card.slide-from-left,
