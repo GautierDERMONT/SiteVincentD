@@ -778,7 +778,7 @@
 }
 
 @media (max-width: 768px) {
-    .clients-groups { grid-template-columns: 1fr; gap: 40px; width: 95%; }
+    .clients-groups { grid-template-columns: 1fr; gap: 50px; width: 100%; }
     .clients-group-logos { gap: 14px; }
     .client-logo-item { flex-basis: calc(30% - 7px); max-width: 160px; height: 72px; }
     .client-logo-item img { max-height: 44px; }
