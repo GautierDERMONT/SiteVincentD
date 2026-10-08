@@ -918,3 +918,61 @@
         content: "\f00d";
     }
 }
+
+/* =============================================
+   APPARITION EN GLISSADE ALTERNÉE - ÉTUDES DE CAS
+   Cas 1, 3 : gauche -> droite
+   Cas 2    : droite -> gauche
+   ============================================= */
+.case-studies {
+    overflow-x: hidden; /* repli pour anciens navigateurs mobiles */
+    overflow-x: clip;   /* évite tout scroll horizontal pendant la glissade */
+    contain: paint;     /* garantit que rien ne dépasse de la section (mobile) */
+}
+
+.case-card.slide-from-left,
+.case-card.slide-from-right {
+    opacity: 0;
+    transition: opacity 0.5s ease-out, transform 0.55s cubic-bezier(0.25, 0.8, 0.35, 1);
+    will-change: opacity, transform;
+}
+
+.case-card.slide-from-left {
+    transform: translateX(-70px);
+}
+
+.case-card.slide-from-right {
+    transform: translateX(70px);
+}
+
+.case-card.slide-from-left.slide-in,
+.case-card.slide-from-right.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+    will-change: auto;
+}
+
+/* Mobile : même glissade latérale, distance réduite */
+@media (max-width: 768px) {
+    .case-card.slide-from-left {
+        transform: translateX(-45px);
+    }
+
+    .case-card.slide-from-right {
+        transform: translateX(45px);
+    }
+
+    .case-card.slide-from-left.slide-in,
+    .case-card.slide-from-right.slide-in {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .case-card.slide-from-left,
+    .case-card.slide-from-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}

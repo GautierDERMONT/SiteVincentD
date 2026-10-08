@@ -157,3 +157,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// =============================================
+// APPARITION DES CARTES : glissade alternée
+// cartes 1, 3, 5 : de gauche à droite / cartes 2, 4 : de droite à gauche
+// =============================================
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.premium-card');
+    if (!cards.length) return;
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    const slideObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('slide-in');
+                obs.unobserve(entry.target); // une seule fois
+            }
+        });
+    }, { threshold: 0.02, rootMargin: '0px 0px -5% 0px' });
+
+    cards.forEach((card, index) => {
+        card.classList.add(index % 2 === 0 ? 'slide-from-left' : 'slide-from-right');
+        slideObserver.observe(card);
+    });
+});

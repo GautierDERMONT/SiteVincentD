@@ -773,7 +773,7 @@ html {
 @media (max-width: 768px) {
     .btn-cas-client {
         font-size: 0.9rem;
-        margin: 0.5rem 0;
+        margin-top:1.5rem;
 
     }
 }
